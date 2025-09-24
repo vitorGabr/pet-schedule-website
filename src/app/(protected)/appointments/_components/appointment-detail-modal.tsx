@@ -1,6 +1,16 @@
 "use client";
 
-import { useGetAppointmentById } from "@/lib/http";
+import { differenceInMinutes, format, intervalToDuration } from "date-fns";
+import { ptBR } from "date-fns/locale/pt-BR";
+import {
+	CalendarDays,
+	Clock,
+	DollarSign,
+	MapPin,
+	Scissors,
+	X,
+} from "lucide-react";
+import { parseAsString, useQueryState } from "nuqs";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -9,11 +19,9 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog";
-import { differenceInMinutes, format, intervalToDuration } from "date-fns";
-import { ptBR } from "date-fns/locale/pt-BR";
-import { CalendarDays, Clock, DollarSign, MapPin, Scissors, X } from "lucide-react";
-import { parseAsString, useQueryState } from "nuqs";
+import { useGetAppointmentById } from "@/lib/http";
 import { AnimalCard } from "./animal-card";
+import { AppointmentDetailModalSkeleton } from "./appointment-detail-modal-skeleton";
 import { DetailsList } from "./details-list";
 import { InfoItem } from "./info-item";
 import { StatusBadge } from "./status-badge";
@@ -24,7 +32,14 @@ export const AppointmentDetailModal = () => {
 		query: { enabled: !!id, queryKey: ["appointment", id] },
 	});
 
-	if (isLoading) return <div>Loading...</div>;
+	if (isLoading) {
+		return (
+			<AppointmentDetailModalSkeleton
+				isOpen={!!id}
+				onClose={() => setId(null)}
+			/>
+		);
+	}
 	if (!appointmentData) return null;
 
 	const start = new Date(appointmentData?.startDate ?? "");
@@ -56,7 +71,11 @@ export const AppointmentDetailModal = () => {
 										<InfoItem
 											icon={<Scissors className="h-5 w-5" />}
 											label="Serviço"
-											value={<span className="text-primary">{appointmentData.service.name}</span>}
+											value={
+												<span className="text-primary">
+													{appointmentData.service.name}
+												</span>
+											}
 										/>
 										<InfoItem
 											icon={<MapPin className="h-5 w-5" />}
@@ -66,7 +85,9 @@ export const AppointmentDetailModal = () => {
 										<InfoItem
 											icon={<CalendarDays className="h-5 w-5" />}
 											label="Data e Hora"
-											value={<span>{format(start, "PPP, p", { locale: ptBR })}</span>}
+											value={
+												<span>{format(start, "PPP, p", { locale: ptBR })}</span>
+											}
 										/>
 										<InfoItem
 											icon={<Clock className="h-5 w-5" />}
@@ -109,7 +130,9 @@ export const AppointmentDetailModal = () => {
 				</div>
 				<div className="px-6 py-4 w-full border flex items-center justify-between">
 					<div>
-						<p className="font-semibold leading-none">{appointmentData.service.name}</p>
+						<p className="font-semibold leading-none">
+							{appointmentData.service.name}
+						</p>
 					</div>
 					<div className="text-right">
 						<p className="text-sm text-muted-foreground">Preço</p>

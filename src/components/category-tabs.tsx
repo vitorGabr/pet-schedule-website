@@ -1,9 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { ScrollArea } from "./ui/scroll-area";
 
 const categories = [
 	{ id: "todos", label: "Todos", tag: "" },
@@ -26,8 +27,8 @@ export function CategoryTabs() {
 	}
 
 	return (
-		<div className="bg-background border-b border-border px-10 py-4">
-			<div className="flex items-center gap-6 overflow-x-auto">
+		<ScrollArea className="bg-background border-b border-border px-10 py-4 w-full">
+			<div className="flex items-center gap-6 w-max">
 				{categories.map((category) => (
 					<Button
 						key={category.id}
@@ -41,10 +42,12 @@ export function CategoryTabs() {
 						)}
 						asChild
 					>
-						<Link href={{ pathname: `/s/${category.tag}` }}>{category.label}</Link>
+						<Link href={{ pathname: `/s/${category.tag}` }}>
+							{category.label}
+						</Link>
 					</Button>
 				))}
 			</div>
-		</div>
+		</ScrollArea>
 	);
 }
