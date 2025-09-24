@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { AuthSection } from "@/components/auth/auth-section";
 import { Await } from "@/components/await";
 import { LinksSection } from "@/components/navigation/links-section";
@@ -13,13 +14,17 @@ export function MainHeader() {
 	return (
 		<header className="bg-background flex items-center justify-between border-b border-solid px-4 md:px-10">
 			<div className="flex items-center gap-3 md:gap-10 w-full py-3 md:py-0">
-				<MobileMenu />
+				<Suspense>
+					<MobileMenu />
+				</Suspense>
 				<Link href="/" className="h-10">
 					<Image src={Logo} alt="Logo" width={70} height={70} />
 				</Link>
-				<div className="hidden md:block w-full">
-					<LinksSection />
-				</div>
+				<Suspense>
+					<div className="hidden md:block w-full">
+						<LinksSection />
+					</div>
+				</Suspense>
 			</div>
 			<Await
 				promise={verifySession()}
