@@ -25,7 +25,15 @@
 		"rules": {
 			"suspicious": {
 				"noImplicitAnyLet": "off",
-				"noExplicitAny": "off"
+				"noExplicitAny": "off",
+				"noArrayIndexKey": "off"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": "off"
+			},
+			"a11y": {
+				"noStaticElementInteractions": "off",
+				"useKeyWithClickEvents": "off"
 			},
 			"complexity": {
 				"noThisInStatic": "off",

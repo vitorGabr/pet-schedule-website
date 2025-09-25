@@ -1,10 +1,10 @@
 "use client";
 
-import type { CompanyByIdResponseDtoOutputServicesItem } from "@/lib/http";
-import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
 import { parseAsString, parseAsStringLiteral, useQueryState } from "nuqs";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import type { CompanyByIdResponseDtoOutputServicesItem } from "@/lib/http";
 import { formatCurrency } from "@/utils/currency";
 
 type Props = {
@@ -14,13 +14,18 @@ type Props = {
 };
 
 export function ServiceCard({ service, authenticated, hasAnimal }: Props) {
-	const [_, setAuthMode] = useQueryState("auth", parseAsStringLiteral(["signin", "signup"]));
-	const [__, setServiceId] = useQueryState("id", parseAsString.withOptions({ shallow: false }));
+	const [_, setAuthMode] = useQueryState(
+		"auth",
+		parseAsStringLiteral(["signin", "signup"]),
+	);
+	const [__, setServiceId] = useQueryState("id", parseAsString);
 
 	function handleBooking() {
 		if (!authenticated) return setAuthMode("signin");
 		if (!hasAnimal) {
-			return toast.error("Você deve ter um animal cadastrado para agendar um serviço");
+			return toast.error(
+				"Você deve ter um animal cadastrado para agendar um serviço",
+			);
 		}
 		setServiceId(service.id);
 	}
@@ -28,6 +33,7 @@ export function ServiceCard({ service, authenticated, hasAnimal }: Props) {
 	return (
 		<div
 			className={`p-4 rounded-lg border cursor-pointer transition-all border-border hover:border-primary/50`}
+			onClick={handleBooking}
 		>
 			<div className="flex items-center justify-between">
 				<div className="flex-1">

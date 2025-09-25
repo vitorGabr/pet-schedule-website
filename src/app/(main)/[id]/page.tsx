@@ -1,4 +1,9 @@
-import { getCompanyById, listAnimalsFromUser, listCompanyRatings } from "@/lib/http";
+import { format } from "date-fns";
+import { CheckCircle, MapPin, MessageCircle, Star } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
 	Card,
@@ -7,18 +12,21 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { format } from "date-fns";
-import { CheckCircle, MapPin, MessageCircle, Star } from "lucide-react";
-import type { Metadata } from "next";
-import Image from "next/image";
-import { notFound } from "next/navigation";
 import { verifySession } from "@/lib/auth/verify-session";
+import {
+	getCompanyById,
+	listAnimalsFromUser,
+	listCompanyRatings,
+} from "@/lib/http";
 import { BookingModal } from "../../../components/booking/modal";
 import { ContactInfo } from "./_components/contact-info";
 import { LocationMap } from "./_components/location-map";
 import { ServiceCard } from "./_components/service-card";
 
-type Props = { params: Promise<{ id: string }>; searchParams: Promise<{ id?: string }> };
+type Props = {
+	params: Promise<{ id: string }>;
+	searchParams: Promise<{ id?: string }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { id } = await params;
@@ -61,15 +69,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			description,
 			siteName: "PETI",
 			images: [
-				{ url: imageUrl, width: 1200, height: 630, alt: `${company.name} - Serviços para Pets` },
+				{
+					url: imageUrl,
+					width: 1200,
+					height: 630,
+					alt: `${company.name} - Serviços para Pets`,
+				},
 			],
 		},
 	};
 }
 
-export default async function EmpresaPage({ params, searchParams }: Props) {
+export default async function EmpresaPage({ params }: Props) {
 	const { id } = await params;
-	const { id: serviceId } = await searchParams;
 
 	const session = await verifySession();
 	const company = await getCompanyById(id).catch(() => null);
@@ -79,7 +91,6 @@ export default async function EmpresaPage({ params, searchParams }: Props) {
 		listCompanyRatings(id).catch(() => null),
 		listAnimalsFromUser(session?.id ?? "").catch(() => null),
 	]);
-	const selectedService = company.services.find((s) => s.id === serviceId);
 
 	return (
 		<div className="min-h-screen bg-background">
@@ -102,12 +113,14 @@ export default async function EmpresaPage({ params, searchParams }: Props) {
 
 						{/* Company Info */}
 						<div>
-							<h1 className="text-3xl md:text-4xl font-bold mb-4">{company.name}</h1>
+							<h1 className="text-3xl md:text-4xl font-bold mb-4">
+								{company.name}
+							</h1>
 							<div className="flex items-center space-x-1 mb-4">
 								<div className="flex">
 									{[...Array(5)].map((_, i) => (
 										<Star
-											key={i}
+											key={`star-${company.name}-${i}`}
 											className={`w-5 h-5 ${
 												i < Math.floor(company.averageRating ?? 0)
 													? "text-yellow-400 fill-current"
@@ -116,7 +129,9 @@ export default async function EmpresaPage({ params, searchParams }: Props) {
 										/>
 									))}
 								</div>
-								<span className="text-lg font-semibold">{company.averageRating ?? 0}</span>
+								<span className="text-lg font-semibold">
+									{company.averageRating ?? 0}
+								</span>
 								<span className="text-muted-foreground">
 									({company.ratingCount ?? 0} avaliações)
 								</span>
@@ -125,14 +140,18 @@ export default async function EmpresaPage({ params, searchParams }: Props) {
 								<MapPin className="w-5 h-5 mr-2" />
 								<span>{company.address.addressLine}</span>
 							</div>
-							<p className="text-lg text-muted-foreground">{company.description}</p>
+							<p className="text-lg text-muted-foreground">
+								{company.description}
+							</p>
 						</div>
 
 						{/* Services */}
 						<Card>
 							<CardHeader>
 								<CardTitle className="text-2xl">Serviços Disponíveis</CardTitle>
-								<CardDescription>Escolha o melhor cuidado para seu pet</CardDescription>
+								<CardDescription>
+									Escolha o melhor cuidado para seu pet
+								</CardDescription>
 							</CardHeader>
 							<CardContent>
 								<div className="grid gap-4">
@@ -155,20 +174,29 @@ export default async function EmpresaPage({ params, searchParams }: Props) {
 									<MessageCircle className="w-6 h-6" />
 									Avaliações dos Clientes
 								</CardTitle>
-								<CardDescription>{company.averageRating} avaliações verificadas</CardDescription>
+								<CardDescription>
+									{company.averageRating} avaliações verificadas
+								</CardDescription>
 							</CardHeader>
 							<CardContent>
 								<div className="space-y-6">
 									{reviews?.items?.map((review) => (
-										<div key={review.id} className="border-b border-border pb-6 last:border-b-0">
+										<div
+											key={review.id}
+											className="border-b border-border pb-6 last:border-b-0"
+										>
 											<div className="flex items-start gap-4">
 												<Avatar>
 													<AvatarImage src={"#"} />
-													<AvatarFallback>{review.user?.name?.charAt(0)}</AvatarFallback>
+													<AvatarFallback>
+														{review.user?.name?.charAt(0)}
+													</AvatarFallback>
 												</Avatar>
 												<div className="flex-1">
 													<div className="flex items-center justify-between mb-2">
-														<h4 className="font-semibold">{review.user?.name}</h4>
+														<h4 className="font-semibold">
+															{review.user?.name}
+														</h4>
 														<span className="text-sm text-muted-foreground">
 															{format(new Date(review.createdAt), "dd/MM/yyyy")}
 														</span>
@@ -177,7 +205,7 @@ export default async function EmpresaPage({ params, searchParams }: Props) {
 														<div className="flex">
 															{[...Array(5)].map((_, i) => (
 																<Star
-																	key={i}
+																	key={`star-${review.id}-${i}`}
 																	className={`w-4 h-4 ${
 																		i < review.rating
 																			? "text-yellow-400 fill-current"
@@ -187,7 +215,9 @@ export default async function EmpresaPage({ params, searchParams }: Props) {
 															))}
 														</div>
 													</div>
-													<p className="text-muted-foreground">{review.comment}</p>
+													<p className="text-muted-foreground">
+														{review.comment}
+													</p>
 												</div>
 											</div>
 										</div>
@@ -231,14 +261,15 @@ export default async function EmpresaPage({ params, searchParams }: Props) {
 					</div>
 				</div>
 			</div>
-			{selectedService && session?.id && (
-				<BookingModal
-					service={selectedService}
-					companyId={company.id ?? ""}
-					animals={animals?.items ?? []}
-					userId={session?.id}
-				/>
-			)}
+			<Suspense>
+				{session?.id && (
+					<BookingModal
+						companyId={company.id ?? ""}
+						animals={animals?.items ?? []}
+						userId={session?.id}
+					/>
+				)}
+			</Suspense>
 		</div>
 	);
 }

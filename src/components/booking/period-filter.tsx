@@ -1,7 +1,7 @@
-import { useListAvailableDates } from "@/lib/http";
-import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { useListAvailableDates } from "@/lib/http";
 
 type Periods = "morning" | "afternoon" | "evening";
 const TIME_PERIODS = [
@@ -66,7 +66,9 @@ export function PeriodFilter({
 				</h4>
 
 				{listAvailableDates.isLoading ? (
-					<div className="text-center py-4 text-muted-foreground">Carregando horários...</div>
+					<div className="text-center py-4 text-muted-foreground">
+						Carregando horários...
+					</div>
 				) : (filteredTimeSlots?.length ?? 0) > 0 ? (
 					<div className="grid grid-cols-4 gap-2">
 						{filteredTimeSlots?.map((slot, index) => {

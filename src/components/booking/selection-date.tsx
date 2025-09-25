@@ -1,3 +1,7 @@
+import { addDays, format, isSameDay, startOfToday } from "date-fns";
+import { pt } from "date-fns/locale/pt";
+import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
 	Carousel,
@@ -6,13 +10,11 @@ import {
 	CarouselItem,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
-import { addDays, format, isSameDay, startOfToday } from "date-fns";
-import { ptBR } from "date-fns/locale";
-import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
 
 type Props = { selectedDate: Date; setSelectedDate: (date: Date) => void };
-const listDays = Array.from({ length: 15 }, (_, i) => addDays(startOfToday(), i));
+const listDays = Array.from({ length: 15 }, (_, i) =>
+	addDays(startOfToday(), i),
+);
 
 export function SelectionDate({ selectedDate, setSelectedDate }: Props) {
 	const [api, setApi] = useState<CarouselApi>();
@@ -29,7 +31,7 @@ export function SelectionDate({ selectedDate, setSelectedDate }: Props) {
 				</h4>
 				<div className="flex gap-2 items-center">
 					<span className="text-sm font-medium first-letter:capitalize">
-						{format(selectedDate, "MMMM yyyy")}
+						{format(selectedDate, "MMMM yyyy", { locale: pt })}
 					</span>
 					<Button variant="outline" size="sm" onClick={prevPage}>
 						<ChevronLeft className="h-4 w-4" />
@@ -39,21 +41,29 @@ export function SelectionDate({ selectedDate, setSelectedDate }: Props) {
 					</Button>
 				</div>
 			</div>
-			<Carousel opts={{ slidesToScroll: 7, align: "start" }} className="w-full" setApi={setApi}>
-				<CarouselContent>
+			<Carousel
+				opts={{ slidesToScroll: 7, align: "start" }}
+				className="w-full"
+				setApi={setApi}
+			>
+				<CarouselContent className="-ml-2">
 					{listDays.map((date) => {
 						return (
-							<CarouselItem key={date.toISOString()} className="basis-[14.28%]">
+							<CarouselItem
+								key={date.toISOString()}
+								className="basis-[14.28%] pl-2"
+							>
 								<button
 									type="button"
 									onClick={() => setSelectedDate(date)}
 									className={cn(
 										`p-3 w-full rounded-lg max-h-[15vh] text-center border bg-primary text-primary-foreground`,
-										!isSameDay(date, selectedDate) && "bg-muted/50 text-muted-foreground",
+										!isSameDay(date, selectedDate) &&
+											"bg-muted/50 text-muted-foreground",
 									)}
 								>
-									<div className="text-xs font-medium truncate w-full">
-										{format(date, "EEE", { locale: ptBR })}
+									<div className="text-xs font-medium w-full">
+										{format(date, "EEE", { locale: pt }).toUpperCase()}
 									</div>
 									<div className="text-sm font-bold">{format(date, "d")}</div>
 								</button>
