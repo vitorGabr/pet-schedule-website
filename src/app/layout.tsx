@@ -2,7 +2,7 @@ import "./global.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Noto_Sans, Space_Grotesk } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { MainHeader } from "@/components/navigation/main-header";
 import { Toaster } from "@/components/ui/sonner";
@@ -12,12 +12,6 @@ const spaceGrotesk = Space_Grotesk({
 	variable: "--font-space-grotesk",
 	subsets: ["latin"],
 	weight: ["400", "500", "700"],
-});
-
-const notoSans = Noto_Sans({
-	variable: "--font-noto-sans",
-	subsets: ["latin"],
-	weight: ["400", "500", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -32,19 +26,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
 	return (
 		<html lang="pt-BR">
-			<body
-				className={`${spaceGrotesk.variable} ${notoSans.variable} font-sans antialiased`}
-			>
+			<body className={`${spaceGrotesk.variable} font-sans antialiased`}>
 				<Providers>
 					<div className="relative flex size-full min-h-screen flex-col bg-[#f8fbfa] group/design-root">
 						<MainHeader />
 						<main>{children}</main>
 						<Footer />
+						<Toaster />
+						<SpeedInsights />
+						<Analytics />
 					</div>
 				</Providers>
-				<Toaster />
-				<SpeedInsights />
-				<Analytics />
 			</body>
 		</html>
 	);

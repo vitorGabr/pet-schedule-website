@@ -1,14 +1,27 @@
-import { searchCompanies } from "@/lib/http";
-import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Await } from "@/components/await";
 import { PaginationControl } from "@/components/pagination-control";
+import { Button } from "@/components/ui/button";
+import { POPULAR_SEARCHES } from "@/constants/popular-searches";
+import { searchCompanies } from "@/lib/http";
 import { pageSearchLoader } from "@/schemas/page-search-params";
 import { CompanyCard } from "../../../../components/company-card";
 import { CompanyCardSkeletonGrid } from "./_components/company-card-skeleton";
 
-export const metadata: Metadata = { title: "Buscar", description: "Buscar empresas para seu pet" };
+export const dynamicParams = true;
+export async function generateStaticParams() {
+	const popular = POPULAR_SEARCHES;
+	return popular.map(({ search }) => ({ search: search }));
+}
+
+export const metadata: Metadata = {
+	title: "Buscar",
+	description: "Buscar empresas para seu pet",
+};
+
+export const revalidate = 3600;
+
 export default async function SearchPage(props: PageProps<"/s/[[...search]]">) {
 	const { search } = await props.params;
 	const searchParams = await pageSearchLoader(props.searchParams);
@@ -39,7 +52,8 @@ export default async function SearchPage(props: PageProps<"/s/[[...search]]">) {
 										Nenhuma empresa encontrada
 									</h3>
 									<p className="text-muted-foreground">
-										"Não encontramos empresas para a busca, tente ajustar os filtros de busca"
+										"Não encontramos empresas para a busca, tente ajustar os
+										filtros de busca"
 									</p>
 								</div>
 								<Button variant="outline" asChild>

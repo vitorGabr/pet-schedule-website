@@ -1,5 +1,5 @@
-import { searchCompanies } from "@/lib/http";
 import { CompanyCard } from "@/components/company-card";
+import { searchCompanies } from "@/lib/http";
 
 export async function CompaniesSection() {
 	const companies = await searchCompanies();
