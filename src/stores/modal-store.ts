@@ -30,7 +30,6 @@ export const useModal = <T = unknown>(key: string) => {
 		state.modal?.key === key ? (state.modal.data as T) : null
 	);
 	const close = useModalStore((state) => state.close);
-	
 	return { isOpen: isModalOpen, data: modalData, close } as const;
 };
 
