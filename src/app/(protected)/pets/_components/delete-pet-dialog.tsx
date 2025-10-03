@@ -2,7 +2,6 @@
 
 import { AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
-import { useShallow } from "zustand/react/shallow";
 import {
 	AlertDialog,
 	AlertDialogCancel,
@@ -14,25 +13,23 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { useDeleteAnimal } from "@/lib/http";
-import { useModalStore } from "@/stores/modal-store";
+import { useModal } from "@/stores/modal-store";
 import { revalidateCache } from "@/utils/revalidate";
 
 type ModalData = { id: string; name: string };
 export function DeletePetDialog() {
-	const { modal, isOpen, close } = useModalStore(
-		useShallow((s) => s.useModal<ModalData>("delete-pet")),
-	);
+	const { data, isOpen, close } = useModal<ModalData>("delete-pet");
 	const deleteAnimalMutation = useDeleteAnimal();
 
 	const handleDelete = async () => {
-		await deleteAnimalMutation.mutateAsync({ id: modal?.data.id! });
+		await deleteAnimalMutation.mutateAsync({ id: data?.id! });
 		await revalidateCache({ type: "path", path: "/pets" });
 
-		toast.success(`${modal?.data.name} foi removido com sucesso!`);
+		toast.success(`${data?.name} foi removido com sucesso!`);
 		close();
 	};
 
-	if (!modal?.data) return null;
+	if (!data) return null;
 
 	return (
 		<AlertDialog open={isOpen} onOpenChange={close}>
@@ -44,7 +41,7 @@ export function DeletePetDialog() {
 						</div>
 						<div>
 							<AlertDialogTitle className="text-left">
-								Excluir {modal?.data.name}?
+								Excluir {data.name}?
 							</AlertDialogTitle>
 							<AlertDialogDescription className="text-left mt-1">
 								Esta ação não pode ser desfeita. O pet será permanentemente

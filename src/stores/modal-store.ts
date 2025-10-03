@@ -1,15 +1,16 @@
 import { create } from "zustand";
 
-type Modal<T = unknown> = { key: string; data: T };
+type Modal<T = unknown> = {
+	key: string;
+	data: T;
+};
 
 type ModalStore = {
 	modal: Modal | null;
 	open: <T>(props: Modal<T>) => void;
 	close: () => void;
 	isOpen: (key: string) => boolean;
-	useModal: <U = unknown>(
-		key: string,
-	) => { modal: Modal<U> | null; isOpen: boolean; close: () => void };
+	getModalData: <T = unknown>(key: string) => T | null;
 };
 
 export const useModalStore = create<ModalStore>((set, get) => ({
@@ -17,8 +18,24 @@ export const useModalStore = create<ModalStore>((set, get) => ({
 	open: (props) => set({ modal: props }),
 	close: () => set({ modal: null }),
 	isOpen: (key) => get().modal?.key === key,
-	useModal: (key) => {
-		const modal = get().modal?.key === key ? (get().modal as Modal<any>) : null;
-		return { modal, isOpen: !!modal, close: get().close };
+	getModalData: <T,>(key: string): T | null => {
+		const { modal } = get();
+		return modal?.key === key ? (modal.data as T) : null;
 	},
 }));
+
+export const useModal = <T = unknown>(key: string) => {
+	const isModalOpen = useModalStore((state) => state.isOpen(key));
+	const modalData = useModalStore((state) => 
+		state.modal?.key === key ? (state.modal.data as T) : null
+	);
+	const close = useModalStore((state) => state.close);
+	
+	return { isOpen: isModalOpen, data: modalData, close } as const;
+};
+
+export const createModalKey = <T,>(key: string) => ({
+	key,
+	open: (data: T) => useModalStore.getState().open({ key, data }),
+	useModal: () => useModal<T>(key),
+});
