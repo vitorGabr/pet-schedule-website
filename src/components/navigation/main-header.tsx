@@ -32,7 +32,7 @@ export function MainHeader() {
 			>
 				{(data) => (
 					<div className="flex gap-4">
-						{data &&<AuthenticatedLinks />}
+						{data && <AuthenticatedLinks />}
 						<AuthSection user={data} />
 					</div>
 				)}

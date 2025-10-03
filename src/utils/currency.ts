@@ -1,8 +1,16 @@
 export function formatCurrency(
 	value?: number | null | undefined,
-	options: { showZeroAsEmpty?: boolean; locale?: string; currency?: string } = {},
+	options: {
+		showZeroAsEmpty?: boolean;
+		locale?: string;
+		currency?: string;
+	} = {},
 ): string {
-	const { showZeroAsEmpty = false, locale = "pt-BR", currency = "BRL" } = options;
+	const {
+		showZeroAsEmpty = false,
+		locale = "pt-BR",
+		currency = "BRL",
+	} = options;
 
 	// Trata valores nulos, undefined ou NaN
 	if (value == null || Number.isNaN(value)) {
@@ -28,7 +36,9 @@ export function formatCurrency(
 	}
 }
 
-export function formatNegativeCurrency(value?: number | null | undefined): string {
+export function formatNegativeCurrency(
+	value?: number | null | undefined,
+): string {
 	const formatted = formatCurrency(value);
 
 	if (value && value < 0) {
@@ -38,7 +48,9 @@ export function formatNegativeCurrency(value?: number | null | undefined): strin
 	return formatted;
 }
 
-export function formatCompactCurrency(value?: number | null | undefined): string {
+export function formatCompactCurrency(
+	value?: number | null | undefined,
+): string {
 	if (value == null || Number.isNaN(value)) {
 		return "R$ 0";
 	}

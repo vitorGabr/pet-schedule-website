@@ -11,14 +11,16 @@ const services = [
 	{
 		icon: Scissors,
 		title: "Tosa Profissional",
-		description: "Cortes estilizados e tosa higiênica com técnicas especializadas",
+		description:
+			"Cortes estilizados e tosa higiênica com técnicas especializadas",
 		iconBg: "bg-pink-100",
 		iconColor: "text-pink-600",
 	},
 	{
 		icon: Heart,
 		title: "Spa Relaxante",
-		description: "Tratamentos especiais para o bem-estar e relaxamento do seu pet",
+		description:
+			"Tratamentos especiais para o bem-estar e relaxamento do seu pet",
 		iconBg: "bg-purple-100",
 		iconColor: "text-purple-600",
 	},
@@ -30,7 +32,9 @@ export function ServicesSection() {
 			<div className="max-w-7xl mx-auto">
 				{/* Header */}
 				<div className="text-center mb-12">
-					<h2 className="text-4xl font-bold text-gray-900 mb-4">Nossos Serviços</h2>
+					<h2 className="text-4xl font-bold text-gray-900 mb-4">
+						Nossos Serviços
+					</h2>
 					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 						Oferecemos cuidados completos para o bem-estar e beleza do seu pet
 					</p>
@@ -41,7 +45,10 @@ export function ServicesSection() {
 					{services.map((service) => {
 						const IconComponent = service.icon;
 						return (
-							<div key={service.title} className="bg-white rounded-xl border p-8 text-center">
+							<div
+								key={service.title}
+								className="bg-white rounded-xl border p-8 text-center"
+							>
 								{/* Icon */}
 								<div
 									className={`w-16 h-16 ${service.iconBg} rounded-full flex items-center justify-center mx-auto mb-6`}
@@ -50,10 +57,14 @@ export function ServicesSection() {
 								</div>
 
 								{/* Title */}
-								<h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+								<h3 className="text-xl font-bold text-gray-900 mb-4">
+									{service.title}
+								</h3>
 
 								{/* Description */}
-								<p className="text-gray-600 leading-relaxed">{service.description}</p>
+								<p className="text-gray-600 leading-relaxed">
+									{service.description}
+								</p>
 							</div>
 						);
 					})}

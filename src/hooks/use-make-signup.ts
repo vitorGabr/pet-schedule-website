@@ -1,7 +1,12 @@
-import { getGetSessionQueryKey, type SignUpRequestDto, signIn, signUp } from "@/lib/http";
 import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
+import {
+	getGetSessionQueryKey,
+	type SignUpRequestDto,
+	signIn,
+	signUp,
+} from "@/lib/http";
 import { setCookie } from "@/utils/cookie";
 import { revalidateCache } from "@/utils/revalidate";
 
@@ -13,9 +18,15 @@ export const useMakeSignUp = ({ onSuccess }: Props) => {
 	const makeSignUp = async (data: SignUpRequestDto) => {
 		try {
 			await signUp(data);
-			const response = await signIn({ email: data.email, password: data.password });
+			const response = await signIn({
+				email: data.email,
+				password: data.password,
+			});
 			await Promise.all([
-				setCookie("token", response.accessToken, { path: "/", maxAge: 60 * 60 * 24 * 30 }),
+				setCookie("token", response.accessToken, {
+					path: "/",
+					maxAge: 60 * 60 * 24 * 30,
+				}),
 				queryClient.setQueryData(getGetSessionQueryKey(), response),
 				revalidateCache({ type: "tag", tags: getGetSessionQueryKey() }),
 			]);
@@ -24,7 +35,10 @@ export const useMakeSignUp = ({ onSuccess }: Props) => {
 			onSuccess?.();
 		} catch (error) {
 			if (error instanceof AxiosError) {
-				toast.error(error.response?.data?.message ?? "Ocorreu um erro ao fazer o cadastro");
+				toast.error(
+					error.response?.data?.message ??
+						"Ocorreu um erro ao fazer o cadastro",
+				);
 			}
 		}
 	};

@@ -1,9 +1,9 @@
-import { getAllBreeds, listAnimalsFromUser } from "@/lib/http";
-import { Skeleton } from "@/components/ui/skeleton";
 import { redirect } from "next/navigation";
 import { Await } from "@/components/await";
 import { PaginationControl } from "@/components/pagination-control";
+import { Skeleton } from "@/components/ui/skeleton";
 import { verifySession } from "@/lib/auth/verify-session";
+import { getAllBreeds, listAnimalsFromUser } from "@/lib/http";
 import { pageSearchLoader } from "@/schemas/page-search-params";
 import { AddPetModal } from "./_components/add-pet-modal";
 import { DeletePetDialog } from "./_components/delete-pet-dialog";
@@ -43,7 +43,8 @@ export default async function PetsPage(props: PageProps<"/pets">) {
 										Nenhum pet encontrado
 									</h3>
 									<p className="text-muted-foreground">
-										Não encontramos nenhum pet, mas você pode adicionar um novo pet
+										Não encontramos nenhum pet, mas você pode adicionar um novo
+										pet
 									</p>
 								</div>
 							);
@@ -70,5 +71,7 @@ export default async function PetsPage(props: PageProps<"/pets">) {
 }
 
 function LoadingGrid() {
-	return [1, 2, 3, 4, 5].map((k) => <Skeleton key={k} className="h-24 w-full" />);
+	return [1, 2, 3, 4, 5].map((k) => (
+		<Skeleton key={k} className="h-24 w-full" />
+	));
 }

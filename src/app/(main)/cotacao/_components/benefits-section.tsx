@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import {
 	BarChart3,
 	Calendar,
@@ -10,6 +9,7 @@ import {
 	TrendingUp,
 	Users,
 } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 const benefits = [
 	{
@@ -96,8 +96,9 @@ export function BenefitsSection() {
 						Por que Escolher Nossa Plataforma?
 					</h2>
 					<p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-						Oferecemos tudo que sua empresa precisa para crescer no mercado pet. Veja os principais
-						benefícios que nossos parceiros aproveitam todos os dias.
+						Oferecemos tudo que sua empresa precisa para crescer no mercado pet.
+						Veja os principais benefícios que nossos parceiros aproveitam todos
+						os dias.
 					</p>
 				</div>
 
@@ -118,8 +119,12 @@ export function BenefitsSection() {
 								</div>
 
 								{/* Content */}
-								<h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>
-								<p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+								<h3 className="text-xl font-semibold text-gray-900 mb-3">
+									{benefit.title}
+								</h3>
+								<p className="text-gray-600 leading-relaxed">
+									{benefit.description}
+								</p>
 							</Card>
 						);
 					})}

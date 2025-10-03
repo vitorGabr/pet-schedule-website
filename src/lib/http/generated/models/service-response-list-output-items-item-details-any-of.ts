@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type ServiceResponseListOutputItemsItemDetailsAnyOf = { [key: string]: unknown };
+export type ServiceResponseListOutputItemsItemDetailsAnyOf = {
+	[key: string]: unknown;
+};

@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type SearchCompaniesResponseDtoOutputItemsItemAddressComplement = string | null;
+export type SearchCompaniesResponseDtoOutputItemsItemAddressComplement =
+	| string
+	| null;

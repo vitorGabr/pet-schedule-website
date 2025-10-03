@@ -1,10 +1,10 @@
 "use client";
 
+import { Mail } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Mail } from "lucide-react";
-import { useState } from "react";
 
 export function NewsletterSection() {
 	const [email, setEmail] = useState("");
@@ -15,7 +15,6 @@ export function NewsletterSection() {
 		if (!email) return;
 
 		// Aqui você adicionaria a lógica para enviar o email para sua API
-		console.log("Email enviado:", email);
 		setIsSubmitted(true);
 		setEmail("");
 
@@ -33,8 +32,6 @@ export function NewsletterSection() {
 		<section className="py-16 px-4 bg-gradient-to-br from-primary/5 to-primary/10">
 			<div className="max-w-7xl mx-auto">
 				<Card className="relative overflow-hidden border-none bg-white">
-				
-
 					<div className="relative p-8 md:p-12 lg:p-16">
 						<div className="text-center max-w-3xl mx-auto">
 							{/* Icon */}
@@ -49,9 +46,10 @@ export function NewsletterSection() {
 
 							{/* Descrição */}
 							<p className="text-lg text-gray-600 mb-8 leading-relaxed">
-								Receba semanalmente dicas exclusivas de profissionais veterinários, informações
-								sobre cuidados especiais e ofertas especiais dos nossos parceiros. Tudo para manter
-								seu pet sempre saudável e feliz! 🐾
+								Receba semanalmente dicas exclusivas de profissionais
+								veterinários, informações sobre cuidados especiais e ofertas
+								especiais dos nossos parceiros. Tudo para manter seu pet sempre
+								saudável e feliz! 🐾
 							</p>
 
 							{/* Benefícios */}
@@ -109,8 +107,8 @@ export function NewsletterSection() {
 
 							{/* Nota de privacidade */}
 							<p className="text-xs text-gray-500 mt-4">
-								Não se preocupe, respeitamos sua privacidade. Você pode cancelar a inscrição a
-								qualquer momento.
+								Não se preocupe, respeitamos sua privacidade. Você pode cancelar
+								a inscrição a qualquer momento.
 							</p>
 						</div>
 					</div>

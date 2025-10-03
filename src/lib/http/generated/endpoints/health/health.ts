@@ -26,7 +26,9 @@ type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 /**
  * @summary Verificação geral de saúde da API
  */
-export const healthControllerCheck = (options?: SecondParameter<typeof customFetch>) => {
+export const healthControllerCheck = (
+	options?: SecondParameter<typeof customFetch>,
+) => {
 	return customFetch<null>({ url: `/health`, method: "GET" }, options);
 };
 
@@ -39,7 +41,11 @@ export const getHealthControllerCheckQueryOptions = <
 	TError = ErrorType<unknown>,
 >(options?: {
 	query?: Partial<
-		UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>
+		UseQueryOptions<
+			Awaited<ReturnType<typeof healthControllerCheck>>,
+			TError,
+			TData
+		>
 	>;
 	request?: SecondParameter<typeof customFetch>;
 }) => {
@@ -47,8 +53,9 @@ export const getHealthControllerCheckQueryOptions = <
 
 	const queryKey = queryOptions?.queryKey ?? getHealthControllerCheckQueryKey();
 
-	const queryFn: QueryFunction<Awaited<ReturnType<typeof healthControllerCheck>>> = () =>
-		healthControllerCheck(requestOptions);
+	const queryFn: QueryFunction<
+		Awaited<ReturnType<typeof healthControllerCheck>>
+	> = () => healthControllerCheck(requestOptions);
 
 	return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
 		Awaited<ReturnType<typeof healthControllerCheck>>,
@@ -68,7 +75,11 @@ export function useHealthControllerCheck<
 >(
 	options: {
 		query: Partial<
-			UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>
+			UseQueryOptions<
+				Awaited<ReturnType<typeof healthControllerCheck>>,
+				TError,
+				TData
+			>
 		> &
 			Pick<
 				DefinedInitialDataOptions<
@@ -81,14 +92,20 @@ export function useHealthControllerCheck<
 		request?: SecondParameter<typeof customFetch>;
 	},
 	queryClient?: QueryClient,
-): DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+): DefinedUseQueryResult<TData, TError> & {
+	queryKey: DataTag<QueryKey, TData, TError>;
+};
 export function useHealthControllerCheck<
 	TData = Awaited<ReturnType<typeof healthControllerCheck>>,
 	TError = ErrorType<unknown>,
 >(
 	options?: {
 		query?: Partial<
-			UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>
+			UseQueryOptions<
+				Awaited<ReturnType<typeof healthControllerCheck>>,
+				TError,
+				TData
+			>
 		> &
 			Pick<
 				UndefinedInitialDataOptions<
@@ -101,19 +118,27 @@ export function useHealthControllerCheck<
 		request?: SecondParameter<typeof customFetch>;
 	},
 	queryClient?: QueryClient,
-): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+): UseQueryResult<TData, TError> & {
+	queryKey: DataTag<QueryKey, TData, TError>;
+};
 export function useHealthControllerCheck<
 	TData = Awaited<ReturnType<typeof healthControllerCheck>>,
 	TError = ErrorType<unknown>,
 >(
 	options?: {
 		query?: Partial<
-			UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>
+			UseQueryOptions<
+				Awaited<ReturnType<typeof healthControllerCheck>>,
+				TError,
+				TData
+			>
 		>;
 		request?: SecondParameter<typeof customFetch>;
 	},
 	queryClient?: QueryClient,
-): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+): UseQueryResult<TData, TError> & {
+	queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Verificação geral de saúde da API
  */
@@ -124,17 +149,24 @@ export function useHealthControllerCheck<
 >(
 	options?: {
 		query?: Partial<
-			UseQueryOptions<Awaited<ReturnType<typeof healthControllerCheck>>, TError, TData>
+			UseQueryOptions<
+				Awaited<ReturnType<typeof healthControllerCheck>>,
+				TError,
+				TData
+			>
 		>;
 		request?: SecondParameter<typeof customFetch>;
 	},
 	queryClient?: QueryClient,
-): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+): UseQueryResult<TData, TError> & {
+	queryKey: DataTag<QueryKey, TData, TError>;
+} {
 	const queryOptions = getHealthControllerCheckQueryOptions(options);
 
-	const query = useQuery(queryOptions, queryClient) as UseQueryResult<TData, TError> & {
-		queryKey: DataTag<QueryKey, TData, TError>;
-	};
+	const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+		TData,
+		TError
+	> & { queryKey: DataTag<QueryKey, TData, TError> };
 
 	query.queryKey = queryOptions.queryKey;
 

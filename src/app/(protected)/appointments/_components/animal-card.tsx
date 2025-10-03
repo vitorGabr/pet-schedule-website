@@ -1,6 +1,6 @@
-import type { AppointmentByIdResponseDtoOutputAnimal } from "@/lib/http";
-import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import type { AppointmentByIdResponseDtoOutputAnimal } from "@/lib/http";
 
 type Props = { animal: AppointmentByIdResponseDtoOutputAnimal };
 
@@ -24,7 +24,9 @@ export function AnimalCard({ animal }: Props) {
 				<div className="min-w-0">
 					<p className="font-semibold leading-none truncate">{animal.name}</p>
 					{animal.breed?.name && (
-						<p className="text-sm text-muted-foreground truncate">{animal.breed.name}</p>
+						<p className="text-sm text-muted-foreground truncate">
+							{animal.breed.name}
+						</p>
 					)}
 					{animal.age && animal.age && (
 						<p className="text-sm text-muted-foreground">{animal.age} anos</p>

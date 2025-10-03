@@ -1,13 +1,14 @@
 import { Inbox } from "@novu/react";
 import { Bell } from "lucide-react";
-import React from "react";
 
 type NotificationMenuProps = { subscriberId: string };
 
 export function NotificationMenu({ subscriberId }: NotificationMenuProps) {
 	return (
 		<Inbox
-			applicationIdentifier={process.env.NEXT_PUBLIC_NOVU_APPLICATION_IDENTIFIER ?? ""}
+			applicationIdentifier={
+				process.env.NEXT_PUBLIC_NOVU_APPLICATION_IDENTIFIER ?? ""
+			}
 			subscriberId={subscriberId}
 			renderBell={() => <Bell className="size-4 text-primary" />}
 			localization={{
@@ -29,7 +30,11 @@ export function NotificationMenu({ subscriberId }: NotificationMenuProps) {
 				"notifications.actions.readAll": "Marcar todas como lidas",
 				"notifications.actions.archiveAll": "Arquivar todas",
 				"notifications.actions.archiveRead": "Arquivar lidas",
-				"notifications.newNotifications": ({ notificationCount }: { notificationCount: number }) =>
+				"notifications.newNotifications": ({
+					notificationCount,
+				}: {
+					notificationCount: number;
+				}) =>
 					`${notificationCount} nova${notificationCount > 1 ? "s" : ""} notificação${notificationCount > 1 ? "s" : ""}`,
 
 				"notification.snoozedUntil": "Adiado até",
@@ -52,15 +57,22 @@ export function NotificationMenu({ subscriberId }: NotificationMenuProps) {
 				"snooze.datePicker.apply": "Aplicar",
 				"snooze.datePicker.cancel": "Cancelar",
 				"snooze.datePicker.pastDateTooltip": "Selecione um horário no futuro",
-				"snooze.datePicker.noDateSelectedTooltip": "Por favor selecione uma data",
-				"snooze.datePicker.exceedingLimitTooltip": ({ days }: { days: number }) =>
+				"snooze.datePicker.noDateSelectedTooltip":
+					"Por favor selecione uma data",
+				"snooze.datePicker.exceedingLimitTooltip": ({
+					days,
+				}: {
+					days: number;
+				}) =>
 					`O tempo selecionado não pode exceder ${days === 1 ? "24 horas" : `${days} dias`}`,
 
 				// Preferências
 				"preferences.title": "Preferências",
-				"preferences.emptyNotice": "Nenhuma preferência específica de notificação ainda",
+				"preferences.emptyNotice":
+					"Nenhuma preferência específica de notificação ainda",
 				"preferences.global": "Preferências Globais",
-				"preferences.group.info": "Se aplica a todas as notificações deste grupo.",
+				"preferences.group.info":
+					"Se aplica a todas as notificações deste grupo.",
 				"preferences.workflow.disabled.notice":
 					"Entre em contato com o administrador para ativar o gerenciamento de assinaturas para esta notificação crítica.",
 				"preferences.workflow.disabled.tooltip": "Entre em contato para editar",

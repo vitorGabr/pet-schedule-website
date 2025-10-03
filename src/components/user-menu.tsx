@@ -1,3 +1,5 @@
+import { LogOutIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,8 +10,6 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOutIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { removeCookie } from "@/utils/cookie";
 
 type UserMenuProps = { name: string; email: string; avatar?: string };
@@ -33,8 +33,12 @@ export function UserMenu({ name, email, avatar }: UserMenuProps) {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="max-w-64" align="end">
 				<DropdownMenuLabel className="flex min-w-0 flex-col">
-					<span className="text-foreground truncate text-sm font-medium">{name}</span>
-					<span className="text-muted-foreground truncate text-xs font-normal">{email}</span>
+					<span className="text-foreground truncate text-sm font-medium">
+						{name}
+					</span>
+					<span className="text-muted-foreground truncate text-xs font-normal">
+						{email}
+					</span>
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				{/* <DropdownMenuGroup>

@@ -16,7 +16,9 @@ export const signInBodyTypeDefault = "customer";
 export const signInBody = zod.object({
 	email: zod.string().email(),
 	password: zod.string().min(signInBodyPasswordMin),
-	type: zod.enum(["customer", "company", "admin"]).default(signInBodyTypeDefault),
+	type: zod
+		.enum(["customer", "company", "admin"])
+		.default(signInBodyTypeDefault),
 });
 
 /**

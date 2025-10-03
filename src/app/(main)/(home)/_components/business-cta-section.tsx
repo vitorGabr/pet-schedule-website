@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Building2, TrendingUp, Users, Zap } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 export function BusinessCtaSection() {
 	return (
@@ -25,8 +25,9 @@ export function BusinessCtaSection() {
 
 								{/* Description */}
 								<p className="text-lg text-gray-600 mb-6 leading-relaxed">
-									Junte-se a mais de 150 empresas que já aumentaram seu faturamento em até 40% 
-									com nossa plataforma. Agendamentos automatizados, mais clientes e gestão simplificada.
+									Junte-se a mais de 150 empresas que já aumentaram seu
+									faturamento em até 40% com nossa plataforma. Agendamentos
+									automatizados, mais clientes e gestão simplificada.
 								</p>
 
 								{/* Benefits List */}
@@ -35,7 +36,7 @@ export function BusinessCtaSection() {
 										"Agendamentos online 24/7",
 										"Aumento médio de 40% no faturamento",
 										"Gestão completa de clientes",
-										"Suporte dedicado e treinamento"
+										"Suporte dedicado e treinamento",
 									].map((benefit) => (
 										<li key={benefit} className="flex items-center gap-3">
 											<div className="w-2 h-2 bg-green-500 rounded-full" />
@@ -46,28 +47,18 @@ export function BusinessCtaSection() {
 
 								{/* CTA Buttons */}
 								<div className="flex flex-col sm:flex-row gap-4">
-									<Button 
-										asChild
-										size={"lg"}
-									>
-										<Link href="/cotacao">
-											Solicitar Cotação Gratuita
-										</Link>
+									<Button asChild size={"lg"}>
+										<Link href="/cotacao">Solicitar Cotação Gratuita</Link>
 									</Button>
-									<Button 
-										variant="outline"
-										asChild
-										size={"lg"}
-									>
-										<Link href="/cotacao">
-											Ver Como Funciona
-										</Link>
+									<Button variant="outline" asChild size={"lg"}>
+										<Link href="/cotacao">Ver Como Funciona</Link>
 									</Button>
 								</div>
 
 								{/* Trust Indicator */}
 								<p className="text-sm text-gray-500 mt-4">
-									✓ Sem taxa de adesão • ✓ Resultados em 30 dias • ✓ Suporte especializado
+									✓ Sem taxa de adesão • ✓ Resultados em 30 dias • ✓ Suporte
+									especializado
 								</p>
 							</div>
 
@@ -79,42 +70,45 @@ export function BusinessCtaSection() {
 										number: "150+",
 										label: "Empresas Parceiras",
 										color: "text-blue-600",
-										bg: "bg-blue-100"
+										bg: "bg-blue-100",
 									},
 									{
 										icon: TrendingUp,
 										number: "40%",
 										label: "Aumento Médio",
 										color: "text-green-600",
-										bg: "bg-green-100"
+										bg: "bg-green-100",
 									},
 									{
 										icon: Users,
 										number: "2.500+",
 										label: "Clientes Ativos",
 										color: "text-purple-600",
-										bg: "bg-purple-100"
+										bg: "bg-purple-100",
 									},
 									{
 										icon: Zap,
 										number: "24h",
 										label: "Setup Rápido",
 										color: "text-orange-600",
-										bg: "bg-orange-100"
-									}
+										bg: "bg-orange-100",
+									},
 								].map((stat) => {
 									const IconComponent = stat.icon;
 									return (
-										<div key={stat.label} className="text-center p-4 bg-gray-50 rounded-xl">
-											<div className={`w-12 h-12 ${stat.bg} rounded-full flex items-center justify-center mx-auto mb-3`}>
+										<div
+											key={stat.label}
+											className="text-center p-4 bg-gray-50 rounded-xl"
+										>
+											<div
+												className={`w-12 h-12 ${stat.bg} rounded-full flex items-center justify-center mx-auto mb-3`}
+											>
 												<IconComponent className={`w-6 h-6 ${stat.color}`} />
 											</div>
 											<div className="text-2xl font-bold text-gray-900 mb-1">
 												{stat.number}
 											</div>
-											<div className="text-sm text-gray-600">
-												{stat.label}
-											</div>
+											<div className="text-sm text-gray-600">{stat.label}</div>
 										</div>
 									);
 								})}

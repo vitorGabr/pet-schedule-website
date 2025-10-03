@@ -6,6 +6,5 @@
  * OpenAPI spec version: 1.0
  */
 
-export type AppointmentsByClientResponseDtoOutputItemsItemServiceDetailsAnyOf = {
-	[key: string]: unknown;
-};
+export type AppointmentsByClientResponseDtoOutputItemsItemServiceDetailsAnyOf =
+	{ [key: string]: unknown };

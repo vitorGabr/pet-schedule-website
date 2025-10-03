@@ -1,6 +1,8 @@
 "use client";
 
-import { Label } from "@/components/ui/label";
+import type { AnyFieldApi } from "@tanstack/react-form";
+import type { SelectHTMLAttributes } from "react";
+import { Field, FieldLabel } from "@/components/ui/field";
 import {
 	Select,
 	SelectContent,
@@ -9,8 +11,6 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import type { AnyFieldApi } from "@tanstack/react-form";
-import type { SelectHTMLAttributes } from "react";
 import { FormErrorMessage } from "../form-error-message";
 
 type Props<T extends string> = {
@@ -21,17 +21,19 @@ type Props<T extends string> = {
 	onValueChange: (value: T) => void;
 } & SelectHTMLAttributes<HTMLSelectElement>;
 
-export function SelectField<T extends string>({ className, label, meta, ...props }: Props<T>) {
+export function SelectField<T extends string>({
+	className,
+	label,
+	meta,
+	...props
+}: Props<T>) {
 	return (
-		<div className="space-y-2 w-full">
-			<Label
-				data-error={!meta?.isValid}
-				className={cn("data-[error=true]:text-destructive", className)}
-				htmlFor={props.name}
+		<Field data-invalid={!meta?.isValid}>
+			{label && <FieldLabel htmlFor={props.name}>{label}</FieldLabel>}
+			<Select
+				value={props.value as T}
+				onValueChange={(value) => props.onValueChange(value as T)}
 			>
-				{label}
-			</Label>
-			<Select value={props.value as T} onValueChange={(value) => props.onValueChange(value as T)}>
 				<SelectTrigger className="w-full">
 					<SelectValue
 						aria-invalid={!meta?.isValid}
@@ -49,6 +51,6 @@ export function SelectField<T extends string>({ className, label, meta, ...props
 				</SelectContent>
 			</Select>
 			<FormErrorMessage meta={meta} />
-		</div>
+		</Field>
 	);
 }

@@ -1,15 +1,21 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Banner from "@/images/hero-banner.png";
 
 export function HeroSection() {
 	return (
 		<div className="relative flex h-[70dvh] md:h-[90dvh] w-full flex-col items-center justify-center">
-			<Image src={Banner} alt="Pets background" fill priority className="object-cover" />
+			<Image
+				src={Banner}
+				alt="Pets background"
+				fill
+				priority
+				className="object-cover"
+			/>
 
 			<div className="relative w-full h-full inset-0 bg-gradient-to-b from-primary/30 to-primary/50 flex justify-center items-center flex-col">
 				<div className="flex flex-col gap-6 text-center max-w-4xl px-4">
@@ -17,9 +23,9 @@ export function HeroSection() {
 						Encontre os melhores serviços para pets perto de você
 					</h1>
 					<p className="text-white/90 text-base md:text-lg font-normal leading-normal">
-						Conecte-se com os melhores cuidadores de animais de estimação para tosa, hospedagem,
-						passeios e muito mais. Agende horários facilmente e gerencie a agenda do seu pet, tudo
-						em um só lugar.
+						Conecte-se com os melhores cuidadores de animais de estimação para
+						tosa, hospedagem, passeios e muito mais. Agende horários facilmente
+						e gerencie a agenda do seu pet, tudo em um só lugar.
 					</p>
 				</div>
 

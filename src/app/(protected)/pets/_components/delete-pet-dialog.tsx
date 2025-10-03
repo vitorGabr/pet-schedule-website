@@ -1,6 +1,8 @@
 "use client";
 
-import { useDeleteAnimal } from "@/lib/http";
+import { AlertTriangle } from "lucide-react";
+import { toast } from "sonner";
+import { useShallow } from "zustand/react/shallow";
 import {
 	AlertDialog,
 	AlertDialogCancel,
@@ -11,9 +13,7 @@ import {
 	AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { AlertTriangle } from "lucide-react";
-import { toast } from "sonner";
-import { useShallow } from "zustand/react/shallow";
+import { useDeleteAnimal } from "@/lib/http";
 import { useModalStore } from "@/stores/modal-store";
 import { revalidateCache } from "@/utils/revalidate";
 
@@ -43,10 +43,13 @@ export function DeletePetDialog() {
 							<AlertTriangle className="w-5 h-5 text-red-600" />
 						</div>
 						<div>
-							<AlertDialogTitle className="text-left">Excluir {modal?.data.name}?</AlertDialogTitle>
+							<AlertDialogTitle className="text-left">
+								Excluir {modal?.data.name}?
+							</AlertDialogTitle>
 							<AlertDialogDescription className="text-left mt-1">
-								Esta ação não pode ser desfeita. O pet será permanentemente removido do seu perfil e
-								todos os dados associados serão perdidos.
+								Esta ação não pode ser desfeita. O pet será permanentemente
+								removido do seu perfil e todos os dados associados serão
+								perdidos.
 							</AlertDialogDescription>
 						</div>
 					</div>

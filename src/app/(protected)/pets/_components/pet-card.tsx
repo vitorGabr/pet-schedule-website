@@ -1,11 +1,11 @@
 "use client";
 
-import type { ListAnimalFromUserResponseDtoOutputItemsItem } from "@/lib/http";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import type { ListAnimalFromUserResponseDtoOutputItemsItem } from "@/lib/http";
 import { useModalStore } from "@/stores/modal-store";
 
 type PetCardProps = { pet: ListAnimalFromUserResponseDtoOutputItemsItem };

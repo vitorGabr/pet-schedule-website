@@ -41,10 +41,12 @@ export function StatsSection() {
 			<div className="max-w-7xl mx-auto">
 				{/* Header */}
 				<div className="text-center mb-12">
-					<h2 className="text-4xl font-bold text-gray-900 mb-4">Números que Falam por Si</h2>
+					<h2 className="text-4xl font-bold text-gray-900 mb-4">
+						Números que Falam por Si
+					</h2>
 					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-						A confiança de milhares de tutores e profissionais que fazem da nossa plataforma a
-						escolha número 1 para cuidados pet
+						A confiança de milhares de tutores e profissionais que fazem da
+						nossa plataforma a escolha número 1 para cuidados pet
 					</p>
 				</div>
 
@@ -69,7 +71,9 @@ export function StatsSection() {
 								</div>
 
 								{/* Label */}
-								<h3 className="text-lg font-semibold text-gray-900 mb-1">{stat.label}</h3>
+								<h3 className="text-lg font-semibold text-gray-900 mb-1">
+									{stat.label}
+								</h3>
 
 								{/* Description */}
 								<p className="text-sm text-gray-600">{stat.description}</p>
@@ -92,8 +96,12 @@ export function StatsSection() {
 							))}
 						</div>
 						<div className="text-left">
-							<p className="text-sm font-semibold text-gray-900">Avaliação Média: 4.9/5.0</p>
-							<p className="text-xs text-gray-600">Baseado em mais de 2.500 avaliações</p>
+							<p className="text-sm font-semibold text-gray-900">
+								Avaliação Média: 4.9/5.0
+							</p>
+							<p className="text-xs text-gray-600">
+								Baseado em mais de 2.500 avaliações
+							</p>
 						</div>
 					</div>
 				</div>

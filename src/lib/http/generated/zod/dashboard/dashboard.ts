@@ -11,22 +11,38 @@ import { z as zod } from "zod";
  * Retorna as principais métricas do dashboard: agendamentos hoje, faturamento mensal, clientes ativos e avaliação média
  * @summary Obter métricas do dashboard
  */
-export const getDashboardMetricsQueryStartDateDefault = "2025-09-01T03:00:00.000Z";
-export const getDashboardMetricsQueryEndDateDefault = "2025-10-01T02:59:59.999Z";
+export const getDashboardMetricsQueryStartDateDefault =
+	"2025-09-01T03:00:00.000Z";
+export const getDashboardMetricsQueryEndDateDefault =
+	"2025-10-01T02:59:59.999Z";
 
 export const getDashboardMetricsQueryParams = zod.object({
-	startDate: zod.string().datetime({}).default(getDashboardMetricsQueryStartDateDefault),
-	endDate: zod.string().datetime({}).default(getDashboardMetricsQueryEndDateDefault),
+	startDate: zod
+		.string()
+		.datetime({})
+		.default(getDashboardMetricsQueryStartDateDefault),
+	endDate: zod
+		.string()
+		.datetime({})
+		.default(getDashboardMetricsQueryEndDateDefault),
 });
 
 /**
  * Retorna métricas de performance da semana: agendamentos, taxa de conversão e satisfação
  * @summary Obter performance semanal
  */
-export const getWeeklyPerformanceQueryStartDateDefault = "2025-09-01T03:00:00.000Z";
-export const getWeeklyPerformanceQueryEndDateDefault = "2025-10-01T02:59:59.999Z";
+export const getWeeklyPerformanceQueryStartDateDefault =
+	"2025-09-01T03:00:00.000Z";
+export const getWeeklyPerformanceQueryEndDateDefault =
+	"2025-10-01T02:59:59.999Z";
 
 export const getWeeklyPerformanceQueryParams = zod.object({
-	startDate: zod.string().datetime({}).default(getWeeklyPerformanceQueryStartDateDefault),
-	endDate: zod.string().datetime({}).default(getWeeklyPerformanceQueryEndDateDefault),
+	startDate: zod
+		.string()
+		.datetime({})
+		.default(getWeeklyPerformanceQueryStartDateDefault),
+	endDate: zod
+		.string()
+		.datetime({})
+		.default(getWeeklyPerformanceQueryEndDateDefault),
 });

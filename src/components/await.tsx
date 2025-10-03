@@ -13,7 +13,7 @@ export async function Await<T extends (() => Promise<any>) | Promise<any>>({
 }: AwaitProps<T>) {
 	return (
 		<Suspense fallback={fallback}>
-			<AwaitClient promise={promise} children={children} />
+			<AwaitClient promise={promise}>{children}</AwaitClient>
 		</Suspense>
 	);
 }

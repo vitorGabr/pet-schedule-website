@@ -17,10 +17,7 @@ export default defineConfig({
 			indexFiles: true,
 			override: {
 				mutator: { path: "../client-fetch.ts", name: "customFetch" },
-				query: {
-					useQuery: true,
-					signal: false
-				}
+				query: { useQuery: true, signal: false },
 			},
 		},
 	},

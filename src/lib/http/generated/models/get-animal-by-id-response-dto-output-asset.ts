@@ -6,4 +6,8 @@
  * OpenAPI spec version: 1.0
  */
 
-export type GetAnimalByIdResponseDtoOutputAsset = { id: string; url: string; name: string };
+export type GetAnimalByIdResponseDtoOutputAsset = {
+	id: string;
+	url: string;
+	name: string;
+};

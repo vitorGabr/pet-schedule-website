@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type ListStaffByCompanyResponseDtoOutputItemsItemUpdatedAt = string | null;
+export type ListStaffByCompanyResponseDtoOutputItemsItemUpdatedAt =
+	| string
+	| null;

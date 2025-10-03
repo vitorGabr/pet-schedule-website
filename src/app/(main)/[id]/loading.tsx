@@ -1,3 +1,4 @@
+import { CheckCircle, MapPin, MessageCircle } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
 	Card,
@@ -7,7 +8,6 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CheckCircle, MapPin, MessageCircle } from "lucide-react";
 
 export default function Loading() {
 	return (
@@ -50,12 +50,17 @@ export default function Loading() {
 						<Card>
 							<CardHeader>
 								<CardTitle className="text-2xl">Serviços Disponíveis</CardTitle>
-								<CardDescription>Escolha o melhor cuidado para seu pet</CardDescription>
+								<CardDescription>
+									Escolha o melhor cuidado para seu pet
+								</CardDescription>
 							</CardHeader>
 							<CardContent>
 								<div className="grid gap-4">
 									{[...Array(3)].map((_, i) => (
-										<div key={i} className="p-4 rounded-lg border border-border">
+										<div
+											key={i}
+											className="p-4 rounded-lg border border-border"
+										>
 											<div className="flex items-center justify-between">
 												<div className="flex-1">
 													<div className="flex items-center gap-3 mb-2">
@@ -95,7 +100,10 @@ export default function Loading() {
 							<CardContent>
 								<div className="space-y-6">
 									{[...Array(3)].map((_, i) => (
-										<div key={i} className="border-b border-border pb-6 last:border-b-0">
+										<div
+											key={i}
+											className="border-b border-border pb-6 last:border-b-0"
+										>
 											<div className="flex items-start gap-4">
 												<Avatar>
 													<AvatarFallback>
@@ -110,7 +118,10 @@ export default function Loading() {
 													<div className="flex items-center gap-2 mb-2">
 														<div className="flex">
 															{[...Array(5)].map((_, j) => (
-																<Skeleton key={j} className="w-4 h-4 rounded-sm" />
+																<Skeleton
+																	key={j}
+																	className="w-4 h-4 rounded-sm"
+																/>
 															))}
 														</div>
 													</div>

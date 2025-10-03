@@ -1,11 +1,11 @@
-import { getAllAppointments } from "@/lib/http";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Await } from "@/components/await";
 import { PaginationControl } from "@/components/pagination-control";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { getAllAppointments } from "@/lib/http";
 import { pageSearchLoader } from "@/schemas/page-search-params";
 import { AppointmentCard } from "./_components/appointment-card";
 import { AppointmentDetailModal } from "./_components/appointment-detail-modal";
@@ -14,7 +14,9 @@ export const metadata: Metadata = {
 	title: "Agendamentos",
 	description: "Agendamentos de serviços",
 };
-export default async function AppointmentsListPage(props: PageProps<"/appointments">) {
+export default async function AppointmentsListPage(
+	props: PageProps<"/appointments">,
+) {
 	const searchParams = await pageSearchLoader(props.searchParams);
 	const query = getAllAppointments(
 		{ page: searchParams.page },
@@ -24,8 +26,14 @@ export default async function AppointmentsListPage(props: PageProps<"/appointmen
 	return (
 		<div className="min-h-screen bg-background">
 			<div className="container mx-auto max-w-6xl px-4 py-8">
-				<h1 className="text-3xl font-bold text-foreground mb-8">Meus Agendamentos</h1>
-				<Await promise={query} key={JSON.stringify(searchParams)} fallback={<LoadingGrid />}>
+				<h1 className="text-3xl font-bold text-foreground mb-8">
+					Meus Agendamentos
+				</h1>
+				<Await
+					promise={query}
+					key={JSON.stringify(searchParams)}
+					fallback={<LoadingGrid />}
+				>
 					{(data) => {
 						if (data.items.length === 0) {
 							return (
@@ -34,7 +42,8 @@ export default async function AppointmentsListPage(props: PageProps<"/appointmen
 										Nenhum agendamento encontrado
 									</h3>
 									<p className="text-muted-foreground">
-										Não encontramos nenhum agendamento, mas você pode conhecer nossos serviços
+										Não encontramos nenhum agendamento, mas você pode conhecer
+										nossos serviços
 									</p>
 									<Button variant="outline" asChild>
 										<Link href="/s">Conheça nossos serviços</Link>

@@ -23,7 +23,10 @@ export function CompanyCardSkeleton() {
 						<div className="flex items-center gap-2 mb-2">
 							<div className="flex items-center gap-1">
 								{[1, 2, 3, 4, 5].map((starNumber) => (
-									<Skeleton key={`skeleton-star-${starNumber}`} className="w-4 h-4" />
+									<Skeleton
+										key={`skeleton-star-${starNumber}`}
+										className="w-4 h-4"
+									/>
 								))}
 							</div>
 							<Skeleton className="h-4 w-24" />

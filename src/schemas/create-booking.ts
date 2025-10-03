@@ -10,7 +10,15 @@ export const createBookingSchema = z
 		animalId: z.string("Você deve selecionar um animal"),
 		disease: z
 			.enum(
-				["none", "diabetes", "heart_disease", "arthritis", "allergies", "skin_condition", "other"],
+				[
+					"none",
+					"diabetes",
+					"heart_disease",
+					"arthritis",
+					"allergies",
+					"skin_condition",
+					"other",
+				],
 				"Você deve selecionar uma doença",
 			)
 			.optional(),
@@ -23,6 +31,8 @@ export const createBookingSchema = z
 		const [hour, minute] = time.split(":").map(Number);
 		return {
 			...rest,
-			date: startOfMinute(set(rest.date, { hours: hour, minutes: minute })).toISOString(),
+			date: startOfMinute(
+				set(rest.date, { hours: hour, minutes: minute }),
+			).toISOString(),
 		};
 	});

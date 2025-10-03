@@ -1,9 +1,9 @@
+import { Card, CardContent } from "@/components/ui/card";
 import type {
 	AppointmentByIdResponseDtoOutputAnimal,
 	AppointmentByIdResponseDtoOutputClient,
 	AppointmentByIdResponseDtoOutputCoatType,
 } from "@/lib/http";
-import { Card, CardContent } from "@/components/ui/card";
 
 type Props = {
 	animal: AppointmentByIdResponseDtoOutputAnimal;
@@ -20,7 +20,13 @@ const coatLabel: Record<AppointmentByIdResponseDtoOutputCoatType, string> = {
 	curly: "Crespo",
 };
 
-export function DetailsList({ animal, client, coatType, startDate, endDate }: Props) {
+export function DetailsList({
+	animal,
+	client,
+	coatType,
+	startDate,
+	endDate,
+}: Props) {
 	return (
 		<Card>
 			<CardContent className="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -31,7 +37,9 @@ export function DetailsList({ animal, client, coatType, startDate, endDate }: Pr
 				<div>
 					<p className="text-sm text-muted-foreground">Animal</p>
 					<p className="font-medium">{animal.name}</p>
-					<p className="text-sm text-muted-foreground">Pelagem: {coatLabel[coatType]}</p>
+					<p className="text-sm text-muted-foreground">
+						Pelagem: {coatLabel[coatType]}
+					</p>
 				</div>
 				<div>
 					<p className="text-sm text-muted-foreground">Início</p>

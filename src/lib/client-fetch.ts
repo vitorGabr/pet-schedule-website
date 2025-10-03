@@ -1,6 +1,6 @@
+import Axios, { type AxiosError, type AxiosRequestConfig } from "axios";
 import { getCookie } from "@/utils/cookie";
 import { redirectTo } from "@/utils/redirect";
-import Axios, { type AxiosError, type AxiosRequestConfig } from "axios";
 
 export const AXIOS_INSTANCE = Axios.create({
 	baseURL: process.env.NEXT_PUBLIC_API_URL,

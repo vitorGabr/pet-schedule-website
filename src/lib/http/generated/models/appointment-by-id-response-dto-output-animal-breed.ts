@@ -6,4 +6,7 @@
  * OpenAPI spec version: 1.0
  */
 
-export type AppointmentByIdResponseDtoOutputAnimalBreed = { id: string; name: string };
+export type AppointmentByIdResponseDtoOutputAnimalBreed = {
+	id: string;
+	name: string;
+};

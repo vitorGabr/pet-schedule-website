@@ -1,6 +1,6 @@
-import { Card } from "@/components/ui/card";
 import { Quote, Star } from "lucide-react";
 import Image from "next/image";
+import { Card } from "@/components/ui/card";
 
 const testimonials = [
 	{
@@ -50,10 +50,12 @@ export function TestimonialsSection() {
 					<div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-full mb-6">
 						<Star className="w-8 h-8 text-yellow-500 fill-current" />
 					</div>
-					<h2 className="text-4xl font-bold text-gray-900 mb-4">O que nossos clientes dizem</h2>
+					<h2 className="text-4xl font-bold text-gray-900 mb-4">
+						O que nossos clientes dizem
+					</h2>
 					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-						Histórias reais de tutores que confiam nos nossos serviços para cuidar de seus pets com
-						carinho e profissionalismo
+						Histórias reais de tutores que confiam nos nossos serviços para
+						cuidar de seus pets com carinho e profissionalismo
 					</p>
 				</div>
 
@@ -84,7 +86,9 @@ export function TestimonialsSection() {
 							</div>
 
 							{/* Content */}
-							<p className="text-gray-700 leading-relaxed mb-6 text-sm">"{testimonial.content}"</p>
+							<p className="text-gray-700 leading-relaxed mb-6 text-sm">
+								"{testimonial.content}"
+							</p>
 
 							{/* Author */}
 							<div className="flex items-center gap-3">
@@ -98,7 +102,9 @@ export function TestimonialsSection() {
 									/>
 								</div>
 								<div className="flex-1">
-									<h4 className="font-semibold text-gray-900 text-sm">{testimonial.name}</h4>
+									<h4 className="font-semibold text-gray-900 text-sm">
+										{testimonial.name}
+									</h4>
 									<p className="text-xs text-gray-500">{testimonial.role}</p>
 									<p className="text-xs text-primary font-medium">
 										🐾 {testimonial.petName} • {testimonial.petType}

@@ -6,4 +6,7 @@
  * OpenAPI spec version: 1.0
  */
 
-export type WeeklyPerformanceResponseOutputSatisfaction = { rating: number; baseCount: number };
+export type WeeklyPerformanceResponseOutputSatisfaction = {
+	rating: number;
+	baseCount: number;
+};

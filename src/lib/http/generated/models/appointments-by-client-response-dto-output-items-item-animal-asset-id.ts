@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type AppointmentsByClientResponseDtoOutputItemsItemAnimalAssetId = string | null;
+export type AppointmentsByClientResponseDtoOutputItemsItemAnimalAssetId =
+	| string
+	| null;

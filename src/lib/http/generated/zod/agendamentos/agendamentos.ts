@@ -10,18 +10,31 @@ import { z as zod } from "zod";
 /**
  * @summary Retorna todos os agendamentos da empresa
  */
-export const getAllCompanyAppointmentsParams = zod.object({ companyId: zod.string() });
+export const getAllCompanyAppointmentsParams = zod.object({
+	companyId: zod.string(),
+});
 
 export const getAllCompanyAppointmentsQueryLimitMax = 100;
 
 export const getAllCompanyAppointmentsQueryParams = zod.object({
 	page: zod.number().min(1).optional(),
-	limit: zod.number().min(1).max(getAllCompanyAppointmentsQueryLimitMax).optional(),
+	limit: zod
+		.number()
+		.min(1)
+		.max(getAllCompanyAppointmentsQueryLimitMax)
+		.optional(),
 	startDate: zod.string().datetime({}).optional(),
 	endDate: zod.string().datetime({}).optional(),
 	query: zod.string().optional(),
 	status: zod.array(
-		zod.enum(["scheduled", "confirmed", "in_progress", "completed", "no_show", "canceled"]),
+		zod.enum([
+			"scheduled",
+			"confirmed",
+			"in_progress",
+			"completed",
+			"no_show",
+			"canceled",
+		]),
 	),
 });
 
@@ -36,7 +49,16 @@ export const getAllAppointmentsQueryParams = zod.object({
 	startDate: zod.string().date().optional(),
 	endDate: zod.string().date().optional(),
 	status: zod
-		.array(zod.enum(["scheduled", "confirmed", "in_progress", "completed", "no_show", "canceled"]))
+		.array(
+			zod.enum([
+				"scheduled",
+				"confirmed",
+				"in_progress",
+				"completed",
+				"no_show",
+				"canceled",
+			]),
+		)
 		.optional(),
 });
 
@@ -46,7 +68,14 @@ export const getAllAppointmentsQueryParams = zod.object({
 export const updateAppointmentStatusParams = zod.object({ id: zod.string() });
 
 export const updateAppointmentStatusBody = zod.object({
-	status: zod.enum(["scheduled", "confirmed", "in_progress", "completed", "no_show", "canceled"]),
+	status: zod.enum([
+		"scheduled",
+		"confirmed",
+		"in_progress",
+		"completed",
+		"no_show",
+		"canceled",
+	]),
 });
 
 /**

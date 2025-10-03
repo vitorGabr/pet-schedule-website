@@ -1,14 +1,16 @@
 "use client";
 
-import type { AppointmentsByClientResponseDtoOutputItemsItem } from "@/lib/http";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
 import { format, intervalToDuration } from "date-fns";
 import { Calendar, Clock, PawPrint } from "lucide-react";
 import { parseAsString, useQueryState } from "nuqs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
+import type { AppointmentsByClientResponseDtoOutputItemsItem } from "@/lib/http";
 import { formatCurrency } from "@/utils/currency";
 
-type AppointmentCardProps = { item: AppointmentsByClientResponseDtoOutputItemsItem };
+type AppointmentCardProps = {
+	item: AppointmentsByClientResponseDtoOutputItemsItem;
+};
 
 export function AppointmentCard({ item }: AppointmentCardProps) {
 	const [_, setId] = useQueryState("id", parseAsString);
@@ -17,7 +19,9 @@ export function AppointmentCard({ item }: AppointmentCardProps) {
 		end: new Date(item.endDate),
 	});
 
-	const durationLabel = hours ? `${hours}h${minutes ? ` ${minutes}min` : ""}` : `${minutes}min`;
+	const durationLabel = hours
+		? `${hours}h${minutes ? ` ${minutes}min` : ""}`
+		: `${minutes}min`;
 
 	return (
 		<Card
@@ -32,7 +36,9 @@ export function AppointmentCard({ item }: AppointmentCardProps) {
 					</Avatar>
 
 					<div className="flex-1 min-w-0">
-						<h3 className="text-lg font-bold text-foreground mb-1">{item.company.name}</h3>
+						<h3 className="text-lg font-bold text-foreground mb-1">
+							{item.company.name}
+						</h3>
 						<p className="text-base text-foreground mb-2">
 							{item.service.name} - {item.service.description}
 						</p>
@@ -40,7 +46,9 @@ export function AppointmentCard({ item }: AppointmentCardProps) {
 						<div className="space-y-1">
 							<div className="flex items-center gap-2 text-sm text-foreground">
 								<Calendar className="w-4 h-4" />
-								<span>Data: {format(new Date(item.startDate), "dd/MM/yyyy HH:mm")}</span>
+								<span>
+									Data: {format(new Date(item.startDate), "dd/MM/yyyy HH:mm")}
+								</span>
 							</div>
 							<div className="flex items-center gap-2 text-sm text-foreground">
 								<Clock className="w-4 h-4" />
@@ -54,7 +62,9 @@ export function AppointmentCard({ item }: AppointmentCardProps) {
 					</div>
 
 					<div className="flex-shrink-0">
-						<span className="text-2xl font-bold text-primary">{formatCurrency(item.price)}</span>
+						<span className="text-2xl font-bold text-primary">
+							{formatCurrency(item.price)}
+						</span>
 					</div>
 				</div>
 			</CardContent>

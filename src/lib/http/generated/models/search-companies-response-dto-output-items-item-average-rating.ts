@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type SearchCompaniesResponseDtoOutputItemsItemAverageRating = number | null;
+export type SearchCompaniesResponseDtoOutputItemsItemAverageRating =
+	| number
+	| null;

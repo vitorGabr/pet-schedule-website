@@ -1,15 +1,26 @@
 "use client";
 
+import { useForm } from "@tanstack/react-form";
+import {
+	Building2,
+	CheckCircle,
+	Clock,
+	FileText,
+	MapPin,
+	Phone,
+	Users,
+} from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useForm } from "@tanstack/react-form";
-import { Building2, CheckCircle, Clock, FileText, MapPin, Phone, Users } from "lucide-react";
-import { useState } from "react";
-import { type QuoteCompanySchema, quoteCompanySchema } from "@/schemas/quote-company";
+import {
+	type QuoteCompanySchema,
+	quoteCompanySchema,
+} from "@/schemas/quote-company";
 
 const businessTypes = [
 	{ value: "clinica-veterinaria", label: "Clínica Veterinária" },
@@ -43,43 +54,51 @@ export default function QuoteFormSection() {
 	const form = useForm({
 		defaultValues: {} as QuoteCompanySchema,
 		validators: { onChange: quoteCompanySchema },
-		onSubmit: async ({ value }) => {
+		onSubmit: async (_) => {
 			await new Promise((r) => setTimeout(r, 1500));
-			console.log("Dados da cotação:", value);
 			setIsSubmitted(true);
 		},
 	});
 
 	if (isSubmitted) {
 		return (
-			<section id="quote-form" className="py-20 px-4 bg-gradient-to-br from-green-50 to-green-100">
+			<section
+				id="quote-form"
+				className="py-20 px-4 bg-gradient-to-br from-green-50 to-green-100"
+			>
 				<div className="max-w-4xl mx-auto text-center">
 					<Card className="p-12 border bg-white">
 						<div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
 							<CheckCircle className="w-10 h-10 text-green-600" />
 						</div>
-						<h2 className="text-3xl font-bold text-gray-900 mb-4">Cotação Enviada com Sucesso!</h2>
+						<h2 className="text-3xl font-bold text-gray-900 mb-4">
+							Cotação Enviada com Sucesso!
+						</h2>
 						<p className="text-lg text-gray-600 mb-6">
-							Recebemos sua solicitação e nossa equipe entrará em contato em até 24 horas para
-							apresentar uma proposta personalizada para seu negócio.
+							Recebemos sua solicitação e nossa equipe entrará em contato em até
+							24 horas para apresentar uma proposta personalizada para seu
+							negócio.
 						</p>
 						<div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
-							<h3 className="font-semibold text-green-800 mb-2">Próximos Passos:</h3>
+							<h3 className="font-semibold text-green-800 mb-2">
+								Próximos Passos:
+							</h3>
 							<ul className="text-left text-green-700 space-y-2">
 								<li className="flex items-center gap-2">
-									<div className="w-2 h-2 bg-green-600 rounded-full" /> Análise da sua empresa e
-									necessidades
+									<div className="w-2 h-2 bg-green-600 rounded-full" /> Análise
+									da sua empresa e necessidades
 								</li>
 								<li className="flex items-center gap-2">
-									<div className="w-2 h-2 bg-green-600 rounded-full" /> Contato da nossa equipe
-									comercial
+									<div className="w-2 h-2 bg-green-600 rounded-full" /> Contato
+									da nossa equipe comercial
 								</li>
 								<li className="flex items-center gap-2">
-									<div className="w-2 h-2 bg-green-600 rounded-full" /> Apresentação de proposta
-									personalizada
+									<div className="w-2 h-2 bg-green-600 rounded-full" />{" "}
+									Apresentação de proposta personalizada
 								</li>
 								<li className="flex items-center gap-2">
-									<div className="w-2 h-2 bg-green-600 rounded-full" /> Demonstração da plataforma
+									<div className="w-2 h-2 bg-green-600 rounded-full" />{" "}
+									Demonstração da plataforma
 								</li>
 							</ul>
 						</div>
@@ -105,8 +124,8 @@ export default function QuoteFormSection() {
 						Solicite sua Cotação Personalizada
 					</h2>
 					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-						Preencha o formulário abaixo e nossa equipe preparará uma proposta sob medida para as
-						necessidades do seu negócio.
+						Preencha o formulário abaixo e nossa equipe preparará uma proposta
+						sob medida para as necessidades do seu negócio.
 					</p>
 					<div className="flex items-center justify-center gap-2 mt-4 text-sm text-green-600">
 						<Clock className="w-4 h-4" />
@@ -128,7 +147,9 @@ export default function QuoteFormSection() {
 						<div>
 							<div className="flex items-center gap-2 mb-6">
 								<Building2 className="w-5 h-5 text-primary" />
-								<h3 className="text-xl font-semibold text-gray-900">Informações da Empresa</h3>
+								<h3 className="text-xl font-semibold text-gray-900">
+									Informações da Empresa
+								</h3>
 							</div>
 
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -192,7 +213,9 @@ export default function QuoteFormSection() {
 						<div>
 							<div className="flex items-center gap-2 mb-6">
 								<Phone className="w-5 h-5 text-primary" />
-								<h3 className="text-xl font-semibold text-gray-900">Informações de Contato</h3>
+								<h3 className="text-xl font-semibold text-gray-900">
+									Informações de Contato
+								</h3>
 							</div>
 
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -256,7 +279,9 @@ export default function QuoteFormSection() {
 						<div>
 							<div className="flex items-center gap-2 mb-6">
 								<MapPin className="w-5 h-5 text-primary" />
-								<h3 className="text-xl font-semibold text-gray-900">Localização</h3>
+								<h3 className="text-xl font-semibold text-gray-900">
+									Localização
+								</h3>
 							</div>
 
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -320,7 +345,9 @@ export default function QuoteFormSection() {
 						<div>
 							<div className="flex items-center gap-2 mb-6">
 								<Users className="w-5 h-5 text-primary" />
-								<h3 className="text-xl font-semibold text-gray-900">Sobre seu Negócio</h3>
+								<h3 className="text-xl font-semibold text-gray-900">
+									Sobre seu Negócio
+								</h3>
 							</div>
 
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -394,21 +421,35 @@ export default function QuoteFormSection() {
 								{(field) => (
 									<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 										{serviceOptions.map((service) => {
-											const checked = (field.state.value ?? []).includes(service);
+											const checked = (field.state.value ?? []).includes(
+												service,
+											);
 
 											const toggle = () => {
 												const current = field.state.value ?? [];
 												if (current.includes(service)) {
-													field.handleChange(current.filter((s: string) => s !== service));
+													field.handleChange(
+														current.filter((s: string) => s !== service),
+													);
 												} else {
 													field.handleChange([...current, service]);
 												}
 											};
 
 											return (
-												<div key={service} className="flex items-center space-x-2">
-													<Checkbox id={service} checked={checked} onCheckedChange={toggle} />
-													<Label htmlFor={service} className="text-sm text-gray-700 cursor-pointer">
+												<div
+													key={service}
+													className="flex items-center space-x-2"
+												>
+													<Checkbox
+														id={service}
+														checked={checked}
+														onCheckedChange={toggle}
+													/>
+													<Label
+														htmlFor={service}
+														className="text-sm text-gray-700 cursor-pointer"
+													>
 														{service}
 													</Label>
 												</div>
@@ -429,7 +470,9 @@ export default function QuoteFormSection() {
 						<div>
 							<div className="flex items-center gap-2 mb-6">
 								<FileText className="w-5 h-5 text-primary" />
-								<h3 className="text-xl font-semibold text-gray-900">Informações Adicionais</h3>
+								<h3 className="text-xl font-semibold text-gray-900">
+									Informações Adicionais
+								</h3>
 							</div>
 
 							<div className="space-y-6">
@@ -487,8 +530,12 @@ export default function QuoteFormSection() {
 											checked={Boolean(field.state.value)}
 											onCheckedChange={(v) => field.handleChange(Boolean(v))}
 										/>
-										<Label htmlFor="acceptsTerms" className="text-sm text-gray-600 leading-relaxed">
-											Concordo em receber contato da equipe comercial e aceito os{" "}
+										<Label
+											htmlFor="acceptsTerms"
+											className="text-sm text-gray-600 leading-relaxed"
+										>
+											Concordo em receber contato da equipe comercial e aceito
+											os{" "}
 											<span className="text-primary hover:underline cursor-pointer">
 												termos de uso
 											</span>{" "}
@@ -511,7 +558,8 @@ export default function QuoteFormSection() {
 						{/* Submit Button */}
 						<form.Subscribe
 							selector={(state) => [state.canSubmit, state.isSubmitting]}
-							children={([canSubmit, isSubmitting]) => (
+						>
+							{([canSubmit, isSubmitting]) => (
 								<Button
 									type="submit"
 									disabled={!canSubmit || isSubmitting}
@@ -520,10 +568,11 @@ export default function QuoteFormSection() {
 									{isSubmitting ? "Enviando..." : "Solicitar Cotação Gratuita"}
 								</Button>
 							)}
-						/>
+						</form.Subscribe>
 						{/* Security Note */}
 						<p className="text-xs text-gray-500 text-center">
-							🔒 Seus dados estão seguros conosco. Não compartilhamos informações com terceiros.
+							🔒 Seus dados estão seguros conosco. Não compartilhamos
+							informações com terceiros.
 						</p>
 					</form>
 				</Card>

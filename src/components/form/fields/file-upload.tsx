@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import type { AnyFieldApi } from "@tanstack/react-form";
 import { CameraIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import type { InputHTMLAttributes } from "react";
+import { Button } from "@/components/ui/button";
 import { FormErrorMessage } from "../form-error-message";
 
 type FileUploadProps = {
@@ -14,9 +14,16 @@ type FileUploadProps = {
 	onChange: (value: File | null) => void;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "onChange" | "value">;
 
-export function FileUpload({ meta, previewUrl, value, ...props }: FileUploadProps) {
+export function FileUpload({
+	meta,
+	previewUrl,
+	value,
+	...props
+}: FileUploadProps) {
 	const preview =
-		value instanceof File || value === null ? URL.createObjectURL(value as File) : previewUrl;
+		value instanceof File || value === null
+			? URL.createObjectURL(value as File)
+			: previewUrl;
 
 	return (
 		<div className="flex flex-col items-center gap-2">

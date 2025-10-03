@@ -1,11 +1,11 @@
 "use client";
 
-import type { SearchCompaniesResponseDtoOutputItemsItem } from "@/lib/http";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import type { SearchCompaniesResponseDtoOutputItemsItem } from "@/lib/http";
 
 interface CompanyCardProps {
 	data: SearchCompaniesResponseDtoOutputItemsItem;
@@ -17,7 +17,12 @@ export function CompanyCard({ data }: CompanyCardProps) {
 			<Card className="py-0 w-full bg-white border shadow-none rounded-lg overflow-hidden">
 				<div className="relative">
 					<div className="w-full h-48" />
-					<Image src={data.image?.url ?? ""} alt={data.name} fill className="object-cover" />
+					<Image
+						src={data.image?.url ?? ""}
+						alt={data.name}
+						fill
+						className="object-cover"
+					/>
 					<div className="absolute top-3 right-3 bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
 						Disponível
 					</div>
@@ -26,7 +31,9 @@ export function CompanyCard({ data }: CompanyCardProps) {
 				<CardContent className="px-4 py-0 pb-4">
 					<div className="flex items-start gap-3 mb-3">
 						<div className="flex-1 min-w-0">
-							<h3 className="text-lg font-bold text-gray-900 mb-1 truncate">{data.name}</h3>
+							<h3 className="text-lg font-bold text-gray-900 mb-1 truncate">
+								{data.name}
+							</h3>
 							<div className="flex items-center gap-2 mb-2">
 								<div className="flex items-center gap-1">
 									{[1, 2, 3, 4, 5].map((starNumber) => (
@@ -41,7 +48,8 @@ export function CompanyCard({ data }: CompanyCardProps) {
 									))}
 								</div>
 								<span className="text-sm text-gray-600">
-									({data.averageRating ?? 0}) • {data.ratingCount ?? 0} avaliações
+									({data.averageRating ?? 0}) • {data.ratingCount ?? 0}{" "}
+									avaliações
 								</span>
 							</div>
 							<div className="flex items-center gap-1 mb-3">
@@ -53,7 +61,9 @@ export function CompanyCard({ data }: CompanyCardProps) {
 						</div>
 					</div>
 
-					<p className="text-sm text-gray-600 mb-4 leading-relaxed">{data.description ?? ""}</p>
+					<p className="text-sm text-gray-600 mb-4 leading-relaxed">
+						{data.description ?? ""}
+					</p>
 
 					<div className="flex items-center gap-2">
 						<Button size="sm" className="bg-primary hover:bg-primary/90">

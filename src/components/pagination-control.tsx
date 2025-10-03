@@ -1,8 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Pagination, PaginationContent, PaginationItem } from "@/components/ui/pagination";
 import { useQueryState } from "nuqs";
+import { Button } from "@/components/ui/button";
+import {
+	Pagination,
+	PaginationContent,
+	PaginationItem,
+} from "@/components/ui/pagination";
 import { pageSearchParamsSchema } from "@/schemas/page-search-params";
 
 type PaginationProps = { totalPages: number };

@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/card";
 import { Quote, Star } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 const testimonials = [
 	{
@@ -10,7 +10,7 @@ const testimonials = [
 		rating: 5,
 		text: "A plataforma transformou completamente nossa gestão. Antes perdíamos muito tempo com ligações e confirmações. Agora tudo é automático e nossos clientes adoram a praticidade de agendar pelo app.",
 		avatar: "👩‍⚕️",
-		results: "Aumento de 45% no faturamento"
+		results: "Aumento de 45% no faturamento",
 	},
 	{
 		name: "Carlos Mendes",
@@ -20,7 +20,7 @@ const testimonials = [
 		rating: 5,
 		text: "Em apenas 4 meses conseguimos lotar nossa hospedagem. A ferramenta de marketing da plataforma nos trouxe visibilidade que nunca tivemos antes. Recomendo para todos os colegas do setor.",
 		avatar: "👨‍💼",
-		results: "100% de ocupação em temporadas"
+		results: "100% de ocupação em temporadas",
 	},
 	{
 		name: "Ana Paula Costa",
@@ -30,7 +30,7 @@ const testimonials = [
 		rating: 5,
 		text: "Como profissional autônoma, a plataforma me deu credibilidade e organização que eu não tinha. Hoje tenho agenda cheia e uma lista de espera. Meu sonho de ter meu próprio negócio se tornou realidade!",
 		avatar: "✂️",
-		results: "Agenda lotada por 3 meses"
+		results: "Agenda lotada por 3 meses",
 	},
 	{
 		name: "Roberto Lima",
@@ -40,7 +40,7 @@ const testimonials = [
 		rating: 5,
 		text: "A integração com nosso sistema foi perfeita. Os relatórios nos ajudam muito na tomada de decisões. Nossos clientes elogiam sempre a facilidade de agendar serviços pelo site.",
 		avatar: "🏢",
-		results: "Otimização de 30% nos processos"
+		results: "Otimização de 30% nos processos",
 	},
 	{
 		name: "Fernanda Oliveira",
@@ -50,7 +50,7 @@ const testimonials = [
 		rating: 5,
 		text: "Comecei com poucos clientes e hoje atendo mais de 50 pets por semana. A plataforma me conectou com tutores que realmente valorizam um serviço profissional. Mudou minha vida!",
 		avatar: "🐕",
-		results: "De 5 para 50+ pets por semana"
+		results: "De 5 para 50+ pets por semana",
 	},
 	{
 		name: "Dr. João Santos",
@@ -60,8 +60,8 @@ const testimonials = [
 		rating: 5,
 		text: "O sistema de avaliações nos ajudou muito a construir uma reputação sólida. Hoje somos referência na região e temos clientes que vêm de outras cidades. A qualidade dos leads é excelente.",
 		avatar: "👨‍⚕️",
-		results: "Referência regional em 8 meses"
-	}
+		results: "Referência regional em 8 meses",
+	},
 ];
 
 export function TestimonialsSection() {
@@ -74,15 +74,15 @@ export function TestimonialsSection() {
 						O que Nossos Parceiros Dizem
 					</h2>
 					<p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-						Histórias reais de sucesso de empresas que cresceram conosco. 
-						Veja como nossa plataforma pode transformar seu negócio também.
+						Histórias reais de sucesso de empresas que cresceram conosco. Veja
+						como nossa plataforma pode transformar seu negócio também.
 					</p>
 				</div>
 
 				{/* Testimonials Grid */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					{testimonials.map((testimonial, index) => (
-						<Card 
+						<Card
 							key={`${testimonial.name}-${index}`}
 							className="p-6 border border-gray-200 hover:border-primary/30 hover:shadow-xl transition-all duration-300 relative"
 						>
@@ -94,9 +94,9 @@ export function TestimonialsSection() {
 							{/* Rating */}
 							<div className="flex items-center gap-1 mb-4">
 								{[...Array(testimonial.rating)].map((_, i) => (
-									<Star 
+									<Star
 										key={`star-${testimonial.name}-${i}`}
-										className="w-4 h-4 fill-yellow-400 text-yellow-400" 
+										className="w-4 h-4 fill-yellow-400 text-yellow-400"
 									/>
 								))}
 							</div>
@@ -122,9 +122,7 @@ export function TestimonialsSection() {
 									<h4 className="font-semibold text-gray-900">
 										{testimonial.name}
 									</h4>
-									<p className="text-sm text-gray-600">
-										{testimonial.role}
-									</p>
+									<p className="text-sm text-gray-600">{testimonial.role}</p>
 									<p className="text-sm font-medium text-primary">
 										{testimonial.company}
 									</p>
@@ -144,7 +142,8 @@ export function TestimonialsSection() {
 							Sua Empresa Pode Ser a Próxima História de Sucesso!
 						</h3>
 						<p className="text-lg text-gray-600 mb-6">
-							Junte-se a centenas de empresas que já transformaram seus negócios com nossa plataforma
+							Junte-se a centenas de empresas que já transformaram seus negócios
+							com nossa plataforma
 						</p>
 						<div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600">
 							<span className="flex items-center gap-2">

@@ -24,7 +24,9 @@ export function EditPetModalSkeleton({
 			<DialogContent className="w-full max-w-md">
 				<DialogHeader className="items-start flex">
 					<DialogTitle>Editar animal de estimação</DialogTitle>
-					<DialogDescription>Atualize as informações do seu pet.</DialogDescription>
+					<DialogDescription>
+						Atualize as informações do seu pet.
+					</DialogDescription>
 				</DialogHeader>
 
 				<div className="p-6 space-y-6">

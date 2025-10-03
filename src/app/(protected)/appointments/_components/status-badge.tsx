@@ -1,6 +1,6 @@
-import type { AppointmentByIdResponseDtoOutputStatus } from "@/lib/http";
-import { Badge } from "@/components/ui/badge";
 import { match } from "ts-pattern";
+import { Badge } from "@/components/ui/badge";
+import type { AppointmentByIdResponseDtoOutputStatus } from "@/lib/http";
 
 type Props = { status: AppointmentByIdResponseDtoOutputStatus };
 const statusLabel: Record<AppointmentByIdResponseDtoOutputStatus, string> = {

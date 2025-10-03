@@ -7,4 +7,5 @@
  */
 import type { ServiceDetailsResponseOutputDetailsAnyOf } from "./service-details-response-output-details-any-of";
 
-export type ServiceDetailsResponseOutputDetails = ServiceDetailsResponseOutputDetailsAnyOf | null;
+export type ServiceDetailsResponseOutputDetails =
+	ServiceDetailsResponseOutputDetailsAnyOf | null;

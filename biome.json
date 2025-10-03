@@ -12,7 +12,8 @@
 			"!**/*.test.js",
 			"**/special.test.js",
 			"!test",
-			"!dist"
+			"!dist",
+			"!.next"
 		]
 	},
 	"formatter": {
@@ -29,11 +30,14 @@
 				"noArrayIndexKey": "off"
 			},
 			"correctness": {
-				"useExhaustiveDependencies": "off"
+				"useExhaustiveDependencies": "off",
+				"useUniqueElementIds": "off",
+				"useHookAtTopLevel": "off"
 			},
 			"a11y": {
 				"noStaticElementInteractions": "off",
-				"useKeyWithClickEvents": "off"
+				"useKeyWithClickEvents": "off",
+				"useSemanticElements": "off"
 			},
 			"complexity": {
 				"noThisInStatic": "off",

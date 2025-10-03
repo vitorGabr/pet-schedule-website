@@ -1,7 +1,7 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Bell } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from "@/images/logo.png";
 import { verifySession } from "@/lib/auth/verify-session";
 
@@ -22,7 +22,10 @@ export async function AppHeader() {
 				</nav>
 			</div>
 			<div className="flex items-center gap-4">
-				<button type="button" className="p-2 hover:bg-primary/10 rounded-full transition-colors">
+				<button
+					type="button"
+					className="p-2 hover:bg-primary/10 rounded-full transition-colors"
+				>
 					<Bell className="w-5 h-5 text-primary" />
 				</button>
 				<div className="flex items-center gap-3">

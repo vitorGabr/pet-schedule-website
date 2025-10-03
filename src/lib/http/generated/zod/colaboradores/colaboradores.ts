@@ -24,4 +24,7 @@ export const listStaffByCompanyQueryParams = zod.object({
 /**
  * @summary Soft delete colaborador
  */
-export const deleteStaffParams = zod.object({ id: zod.string(), companyId: zod.string() });
+export const deleteStaffParams = zod.object({
+	id: zod.string(),
+	companyId: zod.string(),
+});

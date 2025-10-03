@@ -18,9 +18,30 @@ export const Illustration = () => {
 				<circle cx="200" cy="120" r="48" className="fill-secondary" />
 				<circle cx="310" cy="160" r="40" className="fill-primary/20" />
 				<g className="text-primary">
-					<rect x="65" y="120" width="40" height="70" rx="8" className="fill-current" />
-					<rect x="180" y="98" width="44" height="92" rx="8" className="fill-current" />
-					<rect x="288" y="130" width="44" height="60" rx="8" className="fill-current" />
+					<rect
+						x="65"
+						y="120"
+						width="40"
+						height="70"
+						rx="8"
+						className="fill-current"
+					/>
+					<rect
+						x="180"
+						y="98"
+						width="44"
+						height="92"
+						rx="8"
+						className="fill-current"
+					/>
+					<rect
+						x="288"
+						y="130"
+						width="44"
+						height="60"
+						rx="8"
+						className="fill-current"
+					/>
 				</g>
 			</svg>
 		</div>

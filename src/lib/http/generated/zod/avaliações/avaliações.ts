@@ -33,4 +33,6 @@ export const listCompanyRatingsQueryParams = zod.object({
 /**
  * @summary Obter estatísticas das avaliações de uma empresa
  */
-export const getCompanyRatingStatsParams = zod.object({ companyId: zod.string() });
+export const getCompanyRatingStatsParams = zod.object({
+	companyId: zod.string(),
+});

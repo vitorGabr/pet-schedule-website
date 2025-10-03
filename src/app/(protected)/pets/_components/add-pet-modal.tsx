@@ -1,23 +1,5 @@
 "use client";
 
-import type { BreedListResponseOutputItemsItem } from "@/lib/http";
-import {
-	addAssetToAnimal,
-	addAssetToAnimalBody,
-	createAnimal,
-	createAnimalBody,
-	getListAnimalsFromUserQueryKey,
-} from "@/lib/http";
-import { Button } from "@/components/ui/button";
-import {
-	Dialog,
-	DialogClose,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "@/components/ui/dialog";
 import { useForm } from "@tanstack/react-form";
 import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
@@ -28,6 +10,24 @@ import type z from "zod";
 import { FileUpload } from "@/components/form/fields/file-upload";
 import { SelectField } from "@/components/form/fields/select-field";
 import { TextField } from "@/components/form/fields/text-field";
+import { Button } from "@/components/ui/button";
+import {
+	Dialog,
+	DialogClose,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog";
+import type { BreedListResponseOutputItemsItem } from "@/lib/http";
+import {
+	addAssetToAnimal,
+	addAssetToAnimalBody,
+	createAnimal,
+	createAnimalBody,
+	getListAnimalsFromUserQueryKey,
+} from "@/lib/http";
 import { revalidateCache } from "@/utils/revalidate";
 
 interface AddPetModalProps {
@@ -36,7 +36,9 @@ interface AddPetModalProps {
 }
 
 const schema = createAnimalBody.and(addAssetToAnimalBody);
-const defaultValues = { name: "", weight: 0, age: 0, breedId: "" } as z.input<typeof schema>;
+const defaultValues = { name: "", weight: 0, age: 0, breedId: "" } as z.input<
+	typeof schema
+>;
 
 export function AddPetModal({ breeds, userId }: AddPetModalProps) {
 	const [open, setOpen] = useState(false);
@@ -49,14 +51,19 @@ export function AddPetModal({ breeds, userId }: AddPetModalProps) {
 			try {
 				const reponse = await createAnimal(value);
 				await addAssetToAnimal(reponse.id, { file: value.file });
-				await queryClient.invalidateQueries({ queryKey: getListAnimalsFromUserQueryKey(userId) });
+				await queryClient.invalidateQueries({
+					queryKey: getListAnimalsFromUserQueryKey(userId),
+				});
 				await revalidateCache({ type: "tag", tags: ["pets"] });
 				toast.success("Pet adicionado com sucesso!");
 				form.reset();
 				setOpen(false);
 			} catch (error) {
 				if (error instanceof AxiosError) {
-					toast.error(error.response?.data?.message ?? "Ocorreu um erro ao adicionar o pet");
+					toast.error(
+						error.response?.data?.message ??
+							"Ocorreu um erro ao adicionar o pet",
+					);
 				}
 			}
 		},
@@ -87,9 +94,8 @@ export function AddPetModal({ breeds, userId }: AddPetModalProps) {
 						}}
 						className="space-y-4"
 					>
-						<form.Field
-							name="file"
-							children={(field) => (
+						<form.Field name="file">
+							{(field) => (
 								<FileUpload
 									accept="image/*"
 									meta={field.state.meta}
@@ -99,7 +105,7 @@ export function AddPetModal({ breeds, userId }: AddPetModalProps) {
 									onBlur={field.handleBlur}
 								/>
 							)}
-						/>
+						</form.Field>
 
 						<form.Field name="name">
 							{(field) => (
@@ -121,7 +127,9 @@ export function AddPetModal({ breeds, userId }: AddPetModalProps) {
 									<TextField
 										name={field.name}
 										onBlur={field.handleBlur}
-										onChange={(value) => field.handleChange(value.target.valueAsNumber)}
+										onChange={(value) =>
+											field.handleChange(value.target.valueAsNumber)
+										}
 										value={field.state.value}
 										meta={field.state.meta}
 										label="Peso (kg)"
@@ -138,7 +146,9 @@ export function AddPetModal({ breeds, userId }: AddPetModalProps) {
 									<TextField
 										name={field.name}
 										onBlur={field.handleBlur}
-										onChange={(value) => field.handleChange(value.target.valueAsNumber)}
+										onChange={(value) =>
+											field.handleChange(value.target.valueAsNumber)
+										}
 										value={field.state.value}
 										meta={field.state.meta}
 										label="Idade"
@@ -157,7 +167,10 @@ export function AddPetModal({ breeds, userId }: AddPetModalProps) {
 									<SelectField
 										label="Raça"
 										placeholder="Ex: Labrador"
-										options={breeds.map((breed) => ({ label: breed.name, value: breed.id }))}
+										options={breeds.map((breed) => ({
+											label: breed.name,
+											value: breed.id,
+										}))}
 										meta={field.state.meta}
 										onValueChange={(value) => field.handleChange(value)}
 										value={field.state.value}
@@ -170,19 +183,24 @@ export function AddPetModal({ breeds, userId }: AddPetModalProps) {
 
 						<form.Subscribe
 							selector={(state) => [state.canSubmit, state.isSubmitting]}
-							children={([canSubmit, isSubmitting]) => (
+						>
+							{([canSubmit, isSubmitting]) => (
 								<div className="flex gap-3 pt-4">
 									<DialogClose asChild>
 										<Button variant="outline" className="flex-1">
 											Cancelar
 										</Button>
 									</DialogClose>
-									<Button type="submit" className="flex-1" disabled={isSubmitting || !canSubmit}>
+									<Button
+										type="submit"
+										className="flex-1"
+										disabled={isSubmitting || !canSubmit}
+									>
 										{isSubmitting ? "Adicionando..." : "Adicionar pet"}
 									</Button>
 								</div>
 							)}
-						/>
+						</form.Subscribe>
 					</form>
 				</div>
 			</DialogContent>

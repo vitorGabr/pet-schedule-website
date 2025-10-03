@@ -1,11 +1,10 @@
 "use client";
 
-import { Inbox } from "@novu/nextjs";
-import type { SessionResponseDtoOutput } from "@/lib/http";
-import { Button } from "@/components/ui/button";
 import { User } from "lucide-react";
 import { parseAsStringLiteral, useQueryState } from "nuqs";
+import { Button } from "@/components/ui/button";
 import { UserMenu } from "@/components/user-menu";
+import type { SessionResponseDtoOutput } from "@/lib/http";
 import { NotificationMenu } from "../notification-menu";
 
 interface AuthSectionProps {
@@ -13,7 +12,10 @@ interface AuthSectionProps {
 }
 
 export const AuthSection = ({ user }: AuthSectionProps) => {
-	const [_, setAuthMode] = useQueryState("auth", parseAsStringLiteral(["signin", "signup"]));
+	const [_, setAuthMode] = useQueryState(
+		"auth",
+		parseAsStringLiteral(["signin", "signup"]),
+	);
 
 	if (user) {
 		return (

@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import type { AnyFieldApi } from "@tanstack/react-form";
+import { FieldError } from "../ui/field";
 
 type Props = React.ComponentProps<"p"> & {
 	error?: string | undefined;
@@ -7,28 +7,14 @@ type Props = React.ComponentProps<"p"> & {
 };
 
 export function FormErrorMessage({ className, error, meta, ...props }: Props) {
-	const body = error ? String(error ?? "") : meta?.errors.join(", ");
-
-	if (meta?.isTouched && meta?.isValid) {
+	const body = error
+		? String(error ?? "")
+		: meta?.errors.map((e) => e.message).join(", ");
+	if (!meta?.isValid) {
 		return (
-			<>
-				<p
-					data-slot="form-message"
-					className={cn("text-destructive text-sm first-letter:capitalize", className)}
-					{...props}
-				>
-					{body}
-				</p>
-				{meta?.isValidating && (
-					<p
-						data-slot="form-message"
-						className={cn("text-sm first-letter:capitalize", className)}
-						{...props}
-					>
-						Validando...
-					</p>
-				)}
-			</>
+			<FieldError data-slot="form-message" className={className} {...props}>
+				{body}
+			</FieldError>
 		);
 	}
 

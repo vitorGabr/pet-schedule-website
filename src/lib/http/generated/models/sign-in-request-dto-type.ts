@@ -6,7 +6,8 @@
  * OpenAPI spec version: 1.0
  */
 
-export type SignInRequestDtoType = (typeof SignInRequestDtoType)[keyof typeof SignInRequestDtoType];
+export type SignInRequestDtoType =
+	(typeof SignInRequestDtoType)[keyof typeof SignInRequestDtoType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const SignInRequestDtoType = {

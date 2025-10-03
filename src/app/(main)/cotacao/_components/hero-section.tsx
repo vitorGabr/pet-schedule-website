@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Building2, CheckCircle, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
 	const handleScrollToForm = () => {
@@ -49,27 +49,29 @@ export function HeroSection() {
 
 					{/* Subtítulo */}
 					<p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-						Conecte-se com milhares de tutores que procuram os melhores cuidados para seus pets.
-						Aumente sua visibilidade, otimize seus agendamentos e faça seu negócio crescer conosco.
+						Conecte-se com milhares de tutores que procuram os melhores cuidados
+						para seus pets. Aumente sua visibilidade, otimize seus agendamentos
+						e faça seu negócio crescer conosco.
 					</p>
 
 					{/* Benefícios Rápidos */}
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-						{[
-							"Agendamentos 24/7",
-							"Gestão Simplificada",
-							"Mais Clientes"
-						].map((benefit) => (
-							<div key={benefit} className="flex items-center justify-center gap-2 text-gray-700">
-								<div className="w-2 h-2 bg-primary rounded-full" />
-								<span className="font-medium">{benefit}</span>
-							</div>
-						))}
+						{["Agendamentos 24/7", "Gestão Simplificada", "Mais Clientes"].map(
+							(benefit) => (
+								<div
+									key={benefit}
+									className="flex items-center justify-center gap-2 text-gray-700"
+								>
+									<div className="w-2 h-2 bg-primary rounded-full" />
+									<span className="font-medium">{benefit}</span>
+								</div>
+							),
+						)}
 					</div>
 
 					{/* CTA Buttons */}
 					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-						<Button 
+						<Button
 							onClick={handleScrollToForm}
 							onKeyDown={handleKeyDown}
 							className="h-14 px-8 bg-primary hover:bg-primary/90 text-white font-semibold text-lg rounded-lg transition-all transform hover:scale-105"
@@ -82,7 +84,9 @@ export function HeroSection() {
 
 					{/* Trust Indicators */}
 					<div className="mt-12 pt-8 border-t border-gray-200">
-						<p className="text-sm text-gray-500 mb-4">Empresas que já confiam em nossa plataforma:</p>
+						<p className="text-sm text-gray-500 mb-4">
+							Empresas que já confiam em nossa plataforma:
+						</p>
 						<div className="flex flex-wrap justify-center items-center gap-6 text-xs text-gray-400">
 							<span>🏥 Clínicas Veterinárias</span>
 							<span>✂️ Pet Shops</span>

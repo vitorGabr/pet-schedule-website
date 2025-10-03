@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type AppointmentsByCompanyResponseDtoOutputItemsItemAnimalWeight = number | null;
+export type AppointmentsByCompanyResponseDtoOutputItemsItemAnimalWeight =
+	| number
+	| null;

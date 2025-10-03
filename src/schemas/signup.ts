@@ -1,5 +1,5 @@
-import { signUpBody } from "@/lib/http";
 import { z } from "zod";
+import { signUpBody } from "@/lib/http";
 
 export const signUpWithConfirmPasswordSchema = signUpBody
 	.extend({
@@ -11,4 +11,6 @@ export const signUpWithConfirmPasswordSchema = signUpBody
 		path: ["confirmPassword"],
 	});
 
-export type SignUpWithConfirmPasswordFormData = z.infer<typeof signUpWithConfirmPasswordSchema>;
+export type SignUpWithConfirmPasswordFormData = z.infer<
+	typeof signUpWithConfirmPasswordSchema
+>;

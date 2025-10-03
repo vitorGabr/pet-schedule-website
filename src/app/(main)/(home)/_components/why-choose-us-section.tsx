@@ -17,7 +17,8 @@ const benefits = [
 	{
 		icon: Clock,
 		title: "Agendamento Flexível",
-		description: "Sistema de agendamento online 24/7 com horários que se adaptam à sua rotina.",
+		description:
+			"Sistema de agendamento online 24/7 com horários que se adaptam à sua rotina.",
 	},
 ];
 
@@ -36,15 +37,22 @@ export function WhyChooseUsSection() {
 							{benefits.map((benefit) => {
 								const IconComponent = benefit.icon;
 								return (
-									<div key={benefit.title} className="flex items-start space-x-4">
+									<div
+										key={benefit.title}
+										className="flex items-start space-x-4"
+									>
 										<div className="flex-shrink-0">
 											<div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
 												<IconComponent className="w-6 h-6 text-primary" />
 											</div>
 										</div>
 										<div className="flex-1">
-											<h3 className="text-xl font-semibold text-gray-900 mb-2">{benefit.title}</h3>
-											<p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+											<h3 className="text-xl font-semibold text-gray-900 mb-2">
+												{benefit.title}
+											</h3>
+											<p className="text-gray-600 leading-relaxed">
+												{benefit.description}
+											</p>
 										</div>
 									</div>
 								);
@@ -82,7 +90,9 @@ export function WhyChooseUsSection() {
 									))}
 								</div>
 							</div>
-							<p className="text-sm font-medium text-gray-700 mt-1">500+ pets felizes</p>
+							<p className="text-sm font-medium text-gray-700 mt-1">
+								500+ pets felizes
+							</p>
 						</div>
 					</div>
 				</div>

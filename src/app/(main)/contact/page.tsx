@@ -3,7 +3,8 @@ import type { InputHTMLAttributes } from "react";
 
 export const metadata = {
 	title: "Contato • PETI",
-	description: "Fale conosco para dúvidas, sugestões ou parcerias. Estamos aqui para ajudar.",
+	description:
+		"Fale conosco para dúvidas, sugestões ou parcerias. Estamos aqui para ajudar.",
 };
 
 export async function sendContactMessage(formData: FormData) {
@@ -30,13 +31,17 @@ export default async function ContatoPage(props: PageProps<"/contact">) {
 					Entre em contato
 				</h1>
 				<p className="mt-2 text-balance text-muted-foreground">
-					Tem dúvidas sobre nossos serviços, precisa de ajuda com um agendamento ou quer falar sobre
-					parcerias? Envie uma mensagem pelo formulário ou use nossos canais ao lado.
+					Tem dúvidas sobre nossos serviços, precisa de ajuda com um agendamento
+					ou quer falar sobre parcerias? Envie uma mensagem pelo formulário ou
+					use nossos canais ao lado.
 				</p>
 			</div>
 
 			<section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-				<form action={sendContactMessage} className="rounded-xl border bg-card p-6">
+				<form
+					action={sendContactMessage}
+					className="rounded-xl border bg-card p-6"
+				>
 					{success === "1" ? (
 						<div className="mb-4 rounded-lg border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-800">
 							Mensagem enviada! Responderemos em breve.
@@ -95,7 +100,9 @@ export default async function ContatoPage(props: PageProps<"/contact">) {
 
 				<aside className="flex flex-col gap-6">
 					<div className="rounded-xl border bg-card p-6">
-						<h2 className="text-xl font-semibold text-foreground">Informações de contato</h2>
+						<h2 className="text-xl font-semibold text-foreground">
+							Informações de contato
+						</h2>
 						<ul className="mt-4 space-y-3 text-sm text-muted-foreground">
 							<li className="flex items-center gap-3">
 								<span aria-hidden>📞</span>
@@ -139,11 +146,17 @@ export default async function ContatoPage(props: PageProps<"/contact">) {
 }
 
 const TextAreaField = (
-	props: InputHTMLAttributes<HTMLTextAreaElement> & { label: string; rows: number },
+	props: InputHTMLAttributes<HTMLTextAreaElement> & {
+		label: string;
+		rows: number;
+	},
 ) => {
 	return (
 		<div className="w-full">
-			<label htmlFor={props.id} className="mb-1 block text-sm font-medium text-foreground">
+			<label
+				htmlFor={props.id}
+				className="mb-1 block text-sm font-medium text-foreground"
+			>
 				{props.label}
 			</label>
 			<textarea
@@ -155,10 +168,15 @@ const TextAreaField = (
 	);
 };
 
-const TextField = (props: InputHTMLAttributes<HTMLInputElement> & { label: string }) => {
+const TextField = (
+	props: InputHTMLAttributes<HTMLInputElement> & { label: string },
+) => {
 	return (
 		<div className="w-full">
-			<label htmlFor={props.id} className="mb-1 block text-sm font-medium text-foreground">
+			<label
+				htmlFor={props.id}
+				className="mb-1 block text-sm font-medium text-foreground"
+			>
 				{props.label}
 			</label>
 			<input

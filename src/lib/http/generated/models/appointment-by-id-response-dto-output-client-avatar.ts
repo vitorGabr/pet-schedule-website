@@ -6,4 +6,7 @@
  * OpenAPI spec version: 1.0
  */
 
-export type AppointmentByIdResponseDtoOutputClientAvatar = { id: string; url: string };
+export type AppointmentByIdResponseDtoOutputClientAvatar = {
+	id: string;
+	url: string;
+};

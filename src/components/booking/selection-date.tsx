@@ -65,7 +65,9 @@ export function SelectionDate({ selectedDate, setSelectedDate }: Props) {
 									<div className="text-xs font-medium w-full">
 										{format(date, "EEE", { locale: pt }).toUpperCase()}
 									</div>
-									<div className="font-bold text-md">{format(date, "d").padStart(2, '0')}</div>
+									<div className="font-bold text-md">
+										{format(date, "d").padStart(2, "0")}
+									</div>
 								</button>
 							</CarouselItem>
 						);

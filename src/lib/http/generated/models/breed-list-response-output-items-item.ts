@@ -6,4 +6,8 @@
  * OpenAPI spec version: 1.0
  */
 
-export type BreedListResponseOutputItemsItem = { id: string; animalTypeId: string; name: string };
+export type BreedListResponseOutputItemsItem = {
+	id: string;
+	animalTypeId: string;
+	name: string;
+};

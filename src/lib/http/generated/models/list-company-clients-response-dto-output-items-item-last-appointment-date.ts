@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type ListCompanyClientsResponseDtoOutputItemsItemLastAppointmentDate = string | null;
+export type ListCompanyClientsResponseDtoOutputItemsItemLastAppointmentDate =
+	| string
+	| null;

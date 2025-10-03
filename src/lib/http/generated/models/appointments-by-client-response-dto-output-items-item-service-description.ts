@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type AppointmentsByClientResponseDtoOutputItemsItemServiceDescription = string | null;
+export type AppointmentsByClientResponseDtoOutputItemsItemServiceDescription =
+	| string
+	| null;

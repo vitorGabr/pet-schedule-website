@@ -10,4 +10,6 @@ export type CategoryResponseOutputItemsItemType =
 	(typeof CategoryResponseOutputItemsItemType)[keyof typeof CategoryResponseOutputItemsItemType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const CategoryResponseOutputItemsItemType = { petshop: "petshop" } as const;
+export const CategoryResponseOutputItemsItemType = {
+	petshop: "petshop",
+} as const;

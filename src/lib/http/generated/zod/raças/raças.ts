@@ -10,4 +10,6 @@ import { z as zod } from "zod";
 /**
  * @summary Listar todas as raças
  */
-export const getAllBreedsQueryParams = zod.object({ query: zod.string().optional() });
+export const getAllBreedsQueryParams = zod.object({
+	query: zod.string().optional(),
+});

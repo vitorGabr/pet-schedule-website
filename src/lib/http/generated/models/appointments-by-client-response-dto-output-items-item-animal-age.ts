@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type AppointmentsByClientResponseDtoOutputItemsItemAnimalAge = number | null;
+export type AppointmentsByClientResponseDtoOutputItemsItemAnimalAge =
+	| number
+	| null;

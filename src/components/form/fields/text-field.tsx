@@ -1,8 +1,7 @@
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
 import type { AnyFieldApi } from "@tanstack/react-form";
 import type { InputHTMLAttributes } from "react";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import { FormErrorMessage } from "../form-error-message";
 
 type Props = {
@@ -11,24 +10,26 @@ type Props = {
 	meta?: AnyFieldApi["state"]["meta"];
 } & InputHTMLAttributes<HTMLInputElement>;
 
-export function TextField({ className, label, error, name, meta, ...props }: Props) {
+export function TextField({
+	className,
+	label,
+	error,
+	name,
+	meta,
+	...props
+}: Props) {
 	return (
-		<div className="space-y-2">
-			<Label
-				data-slot="form-label"
-				data-error={!meta?.isValid}
-				className={cn("data-[error=true]:text-destructive")}
-				htmlFor={name}
-			>
-				{label}
-			</Label>
+		<Field data-invalid={!meta?.isValid}>
+			<FieldLabel htmlFor={name}></FieldLabel>
 			<Input
+				id={name}
+				type="text"
+				placeholder={props.placeholder}
+				className={className}
 				aria-invalid={!meta?.isValid}
-				name={name}
-				className={cn("data-[error=true]:text-destructive", className)}
 				{...props}
 			/>
 			<FormErrorMessage error={error} meta={meta} />
-		</div>
+		</Field>
 	);
 }

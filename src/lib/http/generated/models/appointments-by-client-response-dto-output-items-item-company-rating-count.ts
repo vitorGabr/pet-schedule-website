@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type AppointmentsByClientResponseDtoOutputItemsItemCompanyRatingCount = number | null;
+export type AppointmentsByClientResponseDtoOutputItemsItemCompanyRatingCount =
+	| number
+	| null;

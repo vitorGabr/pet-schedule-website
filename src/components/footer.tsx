@@ -32,22 +32,34 @@ export function Footer() {
 						<h4 className="text-lg font-bold text-gray-900">Para Empresas</h4>
 						<ul className="space-y-2 text-sm text-gray-700">
 							<li>
-								<a href="/cotacao" className="hover:text-primary transition-colors">
+								<a
+									href="/cotacao"
+									className="hover:text-primary transition-colors"
+								>
 									Solicitar Cotação
 								</a>
 							</li>
 							<li>
-								<a href="/cotacao" className="hover:text-primary transition-colors">
+								<a
+									href="/cotacao"
+									className="hover:text-primary transition-colors"
+								>
 									Seja um Parceiro
 								</a>
 							</li>
 							<li>
-								<a href="/cotacao" className="hover:text-primary transition-colors">
+								<a
+									href="/cotacao"
+									className="hover:text-primary transition-colors"
+								>
 									Planos Empresariais
 								</a>
 							</li>
 							<li>
-								<a href="/cotacao" className="hover:text-primary transition-colors">
+								<a
+									href="/cotacao"
+									className="hover:text-primary transition-colors"
+								>
 									Suporte Comercial
 								</a>
 							</li>

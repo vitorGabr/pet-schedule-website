@@ -10,4 +10,6 @@ import { z as zod } from "zod";
 /**
  * @summary Listar disponibilidade da empresa
  */
-export const listCompanyAvailabilityParams = zod.object({ companyId: zod.string() });
+export const listCompanyAvailabilityParams = zod.object({
+	companyId: zod.string(),
+});

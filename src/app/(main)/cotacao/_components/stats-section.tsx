@@ -45,8 +45,8 @@ export function StatsSection() {
 						Resultados que Comprovam nossa Eficiência
 					</h2>
 					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-						Números reais de empresas que transformaram seus negócios 
-						com nossa plataforma
+						Números reais de empresas que transformaram seus negócios com nossa
+						plataforma
 					</p>
 				</div>
 
@@ -71,7 +71,9 @@ export function StatsSection() {
 								</div>
 
 								{/* Label */}
-								<h3 className="text-lg font-semibold text-gray-900 mb-1">{stat.label}</h3>
+								<h3 className="text-lg font-semibold text-gray-900 mb-1">
+									{stat.label}
+								</h3>
 
 								{/* Description */}
 								<p className="text-sm text-gray-600">{stat.description}</p>
@@ -89,12 +91,14 @@ export function StatsSection() {
 							</div>
 							<div>
 								<h4 className="font-semibold text-gray-900">Pet Care Plus</h4>
-								<p className="text-sm text-gray-600">Clínica Veterinária - São Paulo</p>
+								<p className="text-sm text-gray-600">
+									Clínica Veterinária - São Paulo
+								</p>
 							</div>
 						</div>
 						<p className="text-gray-700 italic">
-							"Em 3 meses nossa agenda ficou 60% mais cheia. O sistema de agendamento 
-							automatizado revolucionou nosso atendimento!"
+							"Em 3 meses nossa agenda ficou 60% mais cheia. O sistema de
+							agendamento automatizado revolucionou nosso atendimento!"
 						</p>
 					</div>
 
@@ -105,12 +109,14 @@ export function StatsSection() {
 							</div>
 							<div>
 								<h4 className="font-semibold text-gray-900">Tosa & Cia</h4>
-								<p className="text-sm text-gray-600">Pet Shop - Rio de Janeiro</p>
+								<p className="text-sm text-gray-600">
+									Pet Shop - Rio de Janeiro
+								</p>
 							</div>
 						</div>
 						<p className="text-gray-700 italic">
-							"Dobramos nosso faturamento em 6 meses. A visibilidade que ganhamos 
-							trouxe clientes que nem imaginávamos alcançar."
+							"Dobramos nosso faturamento em 6 meses. A visibilidade que
+							ganhamos trouxe clientes que nem imaginávamos alcançar."
 						</p>
 					</div>
 				</div>

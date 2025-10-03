@@ -10,12 +10,17 @@ import { z as zod } from "zod";
 /**
  * @summary Listar serviços por empresa
  */
-export const listServicesByCompanyParams = zod.object({ companyId: zod.string() });
+export const listServicesByCompanyParams = zod.object({
+	companyId: zod.string(),
+});
 
 /**
  * @summary Inativar serviço da empresa
  */
-export const deactivateServiceParams = zod.object({ id: zod.string(), companyId: zod.string() });
+export const deactivateServiceParams = zod.object({
+	id: zod.string(),
+	companyId: zod.string(),
+});
 
 /**
  * @summary Criar serviço

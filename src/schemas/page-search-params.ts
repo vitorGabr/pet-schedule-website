@@ -14,6 +14,8 @@ export const pageSearchParamsSchema = {
 	id: parseAsString,
 };
 
-export const pageSearchParamsCache = createSearchParamsCache(pageSearchParamsSchema);
+export const pageSearchParamsCache = createSearchParamsCache(
+	pageSearchParamsSchema,
+);
 export const pageSearchLoader = createLoader(pageSearchParamsSchema);
 export type PageSearchParams = inferParserType<typeof pageSearchParamsSchema>;

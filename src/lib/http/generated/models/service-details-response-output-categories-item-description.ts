@@ -6,4 +6,6 @@
  * OpenAPI spec version: 1.0
  */
 
-export type ServiceDetailsResponseOutputCategoriesItemDescription = string | null;
+export type ServiceDetailsResponseOutputCategoriesItemDescription =
+	| string
+	| null;

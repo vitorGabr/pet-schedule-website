@@ -1,6 +1,6 @@
-import type { CompanyByIdResponseDtoOutputAddress } from "@/lib/http";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type { CompanyByIdResponseDtoOutputAddress } from "@/lib/http";
 
 type Props = { address: CompanyByIdResponseDtoOutputAddress };
 
@@ -28,7 +28,8 @@ export function LocationMap({ address }: Props) {
 					<div className="flex items-center gap-2 text-sm">
 						<MapPin className="w-4 h-4 text-primary" />
 						<span>
-							{address.neighborhood}, {address.number}, {address.city}, {address.state}
+							{address.neighborhood}, {address.number}, {address.city},{" "}
+							{address.state}
 						</span>
 					</div>
 				</div>
