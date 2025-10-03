@@ -25,31 +25,16 @@ import {
 import { BookingSkeleton } from "./booking-skeleton";
 import { PeriodFilter } from "./period-filter";
 import { SelectionDate } from "./selection-date";
+import { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
+import { COAT_TYPES, DISEASES } from "@/constants/pet";
 
-type Props = {
+export function BookingModal({ companyId, animals, userId }: {
 	companyId: string;
 	userId: string;
 	animals: ListAnimalFromUserResponseDtoOutputItemsItem[];
-};
-
-const COAT_TYPES = [
-	{ value: "short", label: "Curto" },
-	{ value: "medium", label: "Médio" },
-	{ value: "long", label: "Longo" },
-	{ value: "curly", label: "Cacheado" },
-] as const;
-
-const DISEASES = [
-	{ value: "none", label: "Nenhuma" },
-	{ value: "diabetes", label: "Diabetes" },
-	{ value: "heart_disease", label: "Problema Cardíaco" },
-	{ value: "arthritis", label: "Artrite" },
-	{ value: "allergies", label: "Alergias" },
-	{ value: "skin_condition", label: "Problema de Pele" },
-	{ value: "other", label: "Outro" },
-] as const;
-
-export function BookingModal({ companyId, animals, userId }: Props) {
+}) {
+	const router = useRouter();
 	const [serviceId, setServiceId] = useQueryState("id", parseAsString);
 	const {
 		data: service,
@@ -65,9 +50,16 @@ export function BookingModal({ companyId, animals, userId }: Props) {
 		} as z.input<typeof createBookingSchema>,
 		validators: { onChange: createBookingSchema },
 		onSubmit: async ({ value }) => {
-			await createAppointment(createBookingSchema.parse(value));
-			handleClose();
-			toast.success("Agendamento criado com sucesso");
+			try {
+				await createAppointment(createBookingSchema.parse(value));
+				handleClose();
+				toast.success("Agendamento criado com sucesso");
+				router.push("/appointments");
+			} catch (error) {
+				if(error instanceof AxiosError) {
+					toast.error(error.response?.data?.message ?? "Erro ao criar agendamento");
+				}
+			}
 		},
 	});
 

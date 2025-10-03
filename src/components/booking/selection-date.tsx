@@ -46,18 +46,18 @@ export function SelectionDate({ selectedDate, setSelectedDate }: Props) {
 				className="w-full"
 				setApi={setApi}
 			>
-				<CarouselContent className="-ml-2">
+				<CarouselContent className="-ml-1">
 					{listDays.map((date) => {
 						return (
 							<CarouselItem
 								key={date.toISOString()}
-								className="basis-[14.28%] pl-2"
+								className="basis-[14.28%] pl-1"
 							>
 								<button
 									type="button"
 									onClick={() => setSelectedDate(date)}
 									className={cn(
-										`p-3 w-full rounded-lg max-h-[15vh] text-center border bg-primary text-primary-foreground`,
+										`pt-3 pb-2 w-full rounded-lg max-h-[15vh] text-center border bg-primary text-primary-foreground`,
 										!isSameDay(date, selectedDate) &&
 											"bg-muted/50 text-muted-foreground",
 									)}
@@ -65,7 +65,7 @@ export function SelectionDate({ selectedDate, setSelectedDate }: Props) {
 									<div className="text-xs font-medium w-full">
 										{format(date, "EEE", { locale: pt }).toUpperCase()}
 									</div>
-									<div className="text-sm font-bold">{format(date, "d")}</div>
+									<div className="font-bold text-md">{format(date, "d").padStart(2, '0')}</div>
 								</button>
 							</CarouselItem>
 						);
