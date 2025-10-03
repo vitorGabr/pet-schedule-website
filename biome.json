@@ -27,7 +27,8 @@
 			"suspicious": {
 				"noImplicitAnyLet": "off",
 				"noExplicitAny": "off",
-				"noArrayIndexKey": "off"
+				"noArrayIndexKey": "off",
+				"noUnknownAtRules": "off"
 			},
 			"correctness": {
 				"useExhaustiveDependencies": "off",
