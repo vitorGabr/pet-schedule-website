@@ -3,8 +3,12 @@
 import { Search } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import Banner from "@/images/hero-banner.png";
+import {
+	InputGroup,
+	InputGroupAddon,
+	InputGroupInput,
+} from "@/components/ui/input-group";
+import Banner from "@/images/hero-banner-2.webp";
 
 export function HeroSection() {
 	return (
@@ -17,7 +21,7 @@ export function HeroSection() {
 				className="object-cover"
 			/>
 
-			<div className="relative w-full h-full inset-0 bg-gradient-to-b from-primary/30 to-primary/50 flex justify-center items-center flex-col">
+			<div className="relative w-full h-full inset-0 bg-gradient-to-b from-primary/40 to-primary/60 flex justify-center items-center flex-col">
 				<div className="flex flex-col gap-6 text-center max-w-4xl px-4">
 					<h1 className="text-white text-3xl md:text-5xl font-bold">
 						Encontre os melhores serviços para pets perto de você
@@ -30,22 +34,23 @@ export function HeroSection() {
 				</div>
 
 				<form
-					className="mt-5 flex w-[90%] max-w-2xl items-center rounded-full bg-white shadow-lg h-16"
+					className="mt-5 flex w-[90%] max-w-2xl items-center rounded-full bg-white"
 					action="/s"
 				>
-					<div className="pl-5 pr-2">
-						<Search className="h-5 w-5 text-gray-500" />
-					</div>
-					<Input
-						name="q"
-						className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-[#0e1a13] focus:outline-0 focus:ring-0 border-none h-full placeholder:text-gray-500 text-base font-normal leading-normal"
-						placeholder="Pesquise por serviços, empresas ou locais"
-					/>
-					<div className="p-2">
-						<Button className="flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full px-6 text-base font-bold leading-normal tracking-[0.015em]">
-							<span className="truncate">Pesquisar</span>
-						</Button>
-					</div>
+					<InputGroup className="h-16 w-full min-w-0 flex-1 rounded-full">
+						<InputGroupInput
+							name="q"
+							placeholder="Pesquise por serviços, empresas ou locais"
+						/>
+						<InputGroupAddon>
+							<Search className="size-5" />
+						</InputGroupAddon>
+						<InputGroupAddon align="inline-end">
+							<Button className="flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full px-6 text-base font-bold leading-normal tracking-[0.015em]">
+								<span className="truncate">Pesquisar</span>
+							</Button>
+						</InputGroupAddon>
+					</InputGroup>
 				</form>
 			</div>
 		</div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useForm } from "@tanstack/react-form";
-import { Loader2 } from "lucide-react";
 import { parseAsStringLiteral, useQueryState } from "nuqs";
 import { TextField } from "@/components/form/fields/text-field";
 import { Button } from "@/components/ui/button";
@@ -17,6 +16,7 @@ import {
 	type SignUpWithConfirmPasswordFormData as FormDataSchema,
 	signUpWithConfirmPasswordSchema,
 } from "@/schemas/signup";
+import { Spinner } from "../ui/spinner";
 
 const defaultValues = {
 	name: "",
@@ -125,7 +125,7 @@ export function SignUpModal() {
 								disabled={!canSubmit || isSubmitting}
 							>
 								{isSubmitting ? (
-									<Loader2 className="w-5 h-5 animate-spin" />
+									<Spinner/>
 								) : (
 									"Criar conta"
 								)}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useForm } from "@tanstack/react-form";
-import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { parseAsStringLiteral as parseLiteral, useQueryState } from "nuqs";
 import { TextField } from "@/components/form/fields/text-field";
@@ -17,6 +16,7 @@ import {
 import { useMakeSignIn } from "@/hooks/use-make-signin";
 import type { SignInRequestDto } from "@/lib/http";
 import { signInBody } from "@/lib/http";
+import { Spinner } from "../ui/spinner";
 
 export function SignInModal() {
 	const [authMode, setAuthMode] = useQueryState(
@@ -114,9 +114,11 @@ export function SignInModal() {
 								disabled={!canSubmit || isSubmitting}
 							>
 								{isSubmitting ? (
-									<Loader2 className="w-5 h-5 animate-spin" />
+									<>
+										<Spinner /> Entrando...
+									</>
 								) : (
-									"Login"
+									"Entrar"
 								)}
 							</Button>
 						)}
