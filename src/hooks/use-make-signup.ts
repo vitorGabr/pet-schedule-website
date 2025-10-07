@@ -1,5 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
+import posthog from "posthog-js";
 import { toast } from "sonner";
 import {
 	getGetSessionQueryKey,
@@ -33,6 +34,10 @@ export const useMakeSignUp = ({ onSuccess }: Props) => {
 
 			toast.success("Conta criada com sucesso");
 			onSuccess?.();
+			posthog.identify(response.id, {
+				email: response.email,
+				name: response.name,
+			});
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				toast.error(

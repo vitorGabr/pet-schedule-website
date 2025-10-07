@@ -41,15 +41,6 @@ export function UserMenu({ name, email, avatar }: UserMenuProps) {
 					</span>
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				{/* <DropdownMenuGroup>
-					<DropdownMenuItem asChild>
-						<Link href="/profile">
-							<UserCircle size={16} className="opacity-60" aria-hidden="true" />
-							<span>Minha Conta</span>
-						</Link>
-					</DropdownMenuItem>
-				</DropdownMenuGroup> */}
-				<DropdownMenuSeparator />
 				<DropdownMenuItem onClick={handleLogout}>
 					<LogOutIcon size={16} className="opacity-60" aria-hidden="true" />
 					<span>Sair</span>

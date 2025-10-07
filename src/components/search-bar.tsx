@@ -3,6 +3,7 @@
 import { useForm } from "@tanstack/react-form";
 import { Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import posthog from "posthog-js";
 import z from "zod";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 
@@ -17,7 +18,10 @@ export function SearchBar() {
 		defaultValues: { q: searchParams.get("q") ?? "" } as z.input<
 			typeof searchSchema
 		>,
-		onSubmit: ({ value }) => router.push(`/s?q=${value.q}`),
+		onSubmit: ({ value }) => {
+			router.push(`/s?q=${value.q}`);
+			posthog.capture("search", { query: value.q });
+		},
 	});
 
 	return (
