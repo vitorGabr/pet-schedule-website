@@ -65,7 +65,7 @@ export default async function PetsPage(props: PageProps<"/pets">) {
 			</div>
 
 			<DeletePetDialog />
-			<EditPetModal/>
+			<EditPetModal />
 		</div>
 	);
 }

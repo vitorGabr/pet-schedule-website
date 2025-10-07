@@ -15,7 +15,6 @@ import {
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-	DialogTrigger,
 } from "@/components/ui/dialog";
 import { updateAnimal, updateAnimalBody, useGetAnimalById } from "@/lib/http";
 import { EditPetModalSkeleton } from "./edit-pet-modal-skeleton";
@@ -45,11 +44,6 @@ export function EditPetModal() {
 
 	return (
 		<Dialog open={!!id} onOpenChange={handleBack}>
-			<DialogTrigger asChild>
-				<Button variant="outline" size="sm">
-					Editar
-				</Button>
-			</DialogTrigger>
 			<DialogContent className="w-full max-w-md">
 				<DialogHeader className="items-start flex">
 					<DialogTitle>Editar animalde estimação</DialogTitle>
