@@ -20,7 +20,7 @@ export function TextField({
 }: Props) {
 	return (
 		<Field data-invalid={!meta?.isValid}>
-			<FieldLabel htmlFor={name}></FieldLabel>
+			<FieldLabel htmlFor={name}>{label}</FieldLabel>
 			<Input
 				id={name}
 				type="text"

@@ -2,7 +2,7 @@
 
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { useQueryState } from "nuqs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { ListAnimalFromUserResponseDtoOutputItemsItem } from "@/lib/http";
@@ -11,10 +11,14 @@ import { useModalStore } from "@/stores/modal-store";
 type PetCardProps = { pet: ListAnimalFromUserResponseDtoOutputItemsItem };
 
 export function PetCard({ pet }: PetCardProps) {
+	const [_, setId] = useQueryState("id");
 	const open = useModalStore((state) => state.open);
 
 	return (
-		<Card className="hover:shadow-lg transition-shadow py-0">
+		<Card
+			className="cursor-pointer hover:shadow-lg transition-shadow py-0"
+			onClick={() => setId(pet.id)}
+		>
 			<CardContent className="p-6">
 				<div className="flex items-start gap-4">
 					{pet.asset?.url ? (
@@ -43,8 +47,8 @@ export function PetCard({ pet }: PetCardProps) {
 				</div>
 
 				<div className="flex justify-end gap-2 mt-4">
-					<Button variant="outline" size="sm" asChild>
-						<Link href={{ query: { id: pet.id } }}>Editar</Link>
+					<Button variant="outline" size="sm" onClick={() => setId(pet.id)}>
+						Editar
 					</Button>
 					<Button
 						onClick={() => open({ key: "delete-pet", data: pet })}

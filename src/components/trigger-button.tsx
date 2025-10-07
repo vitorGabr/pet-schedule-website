@@ -1,6 +1,6 @@
 "use client";
 
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from "radix-ui";
 import { useShallow } from "zustand/react/shallow";
 import { useModalStore } from "@/stores/modal-store";
 
@@ -11,5 +11,5 @@ interface TriggerButtonProps {
 
 export function TriggerButton({ children, modal }: TriggerButtonProps) {
 	const open = useModalStore(useShallow((s) => s.open));
-	return <Slot onClick={() => open(modal)}>{children}</Slot>;
+	return <Slot.Root onClick={() => open(modal)}>{children}</Slot.Root>;
 }

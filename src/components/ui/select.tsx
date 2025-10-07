@@ -20,7 +20,7 @@ function SelectGroup({
 
 function SelectValue({
 	...props
-}: React.ComponentProps<typeof SelectPrimitive.Value>) {
+}: Omit<React.ComponentProps<typeof SelectPrimitive.Value>,'onValueChange'>) {
 	return <SelectPrimitive.Value data-slot="select-value" {...props} />;
 }
 
