@@ -32,14 +32,6 @@ export const AppointmentDetailModal = () => {
 		query: { enabled: !!id, queryKey: ["appointment", id] },
 	});
 
-	if (isLoading) {
-		return (
-			<AppointmentDetailModalSkeleton
-				isOpen={!!id}
-				onClose={() => setId(null)}
-			/>
-		);
-	}
 	if (!appointmentData) return null;
 
 	const start = new Date(appointmentData?.startDate ?? "");
@@ -62,88 +54,96 @@ export const AppointmentDetailModal = () => {
 					</div>
 				</DialogHeader>
 
-				<div className="overflow-y-auto">
-					<DialogDescription asChild>
-						<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-							<div className="lg:col-span-3 space-y-6">
-								<div className="rounded-lg border bg-background p-6">
-									<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-										<InfoItem
-											icon={<Scissors className="h-5 w-5" />}
-											label="Serviço"
-											value={
-												<span className="text-primary">
-													{appointmentData.service.name}
-												</span>
-											}
-										/>
-										<InfoItem
-											icon={<MapPin className="h-5 w-5" />}
-											label="Local"
-											value={<span>{appointmentData.company.name}</span>}
-										/>
-										<InfoItem
-											icon={<CalendarDays className="h-5 w-5" />}
-											label="Data e Hora"
-											value={
-												<span>{format(start, "PPP, p", { locale: ptBR })}</span>
-											}
-										/>
-										<InfoItem
-											icon={<Clock className="h-5 w-5" />}
-											label="Duração"
-											value={
-												<span>
-													{minutes >= 60
-														? `${hours}h${mins ? ` ${mins}min` : ""}`
-														: `${minutes}min`}
-												</span>
-											}
-										/>
-										<InfoItem
-											icon={<DollarSign className="h-5 w-5" />}
-											label="Valor"
-											value={
-												<span className="font-semibold">
-													{appointmentData.price.toLocaleString("pt-BR", {
-														style: "currency",
-														currency: "BRL",
-													})}
-												</span>
-											}
+				{isLoading ? (
+					<AppointmentDetailModalSkeleton/>
+				) : (
+					<>
+						<div className="overflow-y-auto">
+							<DialogDescription asChild>
+								<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+									<div className="lg:col-span-3 space-y-6">
+										<div className="rounded-lg border bg-background p-6">
+											<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+												<InfoItem
+													icon={<Scissors className="h-5 w-5" />}
+													label="Serviço"
+													value={
+														<span className="text-primary">
+															{appointmentData.service.name}
+														</span>
+													}
+												/>
+												<InfoItem
+													icon={<MapPin className="h-5 w-5" />}
+													label="Local"
+													value={<span>{appointmentData.company.name}</span>}
+												/>
+												<InfoItem
+													icon={<CalendarDays className="h-5 w-5" />}
+													label="Data e Hora"
+													value={
+														<span>
+															{format(start, "PPP, p", { locale: ptBR })}
+														</span>
+													}
+												/>
+												<InfoItem
+													icon={<Clock className="h-5 w-5" />}
+													label="Duração"
+													value={
+														<span>
+															{minutes >= 60
+																? `${hours}h${mins ? ` ${mins}min` : ""}`
+																: `${minutes}min`}
+														</span>
+													}
+												/>
+												<InfoItem
+													icon={<DollarSign className="h-5 w-5" />}
+													label="Valor"
+													value={
+														<span className="font-semibold">
+															{appointmentData.price.toLocaleString("pt-BR", {
+																style: "currency",
+																currency: "BRL",
+															})}
+														</span>
+													}
+												/>
+											</div>
+										</div>
+
+										<AnimalCard animal={appointmentData.animal} />
+
+										<DetailsList
+											animal={appointmentData.animal}
+											client={appointmentData.client}
+											coatType={appointmentData.coatType}
+											startDate={start}
+											endDate={end}
 										/>
 									</div>
 								</div>
-
-								<AnimalCard animal={appointmentData.animal} />
-
-								<DetailsList
-									animal={appointmentData.animal}
-									client={appointmentData.client}
-									coatType={appointmentData.coatType}
-									startDate={start}
-									endDate={end}
-								/>
-							</div>
+							</DialogDescription>
 						</div>
-					</DialogDescription>
-				</div>
-				<div className="px-6 py-4 w-full border flex items-center justify-between">
-					<div>
-						<p className="font-semibold leading-none">
-							{appointmentData.service.name}
-						</p>
-					</div>
-					<div className="text-right">
-						<p className="text-sm text-muted-foreground">Preço</p>
-						<p className="text-lg font-semibold">
-							{appointmentData.price.toLocaleString("pt-BR", {
-								style: "currency",
-								currency: "BRL",
-							})}
-						</p>
-					</div>
-				</div>
+						<div className="px-6 py-4 w-full border flex items-center justify-between">
+							<div>
+								<p className="font-semibold leading-none">
+									{appointmentData.service.name}
+								</p>
+							</div>
+							<div className="text-right">
+								<p className="text-sm text-muted-foreground">Preço</p>
+								<p className="text-lg font-semibold">
+									{appointmentData.price.toLocaleString("pt-BR", {
+										style: "currency",
+										currency: "BRL",
+									})}
+								</p>
+							</div> 
+						</div>
+					</>
+				)}
 			</DialogContent>
 		</Dialog>
 	);
