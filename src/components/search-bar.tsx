@@ -5,12 +5,21 @@ import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { parseAsString, useQueryState } from "nuqs";
 import posthog from "posthog-js";
+import { Suspense } from "react";
 import z from "zod";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 
 const searchSchema = z.object({ q: z.string().trim().min(1).optional() });
 
 export function SearchBar() {
+	return (
+		<Suspense fallback={<div className="flex-1" />}>
+			<Content />
+		</Suspense>
+	);
+}
+
+function Content() {
 	const router = useRouter();
 	const [q] = useQueryState("q", parseAsString);
 
