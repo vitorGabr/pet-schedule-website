@@ -4,7 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { Footer } from "@/components/footer";
-import { MainHeader } from "@/components/navigation/main-header";
 import { Toaster } from "@/components/ui/sonner";
 import { Providers } from "./providers";
 
@@ -29,8 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 			<body className={`${spaceGrotesk.variable} font-sans antialiased`}>
 				<Providers>
 					<div className="relative flex size-full min-h-screen flex-col bg-[#f8fbfa] group/design-root">
-						<MainHeader />
-						<main>{children}</main>
+						{children}
 						<Footer />
 						<Toaster />
 						<SpeedInsights />

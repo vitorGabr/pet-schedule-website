@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ScrollArea } from "./ui/scroll-area";
 
 const categories = [
 	{ id: "todos", label: "Todos", tag: "" },
@@ -27,7 +26,7 @@ export function CategoryTabs() {
 	}
 
 	return (
-		<ScrollArea className="bg-background border-b border-border px-10 py-4 w-full">
+		<div className="bg-background border-b border-border px-10 py-4 w-full overflow-x-auto">
 			<div className="flex items-center gap-6 w-max">
 				{categories.map((category) => (
 					<Button
@@ -48,6 +47,6 @@ export function CategoryTabs() {
 					</Button>
 				))}
 			</div>
-		</ScrollArea>
+		</div>
 	);
 }

@@ -4,12 +4,10 @@ import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { AUTH_ROUTES, BASE_ROUTES } from "@/constants/base-routes";
-import { useGetSession } from "@/lib/http";
+import { BASE_ROUTES } from "@/constants/base-routes";
 
 export const MobileMenu = () => {
 	const pathname = usePathname();
-	const { data: session } = useGetSession();
 	const [open, setOpen] = useState(false);
 	const buttonRef = useRef<HTMLButtonElement | null>(null);
 	const menuRef = useRef<HTMLDivElement | null>(null);
@@ -54,7 +52,7 @@ export const MobileMenu = () => {
 					role="menu"
 					className="bg-popover absolute left-0 z-50 mt-2 w-56 rounded-xl border p-2 shadow-md"
 				>
-					{[...BASE_ROUTES, ...(session ? AUTH_ROUTES : [])].map((link) => {
+					{[...BASE_ROUTES].map((link) => {
 						const isActive = pathname === link.href;
 						return (
 							<Link

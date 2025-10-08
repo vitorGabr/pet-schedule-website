@@ -1,4 +1,4 @@
-import { Inbox } from "@novu/react";
+import { Inbox } from "@novu/nextjs";
 import { Bell } from "lucide-react";
 
 type NotificationMenuProps = { subscriberId: string };

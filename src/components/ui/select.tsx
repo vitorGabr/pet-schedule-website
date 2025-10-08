@@ -1,7 +1,7 @@
 "use client";
 
-import * as SelectPrimitive from "@radix-ui/react-select";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import { Select as SelectPrimitive } from "radix-ui";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -20,7 +20,7 @@ function SelectGroup({
 
 function SelectValue({
 	...props
-}: Omit<React.ComponentProps<typeof SelectPrimitive.Value>,'onValueChange'>) {
+}: Omit<React.ComponentProps<typeof SelectPrimitive.Value>, "onValueChange">) {
 	return <SelectPrimitive.Value data-slot="select-value" {...props} />;
 }
 

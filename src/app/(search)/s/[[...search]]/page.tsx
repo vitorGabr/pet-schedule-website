@@ -32,7 +32,7 @@ export default async function SearchPage(props: PageProps<"/s/[[...search]]">) {
 	});
 
 	return (
-		<div className="bg-muted/50 px-10 py-8">
+		<div className="bg-muted/50 px-5 md:px-10 py-4 md:py-8">
 			<div className="mb-6">
 				<h2 className="text-2xl font-bold text-foreground mb-2">
 					Encontre a melhor empresa para seu pet
