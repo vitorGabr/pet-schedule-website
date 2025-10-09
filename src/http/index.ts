@@ -1,6 +1,6 @@
 export * from "./generated/zod/agendamentos/agendamentos";
 export * from "./generated/zod/animais/animais";
-export * from "./generated/zod/aPIDeCuidadosComAnimais.schemas";
+//export * from "./generated/zod/aPIDeCuidadosComAnimais.schemas";
 export * from "./generated/zod/autenticação/autenticação";
 export * from "./generated/zod/avaliações/avaliações";
 export * from "./generated/zod/colaboradores/colaboradores";
