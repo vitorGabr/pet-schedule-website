@@ -55,7 +55,7 @@ export const AppointmentDetailModal = () => {
 				</DialogHeader>
 
 				{isLoading ? (
-					<AppointmentDetailModalSkeleton/>
+					<AppointmentDetailModalSkeleton />
 				) : (
 					<>
 						<div className="overflow-y-auto">
@@ -140,7 +140,7 @@ export const AppointmentDetailModal = () => {
 										currency: "BRL",
 									})}
 								</p>
-							</div> 
+							</div>
 						</div>
 					</>
 				)}

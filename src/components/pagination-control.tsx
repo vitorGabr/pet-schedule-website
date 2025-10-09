@@ -40,7 +40,11 @@ export function PaginationControl({ totalPages }: PaginationProps) {
 						<Button
 							variant="outline"
 							className="aria-disabled:pointer-events-none aria-disabled:opacity-50"
-							aria-disabled={(currentPage === totalPages || totalPages === 0) ? true : undefined}
+							aria-disabled={
+								currentPage === totalPages || totalPages === 0
+									? true
+									: undefined
+							}
 							role={currentPage === totalPages ? "link" : undefined}
 							onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
 						>

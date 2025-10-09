@@ -124,11 +124,7 @@ export function SignUpModal() {
 								className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
 								disabled={!canSubmit || isSubmitting}
 							>
-								{isSubmitting ? (
-									<Spinner/>
-								) : (
-									"Criar conta"
-								)}
+								{isSubmitting ? <Spinner /> : "Criar conta"}
 							</Button>
 						)}
 					</form.Subscribe>

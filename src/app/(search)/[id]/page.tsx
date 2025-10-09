@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
 	Card,
@@ -14,12 +15,14 @@ import {
 } from "@/components/ui/card";
 import { verifySession } from "@/lib/auth/verify-session";
 import {
+	checkRatingEligibility,
 	getCompanyById,
 	listAnimalsFromUser,
 	listCompanyRatings,
 } from "@/lib/http";
 import { BookingModal } from "../../../components/booking/modal";
 import { ContactInfo } from "./_components/contact-info";
+import { CreateReviewForm } from "./_components/create-review-form";
 import { LocationMap } from "./_components/location-map";
 import { ServiceCard } from "./_components/service-card";
 
@@ -87,10 +90,23 @@ export default async function EmpresaPage({ params }: Props) {
 	const company = await getCompanyById(id).catch(() => null);
 
 	if (!company) return notFound();
-	const [reviews, animals] = await Promise.all([
+	const [reviews, animals, ratingEligibility] = await Promise.all([
 		listCompanyRatings(id).catch(() => null),
-		listAnimalsFromUser(session?.id ?? "").catch(() => null),
+		session
+			? listAnimalsFromUser(session.id).catch(() => null)
+			: Promise.resolve(null),
+		checkRatingEligibility(id).catch(() => null),
 	]);
+
+	const canShowReviewForm = Boolean(session?.id && ratingEligibility?.canRate);
+	const ratingEligibilityMessage = ratingEligibility?.reason
+		? {
+				ALREADY_RATED:
+					"Você já compartilhou uma avaliação para esta empresa. Obrigado!",
+				NO_COMPLETED_APPOINTMENT:
+					"Conclua um atendimento com esta empresa para liberar a avaliação.",
+			}[ratingEligibility.reason]
+		: null;
 
 	return (
 		<div className="min-h-screen bg-background">
@@ -166,6 +182,21 @@ export default async function EmpresaPage({ params }: Props) {
 								</div>
 							</CardContent>
 						</Card>
+
+						{canShowReviewForm && (
+							<CreateReviewForm
+								companyId={company.id ?? ""}
+								companyName={company.name}
+								initialRating={5}
+								className="border border-dashed"
+							/>
+						)}
+						{session?.id && !canShowReviewForm && ratingEligibilityMessage && (
+							<Alert className="border border-dashed">
+								<AlertTitle>Avaliação indisponível</AlertTitle>
+								<AlertDescription>{ratingEligibilityMessage}</AlertDescription>
+							</Alert>
+						)}
 
 						{/* Reviews */}
 						<Card>
