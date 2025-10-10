@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
 	typedRoutes: true,
-	experimental: { ppr: "incremental" },
+	experimental: { turbopackFileSystemCacheForDev: true },
 	reactCompiler: true,
 	images: {
 		remotePatterns: [

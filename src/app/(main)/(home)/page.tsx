@@ -8,7 +8,6 @@ import { StatsSection } from "./_components/stats-section";
 import { TestimonialsSection } from "./_components/testimonials-section";
 import { WhyChooseUsSection } from "./_components/why-choose-us-section";
 
-export const experimental_ppr = true;
 export default function Home() {
 	return (
 		<div className="flex flex-1 flex-col">

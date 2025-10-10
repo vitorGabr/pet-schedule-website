@@ -1,6 +1,6 @@
 "use server";
 import type { Route } from "next";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 
 type Props =
 	| { type: "tag"; tags: readonly string[] }
@@ -8,7 +8,7 @@ type Props =
 
 export const revalidateCache = async (props: Props) => {
 	if (props.type === "tag") {
-		await Promise.all(props.tags.map(revalidateTag));
+		await Promise.all(props.tags.map(updateTag));
 		return;
 	}
 	revalidatePath(props.path, props.mode);
