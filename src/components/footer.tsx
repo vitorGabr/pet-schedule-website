@@ -10,7 +10,7 @@ export function Footer() {
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
 					{/* Company Information */}
 					<div className="space-y-4">
-						<Image src={Logo} alt="Logo" width={70} height={70} />
+						<Image src={Logo} alt="Logo" width={100} />
 						<p className="text-gray-700 text-sm leading-relaxed">
 							Cuidando do seu pet com amor e profissionalismo desde 2020.
 						</p>

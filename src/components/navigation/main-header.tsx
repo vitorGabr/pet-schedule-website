@@ -12,8 +12,8 @@ export function MainHeader() {
 	return (
 		<header className="bg-background flex items-center justify-between border-b border-solid px-4 md:px-10 min-h-16">
 			<MobileMenu />
-			<Link href="/" className="h-10">
-				<Image src={Logo} alt="Logo" width={70} height={70} />
+			<Link href="/" className="h-10 flex items-center justify-center">
+				<Image src={Logo} alt="Logo" width={100} />
 			</Link>
 			<LinksSection />
 			<Await

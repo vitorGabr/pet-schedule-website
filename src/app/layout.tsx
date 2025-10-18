@@ -6,6 +6,9 @@ import { Space_Grotesk } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { Providers } from "./providers";
+import { SignInModal } from "@/components/auth/sign-in";
+import { SignUpModal } from "@/components/auth/sign-up";
+import { Suspense } from "react";
 
 const spaceGrotesk = Space_Grotesk({
 	variable: "--font-space-grotesk",
@@ -33,6 +36,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 						<Toaster />
 						<SpeedInsights />
 						<Analytics />
+						<Suspense>
+							<SignInModal />
+							<SignUpModal />
+						</Suspense>
 					</div>
 				</Providers>
 			</body>
