@@ -25,6 +25,7 @@ import type { BodyType, ErrorType } from "../../../../client-fetch";
 import { customFetch } from "../../../../client-fetch";
 import type {
 	CreateAppointmentRequestDto,
+	CreateAppointmentResponseDtoOutput,
 	ListAvailableDatesResponseDtoOutput,
 } from "../../models";
 
@@ -225,13 +226,13 @@ export function useListAvailableDates<
 }
 
 /**
- * @summary Cria um agendamento, iniciando o processo de pagamento
+ * @summary Iniciando o processo de pagamento
  */
 export const createAppointment = (
 	createAppointmentRequestDto: BodyType<CreateAppointmentRequestDto>,
 	options?: SecondParameter<typeof customFetch>,
 ) => {
-	return customFetch<void>(
+	return customFetch<CreateAppointmentResponseDtoOutput>(
 		{
 			url: `/booking/create`,
 			method: "POST",
@@ -288,7 +289,7 @@ export type CreateAppointmentMutationBody =
 export type CreateAppointmentMutationError = ErrorType<unknown>;
 
 /**
- * @summary Cria um agendamento, iniciando o processo de pagamento
+ * @summary Iniciando o processo de pagamento
  */
 export const useCreateAppointment = <
 	TError = ErrorType<unknown>,

@@ -89,6 +89,7 @@ export * from "./create-animal-response-dto-output";
 export * from "./create-appointment-request-dto";
 export * from "./create-appointment-request-dto-coat-type";
 export * from "./create-appointment-request-dto-date";
+export * from "./create-appointment-response-dto-output";
 export * from "./create-rating-request-dto";
 export * from "./create-service-request-dto";
 export * from "./dashboard-metrics-response-output";

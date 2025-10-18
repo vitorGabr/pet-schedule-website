@@ -1,6 +1,6 @@
 import { MapPin, Phone } from "lucide-react";
 import Image from "next/image";
-import Logo from "@/images/logo.png";
+import Logo from "@/images/logo.svg";
 
 export function Footer() {
 	return (

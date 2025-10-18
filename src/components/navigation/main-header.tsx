@@ -5,7 +5,7 @@ import { Await } from "@/components/await";
 import { LinksSection } from "@/components/navigation/links-section";
 import { MobileMenu } from "@/components/navigation/mobile-menu";
 import { Skeleton } from "@/components/ui/skeleton";
-import Logo from "@/images/logo.png";
+import Logo from "@/images/logo.svg";
 import { verifySession } from "@/lib/auth/verify-session";
 
 export function MainHeader() {

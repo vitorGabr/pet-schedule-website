@@ -16,7 +16,7 @@ export const listAvailableDatesParams = zod.object({
 });
 
 /**
- * @summary Cria um agendamento, iniciando o processo de pagamento
+ * @summary Iniciando o processo de pagamento
  */
 export const createAppointmentBody = zod.object({
 	date: zod.union([zod.iso.datetime({}), zod.iso.date()]),

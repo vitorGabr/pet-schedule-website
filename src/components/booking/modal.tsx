@@ -48,10 +48,9 @@ export function BookingModal({
 		validators: { onChange: createBookingSchema },
 		onSubmit: async ({ value }) => {
 			try {
-				await createAppointment(createBookingSchema.parse(value));
+				const result = await createAppointment(createBookingSchema.parse(value));
 				handleClose();
-				toast.success("Agendamento criado com sucesso");
-				router.push("/appointments");
+				router.push(result.checkoutUrl || "/appointments" as any);
 			} catch (error) {
 				if (error instanceof AxiosError) {
 					toast.error(

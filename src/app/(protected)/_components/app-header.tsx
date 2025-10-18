@@ -2,7 +2,7 @@ import { Bell } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Logo from "@/images/logo.png";
+import Logo from "@/images/logo.svg";
 import { verifySession } from "@/lib/auth/verify-session";
 
 export async function AppHeader() {

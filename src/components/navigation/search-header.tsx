@@ -4,7 +4,7 @@ import { AuthSection } from "@/components/auth/auth-section";
 import { Await } from "@/components/await";
 import { MobileMenu } from "@/components/navigation/mobile-menu";
 import { Skeleton } from "@/components/ui/skeleton";
-import Logo from "@/images/logo.png";
+import Logo from "@/images/logo.svg";
 import { verifySession } from "@/lib/auth/verify-session";
 import { SearchBar } from "../search-bar";
 
