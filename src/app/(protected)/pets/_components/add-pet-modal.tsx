@@ -32,7 +32,6 @@ import { revalidateCache } from "@/utils/revalidate";
 
 interface AddPetModalProps {
 	breeds: BreedListResponseOutputItemsItem[];
-	userId: string;
 }
 
 const schema = createAnimalBody.and(addAssetToAnimalBody);
@@ -40,7 +39,7 @@ const defaultValues = { name: "", weight: 0, age: 0, breedId: "" } as z.input<
 	typeof schema
 >;
 
-export function AddPetModal({ breeds, userId }: AddPetModalProps) {
+export function AddPetModal({ breeds }: AddPetModalProps) {
 	const [open, setOpen] = useState(false);
 	const queryClient = useQueryClient();
 
@@ -52,7 +51,7 @@ export function AddPetModal({ breeds, userId }: AddPetModalProps) {
 				const reponse = await createAnimal(value);
 				await addAssetToAnimal(reponse.id, { file: value.file });
 				await queryClient.invalidateQueries({
-					queryKey: getListAnimalsFromUserQueryKey(userId),
+					queryKey: getListAnimalsFromUserQueryKey(),
 				});
 				await revalidateCache({ type: "tag", tags: ["pets"] });
 				toast.success("Pet adicionado com sucesso!");

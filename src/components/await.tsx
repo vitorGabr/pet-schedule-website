@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 type AwaitProps<T extends Promise<any> | (() => Promise<any>)> = {
 	promise: T;
-	children: (data: Awaited<T>) => React.ReactNode;
+	children: ((data: Awaited<T>) => React.ReactNode) | React.ReactNode;
 	fallback?: React.ReactNode;
 };
 
@@ -23,5 +23,5 @@ async function AwaitClient<T extends Promise<any> | (() => Promise<any>)>({
 	children,
 }: AwaitProps<T>) {
 	const data = await promise;
-	return children(data);
+	return typeof children === "function" ? children(data) : children;
 }

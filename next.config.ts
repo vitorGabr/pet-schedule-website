@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
 	typedRoutes: true,
 	experimental: { turbopackFileSystemCacheForDev: true },
 	reactCompiler: true,
+	cacheComponents: true,
 	images: {
 		remotePatterns: [
 			{ protocol: "https", hostname: "lh3.googleusercontent.com" },

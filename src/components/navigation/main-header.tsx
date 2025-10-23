@@ -1,12 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AuthSection } from "@/components/auth/auth-section";
-import { Await } from "@/components/await";
+import { AuthSection } from "@/components/auth-section";
 import { LinksSection } from "@/components/navigation/links-section";
 import { MobileMenu } from "@/components/navigation/mobile-menu";
-import { Skeleton } from "@/components/ui/skeleton";
 import Logo from "@/images/logo.svg";
-import { verifySession } from "@/lib/auth/verify-session";
 
 export function MainHeader() {
 	return (
@@ -16,12 +13,7 @@ export function MainHeader() {
 				<Image src={Logo} alt="Logo" width={100} />
 			</Link>
 			<LinksSection />
-			<Await
-				promise={verifySession()}
-				fallback={<Skeleton className="w-10 h-10 rounded-full" />}
-			>
-				{(data) => <AuthSection user={data} />}
-			</Await>
+			<AuthSection />
 		</header>
 	);
 }

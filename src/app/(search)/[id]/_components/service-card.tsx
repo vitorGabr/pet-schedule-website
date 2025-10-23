@@ -14,11 +14,11 @@ type Props = {
 };
 
 export function ServiceCard({ service, authenticated, hasAnimal }: Props) {
+	const [__, setServiceId] = useQueryState("id", parseAsString);
 	const [_, setAuthMode] = useQueryState(
 		"auth",
 		parseAsStringLiteral(["signin", "signup"]),
 	);
-	const [__, setServiceId] = useQueryState("id", parseAsString);
 
 	function handleBooking() {
 		if (!authenticated) return setAuthMode("signin");
