@@ -29,8 +29,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
 					colorBackground: "var(--background)",
 				},
 				elements: {
-					formButtonPrimary: 'bg-slate-500 hover:bg-slate-400 text-sm',
-				}
+					formButtonPrimary: "bg-slate-500 hover:bg-slate-400 text-sm",
+				},
 			}}
 		>
 			<NuqsAdapter>

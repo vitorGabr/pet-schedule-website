@@ -7,7 +7,7 @@ export const AXIOS_INSTANCE = Axios.create({
 });
 
 AXIOS_INSTANCE.interceptors.request.use(async (config) => {
-	const token = await getCookie("__session")
+	const token = await getCookie("__session");
 	if (token) {
 		config.headers.Authorization = `Bearer ${token}`;
 	}

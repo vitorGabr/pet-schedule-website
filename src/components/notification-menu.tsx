@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useUser } from "@clerk/nextjs";
 import { Inbox } from "@novu/nextjs";
@@ -6,7 +6,7 @@ import { Bell } from "lucide-react";
 
 export function NotificationMenu() {
 	const { user } = useUser();
-	
+
 	if (!user) {
 		return null;
 	}

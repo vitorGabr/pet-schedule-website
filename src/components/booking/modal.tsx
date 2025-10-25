@@ -38,10 +38,9 @@ export function BookingModal({
 	} = useGetServiceById(serviceId!, { query: { enabled: !!serviceId } });
 
 	const form = useForm({
-		defaultValues: {
-			date: new Date(),
-			serviceId: service?.id,
-		} as z.input<typeof createBookingSchema>,
+		defaultValues: { date: new Date(), serviceId: service?.id } as z.input<
+			typeof createBookingSchema
+		>,
 		validators: { onChange: createBookingSchema },
 		onSubmit: async ({ value }) => {
 			try {

@@ -22,7 +22,8 @@ export function DeletePetDialog() {
 	const deleteAnimalMutation = useDeleteAnimal();
 
 	const handleDelete = async () => {
-		await deleteAnimalMutation.mutateAsync({ id: data?.id! });
+		if (!data) return;
+		await deleteAnimalMutation.mutateAsync({ id: data.id });
 		await revalidateCache({ type: "path", path: "/pets" });
 
 		toast.success(`${data?.name} foi removido com sucesso!`);
@@ -36,7 +37,7 @@ export function DeletePetDialog() {
 			<AlertDialogContent>
 				<AlertDialogHeader>
 					<div className="flex items-center gap-3">
-						<div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+						<div className="shrink-0 w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
 							<AlertTriangle className="w-5 h-5 text-red-600" />
 						</div>
 						<div>

@@ -12,7 +12,7 @@ export async function AppHeader() {
 		<header className="flex items-center justify-between whitespace-nowrap px-6 py-4 bg-muted border-b border-primary/10">
 			<div className="flex items-center gap-6">
 				<Link href="/" className="h-10 flex items-center justify-center">
-					<Image src={Logo} alt="Logo" width={100}/>
+					<Image src={Logo} alt="Logo" width={100} />
 				</Link>
 				<nav className="flex items-center gap-6 text-sm text-primary font-medium">
 					<Link href="/pets">Meus Pets</Link>
