@@ -48,7 +48,6 @@ const ratingLabels: Record<number, string> = {
 	5: "Excelente",
 };
 
-
 export function CreateReviewForm({
 	companyId,
 	companyName,

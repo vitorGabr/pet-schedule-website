@@ -3,12 +3,10 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { Suspense } from "react";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { Providers } from "./providers";
-import { SignInModal } from "@/components/auth/sign-in";
-import { SignUpModal } from "@/components/auth/sign-up";
-import { Suspense } from "react";
 
 const spaceGrotesk = Space_Grotesk({
 	variable: "--font-space-grotesk",
@@ -29,19 +27,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 	return (
 		<html lang="pt-BR">
 			<body className={`${spaceGrotesk.variable} font-sans antialiased`}>
-				<Providers>
-					<div className="relative flex size-full min-h-screen flex-col bg-[#f8fbfa] group/design-root">
-						{children}
-						<Footer />
-						<Toaster />
-						<SpeedInsights />
-						<Analytics />
-						<Suspense>
-							<SignInModal />
-							<SignUpModal />
-						</Suspense>
-					</div>
-				</Providers>
+				<Suspense>
+					<Providers>
+						<div className="relative flex size-full min-h-screen flex-col bg-[#f8fbfa] group/design-root">
+							{children}
+							<Footer />
+							<Toaster />
+							<SpeedInsights />
+							<Analytics />
+						</div>
+					</Providers>
+				</Suspense>
 			</body>
 		</html>
 	);

@@ -1,9 +1,10 @@
 import { z } from "zod";
-import { signUpBody } from "@/lib/http";
 
-export const signUpWithConfirmPasswordSchema = signUpBody
-	.extend({
+export const signUpSchema = z
+	.object({
 		name: z.string().min(3, "Nome é obrigatório"),
+		email: z.email("Email inválido"),
+		password: z.string().min(6, "Senha deve ter no mínimo 6 caracteres"),
 		confirmPassword: z.string().min(1, "Confirmação de senha é obrigatória"),
 	})
 	.refine((data) => data.password === data.confirmPassword, {
@@ -11,6 +12,4 @@ export const signUpWithConfirmPasswordSchema = signUpBody
 		path: ["confirmPassword"],
 	});
 
-export type SignUpWithConfirmPasswordFormData = z.infer<
-	typeof signUpWithConfirmPasswordSchema
->;
+export type SignUpFormData = z.infer<typeof signUpSchema>;

@@ -25,10 +25,8 @@ import { SelectionDate } from "./selection-date";
 export function BookingModal({
 	companyId,
 	animals,
-	userId,
 }: {
 	companyId: string;
-	userId: string;
 	animals: ListAnimalFromUserResponseDtoOutputItemsItem[];
 }) {
 	const router = useRouter();
@@ -40,17 +38,17 @@ export function BookingModal({
 	} = useGetServiceById(serviceId!, { query: { enabled: !!serviceId } });
 
 	const form = useForm({
-		defaultValues: {
-			date: new Date(),
-			serviceId: service?.id,
-			userId: userId,
-		} as z.input<typeof createBookingSchema>,
+		defaultValues: { date: new Date(), serviceId: service?.id } as z.input<
+			typeof createBookingSchema
+		>,
 		validators: { onChange: createBookingSchema },
 		onSubmit: async ({ value }) => {
 			try {
-				const result = await createAppointment(createBookingSchema.parse(value));
+				const result = await createAppointment(
+					createBookingSchema.parse(value),
+				);
 				handleClose();
-				router.push(result.checkoutUrl || "/appointments" as any);
+				router.push(result.checkoutUrl || ("/appointments" as any));
 			} catch (error) {
 				if (error instanceof AxiosError) {
 					toast.error(

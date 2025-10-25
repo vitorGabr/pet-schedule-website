@@ -6,7 +6,6 @@ import { AxiosError } from "axios";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import type z from "zod";
 import { FileUpload } from "@/components/form/fields/file-upload";
 import { SelectField } from "@/components/form/fields/select-field";
 import { TextField } from "@/components/form/fields/text-field";
@@ -23,36 +22,35 @@ import {
 import type { BreedListResponseOutputItemsItem } from "@/lib/http";
 import {
 	addAssetToAnimal,
-	addAssetToAnimalBody,
 	createAnimal,
-	createAnimalBody,
 	getListAnimalsFromUserQueryKey,
 } from "@/lib/http";
+import { CreatePetSchema, createPetSchema } from "@/schemas/create-pet";
 import { revalidateCache } from "@/utils/revalidate";
 
 interface AddPetModalProps {
 	breeds: BreedListResponseOutputItemsItem[];
-	userId: string;
 }
 
-const schema = createAnimalBody.and(addAssetToAnimalBody);
-const defaultValues = { name: "", weight: 0, age: 0, breedId: "" } as z.input<
-	typeof schema
->;
-
-export function AddPetModal({ breeds, userId }: AddPetModalProps) {
+const defaultValues = {
+	name: "",
+	weight: 0,
+	age: 0,
+	breedId: "",
+} as CreatePetSchema;
+export function AddPetModal({ breeds }: AddPetModalProps) {
 	const [open, setOpen] = useState(false);
 	const queryClient = useQueryClient();
 
 	const form = useForm({
 		defaultValues,
-		validators: { onChange: schema },
+		validators: { onChange: createPetSchema },
 		onSubmit: async ({ value }) => {
 			try {
 				const reponse = await createAnimal(value);
 				await addAssetToAnimal(reponse.id, { file: value.file });
 				await queryClient.invalidateQueries({
-					queryKey: getListAnimalsFromUserQueryKey(userId),
+					queryKey: getListAnimalsFromUserQueryKey(),
 				});
 				await revalidateCache({ type: "tag", tags: ["pets"] });
 				toast.success("Pet adicionado com sucesso!");

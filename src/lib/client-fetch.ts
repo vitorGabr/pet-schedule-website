@@ -7,9 +7,9 @@ export const AXIOS_INSTANCE = Axios.create({
 });
 
 AXIOS_INSTANCE.interceptors.request.use(async (config) => {
-	const cookie = await getCookie("token");
-	if (cookie) {
-		config.headers.Authorization = `Bearer ${cookie}`;
+	const token = await getCookie("__session");
+	if (token) {
+		config.headers.Authorization = `Bearer ${token}`;
 	}
 	return config;
 });
