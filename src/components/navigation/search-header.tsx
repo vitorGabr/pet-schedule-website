@@ -1,11 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AuthSection } from "@/components/auth/auth-section";
-import { Await } from "@/components/await";
+import { AuthSection } from "@/components/auth-section";
 import { MobileMenu } from "@/components/navigation/mobile-menu";
-import { Skeleton } from "@/components/ui/skeleton";
 import Logo from "@/images/logo.svg";
-import { verifySession } from "@/lib/auth/verify-session";
 import { SearchBar } from "../search-bar";
 
 export function SearchHeader() {
@@ -19,12 +16,7 @@ export function SearchHeader() {
 				<div className="flex-1 hidden md:flex">
 					<SearchBar />
 				</div>
-				<Await
-					promise={verifySession()}
-					fallback={<Skeleton className="w-10 h-10 rounded-full" />}
-				>
-					{(data) => <AuthSection user={data} />}
-				</Await>
+				<AuthSection />
 			</div>
 			<div className="w-full md:hidden py-2 border-b">
 				<SearchBar />

@@ -1,15 +1,22 @@
+"use client";
+
+import { useUser } from "@clerk/nextjs";
 import { Inbox } from "@novu/nextjs";
 import { Bell } from "lucide-react";
 
-type NotificationMenuProps = { subscriberId: string };
+export function NotificationMenu() {
+	const { user } = useUser();
 
-export function NotificationMenu({ subscriberId }: NotificationMenuProps) {
+	if (!user) {
+		return null;
+	}
+
 	return (
 		<Inbox
 			applicationIdentifier={
 				process.env.NEXT_PUBLIC_NOVU_APPLICATION_IDENTIFIER ?? ""
 			}
-			subscriberId={subscriberId}
+			subscriberId={user.publicMetadata.appUserId as string}
 			renderBell={() => <Bell className="size-4 text-primary" />}
 			localization={{
 				locale: "pt-BR",

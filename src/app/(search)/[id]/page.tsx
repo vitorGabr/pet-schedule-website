@@ -1,3 +1,4 @@
+import { auth } from "@clerk/nextjs/server";
 import { format } from "date-fns";
 import { CheckCircle, MapPin, MessageCircle, Star } from "lucide-react";
 import type { Metadata } from "next";
@@ -13,7 +14,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { verifySession } from "@/lib/auth/verify-session";
 import {
 	checkRatingEligibility,
 	getCompanyById,
@@ -86,19 +86,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function EmpresaPage({ params }: Props) {
 	const { id } = await params;
 
-	const session = await verifySession();
+	const { isAuthenticated } = await auth();
 	const company = await getCompanyById(id).catch(() => null);
 
 	if (!company) return notFound();
 	const [reviews, animals, ratingEligibility] = await Promise.all([
 		listCompanyRatings(id).catch(() => null),
-		session
-			? listAnimalsFromUser(session.id).catch(() => null)
+		isAuthenticated
+			? listAnimalsFromUser().catch(() => null)
 			: Promise.resolve(null),
 		checkRatingEligibility(id).catch(() => null),
 	]);
 
-	const canShowReviewForm = Boolean(session?.id && ratingEligibility?.canRate);
+	const canShowReviewForm = Boolean(
+		isAuthenticated && ratingEligibility?.canRate,
+	);
 	const ratingEligibilityMessage = ratingEligibility?.reason
 		? {
 				ALREADY_RATED:
@@ -175,7 +177,7 @@ export default async function EmpresaPage({ params }: Props) {
 										<ServiceCard
 											key={service.id}
 											service={service}
-											authenticated={!!session?.id}
+											authenticated={!!isAuthenticated}
 											hasAnimal={!!animals?.items?.length}
 										/>
 									))}
@@ -191,12 +193,16 @@ export default async function EmpresaPage({ params }: Props) {
 								className="border border-dashed"
 							/>
 						)}
-						{session?.id && !canShowReviewForm && ratingEligibilityMessage && (
-							<Alert className="border border-dashed">
-								<AlertTitle>Avaliação indisponível</AlertTitle>
-								<AlertDescription>{ratingEligibilityMessage}</AlertDescription>
-							</Alert>
-						)}
+						{isAuthenticated &&
+							!canShowReviewForm &&
+							ratingEligibilityMessage && (
+								<Alert className="border border-dashed">
+									<AlertTitle>Avaliação indisponível</AlertTitle>
+									<AlertDescription>
+										{ratingEligibilityMessage}
+									</AlertDescription>
+								</Alert>
+							)}
 
 						{/* Reviews */}
 						<Card>
@@ -293,11 +299,10 @@ export default async function EmpresaPage({ params }: Props) {
 				</div>
 			</div>
 			<Suspense>
-				{session?.id && (
+				{isAuthenticated && (
 					<BookingModal
 						companyId={company.id ?? ""}
 						animals={animals?.items ?? []}
-						userId={session?.id}
 					/>
 				)}
 			</Suspense>
