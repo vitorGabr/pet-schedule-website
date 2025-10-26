@@ -9,10 +9,6 @@ import { Suspense } from "react";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
 import { Providers } from "./providers";
-<<<<<<< HEAD
-import { Suspense } from "react";
-=======
->>>>>>> f3fe5d04d0a27156c00ee30b370f95b3c066c47c
 
 const spaceGrotesk = Space_Grotesk({
 	variable: "--font-space-grotesk",
@@ -31,7 +27,6 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
 	return (
-<<<<<<< HEAD
 		<ClerkProvider
 			localization={ptBR}
 			appearance={{
@@ -61,22 +56,5 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 				</body>
 			</html>
 		</ClerkProvider>
-=======
-		<html lang="pt-BR">
-			<body className={`${spaceGrotesk.variable} font-sans antialiased`}>
-				<Suspense>
-					<Providers>
-						<div className="relative flex size-full min-h-screen flex-col bg-[#f8fbfa] group/design-root">
-							{children}
-							<Footer />
-							<Toaster />
-							<SpeedInsights />
-							<Analytics />
-						</div>
-					</Providers>
-				</Suspense>
-			</body>
-		</html>
->>>>>>> f3fe5d04d0a27156c00ee30b370f95b3c066c47c
 	);
 }
