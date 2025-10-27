@@ -1,5 +1,8 @@
+"use client";
+
 import { useSignIn, useSignUp } from "@clerk/nextjs";
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors";
+import { toast } from "sonner";
 import { SIGN_FORM_ERRORS } from "@/constants/sign-form-errors";
 import { SignInFormData } from "@/schemas/sign-in";
 import { SignUpFormData } from "@/schemas/sign-up";
@@ -27,7 +30,7 @@ export const useMakeSign = () => {
 				const message =
 					SIGN_FORM_ERRORS[code as keyof typeof SIGN_FORM_ERRORS] ||
 					"Ocorreu um erro ao criar a conta. Por favor, tente novamente.";
-				throw new Error(message);
+				toast.error(message);
 			}
 		}
 	};
@@ -47,7 +50,7 @@ export const useMakeSign = () => {
 				const message =
 					SIGN_FORM_ERRORS[code as keyof typeof SIGN_FORM_ERRORS] ||
 					"Ocorreu um erro ao criar a conta. Por favor, tente novamente.";
-				throw new Error(message);
+				toast.error(message);
 			}
 		}
 	};
