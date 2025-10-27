@@ -40,7 +40,6 @@ export const AppointmentDetailModal = () => {
 	const minutes = Math.max(0, differenceInMinutes(end, start));
 	const { hours = 0, minutes: mins = 0 } = intervalToDuration({ start, end });
 	const onPayClick = () => {
-		console.log(appointmentData.payment);
 		if (appointmentData.payment.checkoutUrl) {
 			window.location.href = appointmentData.payment.checkoutUrl;
 		}
