@@ -204,7 +204,7 @@ export function BookingModal({
 							<div className="flex justify-between items-center pt-4 border-t">
 								<div>
 									<div className="font-semibold">
-										Total: {formatCurrency(service?.price ?? 0)}
+										Total: {formatCurrency((service?.price ?? 0) / 100)}
 									</div>
 									<div className="text-sm text-muted-foreground">
 										<form.Subscribe
