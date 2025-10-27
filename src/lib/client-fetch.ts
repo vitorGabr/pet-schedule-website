@@ -20,9 +20,7 @@ AXIOS_INSTANCE.interceptors.response.use(
 		const url = error.config?.url;
 		const status = error.response?.status;
 
-		if ((status === 401 || status === 403) && !url?.startsWith("/auth")) {
-			await redirectTo("/");
-		}
+		
 		return Promise.reject(error);
 	},
 );
