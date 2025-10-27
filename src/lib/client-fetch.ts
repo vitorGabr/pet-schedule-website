@@ -1,6 +1,5 @@
 import Axios, { type AxiosError, type AxiosRequestConfig } from "axios";
 import { getCookie } from "@/utils/cookie";
-import { redirectTo } from "@/utils/redirect";
 
 export const AXIOS_INSTANCE = Axios.create({
 	baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -16,12 +15,23 @@ AXIOS_INSTANCE.interceptors.request.use(async (config) => {
 
 AXIOS_INSTANCE.interceptors.response.use(
 	(response) => response,
-	async (error) => {
-		const url = error.config?.url;
-		const status = error.response?.status;
+	async (err) => {
+		const url = err.config?.url;
+		const status = err.response?.status;
+		console.error(`Error on request to ${url}: Status ${status}`);
 
-		
-		return Promise.reject(error);
+		if (err.response) {
+			console.error("AXIOS RESPONSE ERROR:", {
+				status: err.response.status,
+				headers: err.response.headers,
+				data: err.response.data,
+				url: err.config?.url,
+				method: err.config?.method,
+			});
+		} else {
+			console.error("AXIOS ERROR (no response):", err.message, err);
+		}
+		throw err;
 	},
 );
 
