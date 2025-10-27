@@ -7,6 +7,8 @@ import { NavLink } from "./nav-link";
 export function LinksSection() {
 	const pathname = usePathname();
 
+	if(!pathname) return null;
+
 	return (
 		<nav className="hidden md:flex flex-1 items-center justify-center gap-4">
 			{BASE_ROUTES.map((route) => (
