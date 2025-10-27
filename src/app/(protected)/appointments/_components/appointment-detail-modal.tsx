@@ -110,10 +110,7 @@ export const AppointmentDetailModal = () => {
 													label="Valor"
 													value={
 														<span className="font-semibold">
-															{appointmentData.price.toLocaleString("pt-BR", {
-																style: "currency",
-																currency: "BRL",
-															})}
+															{formatCurrency(appointmentData.price / 100)}
 														</span>
 													}
 												/>
