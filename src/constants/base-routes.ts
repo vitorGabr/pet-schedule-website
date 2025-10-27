@@ -1,11 +1,10 @@
 import { Route } from "next";
 
-type MenuLink = { href: Route<string>; label: string };
+type MenuLink = { href: Route; label: string };
 
 export const BASE_ROUTES: MenuLink[] = [
 	{ href: "/", label: "Início" },
-	//@ts-expect-error
-	{ href: "/s", label: "Pesquisa" },
+	{ href: "/", label: "Pesquisa" },
 	{ href: "/about", label: "Sobre nós" },
 	{ href: "/cotacao", label: "Para Empresas" },
 	{ href: "/contact", label: "Contato" },

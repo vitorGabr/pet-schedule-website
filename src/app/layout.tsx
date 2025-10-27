@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { Suspense } from "react";
 import { Footer } from "@/components/footer";
+import { SignInModal } from "@/components/sign-in-modal";
+import { SignUpModal } from "@/components/sign-up-modal";
 import { Toaster } from "@/components/ui/sonner";
 import { Providers } from "./providers";
 
@@ -35,6 +37,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 							<Toaster />
 							<SpeedInsights />
 							<Analytics />
+							<SignInModal />
+							<SignUpModal />
 						</div>
 					</Providers>
 				</Suspense>
