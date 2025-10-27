@@ -15,7 +15,7 @@ export function LinksSection() {
 					href={route.href}
 					isActive={pathname === route.href}
 				>
-					{route.label} {pathname} <span className="text-muted-foreground">({route.href})</span>
+					{route.label}
 				</NavLink>
 			))}
 		</nav>
