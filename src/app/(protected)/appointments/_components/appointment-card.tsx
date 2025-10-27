@@ -29,13 +29,15 @@ export function AppointmentCard({ item }: AppointmentCardProps) {
 			onClick={() => setId(item.id)}
 		>
 			<CardContent className="p-6">
-				<div className="flex items-center gap-4">
-					<Avatar className="size-14">
-						<AvatarImage src={item.company.logo?.url} />
-						<AvatarFallback>{item.company.name.charAt(0)}</AvatarFallback>
-					</Avatar>
+				<div className="flex items-center flex-wrap gap-4">
+					<div className="w-full md:w-auto">
+						<Avatar className="size-14 ">
+							<AvatarImage src={item.company.logo?.url} />
+							<AvatarFallback>{item.company.name.charAt(0)}</AvatarFallback>
+						</Avatar>
+					</div>
 
-					<div className="flex-1 min-w-0">
+					<div className="w-full md:flex-1">
 						<h3 className="text-lg font-bold text-foreground mb-1">
 							{item.company.name}
 						</h3>
@@ -63,7 +65,7 @@ export function AppointmentCard({ item }: AppointmentCardProps) {
 
 					<div className="shrink-0">
 						<span className="text-2xl font-bold text-primary">
-							{formatCurrency(item.price/100)}
+							{formatCurrency(item.price / 100)}
 						</span>
 					</div>
 				</div>

@@ -2,7 +2,8 @@ import { MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Logo from "@/images/logo.svg";
 
-export function Footer() {
+export async function Footer() {
+	"use cache";
 	return (
 		<footer className="bg-gray-50 py-12 px-4 border-t">
 			<div className="max-w-7xl mx-auto">
@@ -95,7 +96,7 @@ export function Footer() {
 				{/* Separator */}
 				<div className="border-t border-gray-200 pt-6">
 					<p className="text-center text-sm text-gray-700">
-						© 2024 PetSpa. Todos os direitos reservados.
+						© {new Date().getFullYear()} PetEsy. Todos os direitos reservados.
 					</p>
 				</div>
 			</div>

@@ -3,7 +3,6 @@ import z from "zod";
 
 export const createBookingSchema = z
 	.object({
-		userId: z.string("Você deve selecionar um usuário"),
 		date: z.date("Você deve selecionar uma data"),
 		time: z.iso.time("Você deve selecionar um horário"),
 		serviceId: z.string("Você deve selecionar um serviço"),

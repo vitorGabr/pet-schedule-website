@@ -1,10 +1,10 @@
-import { AuthenticateWithRedirectCallback } from '@clerk/nextjs'
+import { AuthenticateWithRedirectCallback } from "@clerk/nextjs";
 
 export default function Page() {
-  return (
-    <>
-      <AuthenticateWithRedirectCallback />
-      <div id="clerk-captcha" />
-    </>
-  )
+	return (
+		<>
+			<AuthenticateWithRedirectCallback />
+			<div id="clerk-captcha" />
+		</>
+	);
 }

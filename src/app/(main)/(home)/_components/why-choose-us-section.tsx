@@ -30,7 +30,7 @@ export function WhyChooseUsSection() {
 					{/* Conteúdo textual */}
 					<div className="space-y-8">
 						<h2 className="text-4xl font-bold text-gray-900 leading-tight">
-							Por que Escolher a PetSpa?
+							Por que Escolher a PetEsy?
 						</h2>
 
 						<div className="space-y-6">
@@ -41,7 +41,7 @@ export function WhyChooseUsSection() {
 										key={benefit.title}
 										className="flex items-start space-x-4"
 									>
-										<div className="flex-shrink-0">
+										<div className="shrink-0">
 											<div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
 												<IconComponent className="w-6 h-6 text-primary" />
 											</div>
@@ -70,7 +70,7 @@ export function WhyChooseUsSection() {
 								height={500}
 								className="w-full h-[500px] object-cover"
 							/>
-							<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+							<div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
 						</div>
 
 						{/* Badge de avaliação */}

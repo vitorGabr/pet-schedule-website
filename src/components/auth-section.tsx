@@ -8,6 +8,7 @@ import {
 	PawPrintIcon,
 	User as UserIcon,
 } from "lucide-react";
+import Link from "next/link";
 import { parseAsStringLiteral, useQueryState } from "nuqs";
 import { Button } from "@/components/ui/button";
 import { NotificationMenu } from "./notification-menu";
@@ -56,7 +57,7 @@ export const AuthSection = () => {
 			</div>
 		);
 	}
-	
+
 	return (
 		<div className="flex items-center gap-4">
 			<NotificationMenu />
@@ -88,21 +89,25 @@ export const AuthSection = () => {
 					</DropdownMenuLabel>
 					<DropdownMenuSeparator />
 					<DropdownMenuGroup>
-						<DropdownMenuItem>
-							<CalendarIcon
-								size={16}
-								className="opacity-60"
-								aria-hidden="true"
-							/>
-							<span>Agendamentos</span>
+						<DropdownMenuItem asChild>
+							<Link href="/appointments">
+								<CalendarIcon
+									size={16}
+									className="opacity-60"
+									aria-hidden="true"
+								/>
+								<span>Agendamentos</span>
+							</Link>
 						</DropdownMenuItem>
-						<DropdownMenuItem>
-							<PawPrintIcon
-								size={16}
-								className="opacity-60"
-								aria-hidden="true"
-							/>
-							<span>Meus Pets</span>
+						<DropdownMenuItem asChild>
+							<Link href="/pets">
+								<PawPrintIcon
+									size={16}
+									className="opacity-60"
+									aria-hidden="true"
+								/>
+								<span>Meus Pets</span>
+							</Link>
 						</DropdownMenuItem>
 					</DropdownMenuGroup>
 					<DropdownMenuSeparator />

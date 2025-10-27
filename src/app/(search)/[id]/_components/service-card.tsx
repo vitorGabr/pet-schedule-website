@@ -50,11 +50,9 @@ export function ServiceCard({ service, authenticated, hasAnimal }: Props) {
 				</div>
 				<div className="text-right">
 					<div className="text-md font-bold text-primary mb-2">
-						A partir de {formatCurrency(service.price/100)}
+						A partir de {formatCurrency(service.price / 100)}
 					</div>
-					<Button size="sm">
-						Agendar
-					</Button>
+					<Button size="sm">Agendar</Button>
 				</div>
 			</div>
 		</div>

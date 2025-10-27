@@ -26,7 +26,7 @@ export default async function AppointmentsListPage(
 	return (
 		<div className="min-h-screen bg-background">
 			<div className="container mx-auto max-w-6xl px-4 py-8">
-				<h1 className="text-3xl font-bold text-foreground mb-8">
+				<h1 className="text-lg md:text-3xl font-bold text-foreground mb-8">
 					Meus Agendamentos
 				</h1>
 				<Await

@@ -20,6 +20,7 @@ import {
 	DialogTitle,
 } from "@/components/ui/dialog";
 import { useGetAppointmentById } from "@/lib/http";
+import { formatCurrency } from "@/utils/currency";
 import { AnimalCard } from "./animal-card";
 import { AppointmentDetailModalSkeleton } from "./appointment-detail-modal-skeleton";
 import { DetailsList } from "./details-list";
@@ -38,12 +39,18 @@ export const AppointmentDetailModal = () => {
 	const end = new Date(appointmentData?.endDate ?? "");
 	const minutes = Math.max(0, differenceInMinutes(end, start));
 	const { hours = 0, minutes: mins = 0 } = intervalToDuration({ start, end });
+	const onPayClick = () => {
+		console.log(appointmentData.payment);
+		if (appointmentData.payment.checkoutUrl) {
+			window.location.href = appointmentData.payment.checkoutUrl;
+		}
+	};
 
 	return (
 		<Dialog open={true} onOpenChange={() => setId(null)}>
-			<DialogContent className="flex flex-col gap-0 p-0 sm:max-h-[min(640px,95vh)] sm:max-w-lg [&>button:last-child]:hidden">
+			<DialogContent className="flex flex-col gap-0 p-0 max-h-[min(640px,95vh)] sm:max-w-lg [&>button:last-child]:hidden">
 				<DialogHeader className="border-b px-6 flex-row py-4 text-base flex items-center justify-between">
-					<DialogTitle className="text-xl font-bold tracking-tight">
+					<DialogTitle className="text-sm md:text-xl font-bold tracking-tight">
 						Detalhes do Agendamento
 					</DialogTitle>
 					<div className="flex items-center gap-2">
@@ -127,18 +134,17 @@ export const AppointmentDetailModal = () => {
 							</DialogDescription>
 						</div>
 						<div className="px-6 py-4 w-full border flex items-center justify-between">
-							<div>
+							{appointmentData.status === "scheduled" ? (
+								<Button onClick={onPayClick}>Pagar Agora</Button>
+							) : (
 								<p className="font-semibold leading-none">
 									{appointmentData.service.name}
 								</p>
-							</div>
+							)}
 							<div className="text-right">
 								<p className="text-sm text-muted-foreground">Preço</p>
 								<p className="text-lg font-semibold">
-									{appointmentData.price.toLocaleString("pt-BR", {
-										style: "currency",
-										currency: "BRL",
-									})}
+									{formatCurrency(appointmentData.price / 100)}
 								</p>
 							</div>
 						</div>

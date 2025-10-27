@@ -47,8 +47,12 @@ export function BookingModal({
 				const result = await createAppointment(
 					createBookingSchema.parse(value),
 				);
+				if (result.checkoutUrl) {
+					window.location.href = result.checkoutUrl;
+					return;
+				}
+				router.push("/appointments");
 				handleClose();
-				router.push(result.checkoutUrl || ("/appointments" as any));
 			} catch (error) {
 				if (error instanceof AxiosError) {
 					toast.error(

@@ -11,7 +11,7 @@ export const useOAuthSign = () => {
 		try {
 			await signIn.authenticateWithRedirect({
 				strategy: "oauth_google",
-				redirectUrl: '/sign-in/sso-callback',
+				redirectUrl: "/sign-in/sso-callback",
 				redirectUrlComplete: "/",
 			});
 		} catch (err) {
@@ -19,5 +19,5 @@ export const useOAuthSign = () => {
 		}
 	};
 
-    return { signInWithGoogle };
+	return { signInWithGoogle };
 };
