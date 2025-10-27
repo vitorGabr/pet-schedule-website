@@ -91,7 +91,7 @@ export function BookingModal({
 										</div>
 										<div className="text-right">
 											<div className="text-lg font-bold text-primary">
-												{formatCurrency(service?.price ?? 0)}
+												{formatCurrency((service?.price ?? 0) / 100)}
 											</div>
 											<div className="text-sm text-muted-foreground">
 												{service?.duration} min

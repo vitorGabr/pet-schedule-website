@@ -61,9 +61,9 @@ export function AppointmentCard({ item }: AppointmentCardProps) {
 						</div>
 					</div>
 
-					<div className="flex-shrink-0">
+					<div className="shrink-0">
 						<span className="text-2xl font-bold text-primary">
-							{formatCurrency(item.price)}
+							{formatCurrency(item.price/100)}
 						</span>
 					</div>
 				</div>
