@@ -29,43 +29,9 @@ export default async function AppointmentsListPage(
 				<h1 className="text-lg md:text-3xl font-bold text-foreground mb-8">
 					Meus Agendamentos
 				</h1>
-				<Await
-					promise={query}
-					key={JSON.stringify(searchParams)}
-					fallback={<LoadingGrid />}
-				>
-					{(data) => {
-						if (!data || data.items.length === 0) {
-							return (
-								<div className="text-center text-foreground space-y-4">
-									<h3 className="text-lg font-semibold text-foreground mb-2">
-										Nenhum agendamento encontrado
-									</h3>
-									<p className="text-muted-foreground">
-										Não encontramos nenhum agendamento, mas você pode conhecer
-										nossos serviços
-									</p>
-									<Button variant="outline" asChild>
-										<Link href="/s">Conheça nossos serviços</Link>
-									</Button>
-								</div>
-							);
-						}
-
-						return (
-							<div className="space-y-4">
-								{data.items.map((item) => {
-									return <AppointmentCard key={item.id} item={item} />;
-								})}
-								<PaginationControl totalPages={data.meta.totalPages} />
-							</div>
-						);
-					}}
-				</Await>
+				
 			</div>
-			<Suspense fallback={<div />}>
-				<AppointmentDetailModal />
-			</Suspense>
+			
 		</div>
 	);
 }
