@@ -4,7 +4,7 @@ import { Clock } from "lucide-react";
 import { parseAsString, parseAsStringLiteral, useQueryState } from "nuqs";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import type { CompanyByIdResponseDtoOutputServicesItem } from "@/lib/http";
+import { CompanyByIdResponseDtoOutputServicesItem } from "@/lib/http/generated/models";
 import { formatCurrency } from "@/utils/currency";
 
 type Props = {

@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { SearchHeader } from "@/components/navigation/search-header";
 
 export default function ProtectedLayout({ children }: LayoutProps<"/">) {
@@ -5,6 +6,7 @@ export default function ProtectedLayout({ children }: LayoutProps<"/">) {
 		<div>
 			<SearchHeader />
 			<main>{children}</main>
+			<Footer />
 		</div>
 	);
 }

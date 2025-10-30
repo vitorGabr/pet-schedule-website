@@ -5,7 +5,6 @@ import { Camera } from "lucide-react";
 import Image from "next/image";
 import { parseAsString, useQueryState } from "nuqs";
 import { toast } from "sonner";
-import type { z } from "zod";
 import { TextField } from "@/components/form/fields/text-field";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,10 +15,12 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog";
-import { updateAnimal, updateAnimalBody, useGetAnimalById } from "@/lib/http";
+import {
+	updateAnimal,
+	useGetAnimalById,
+} from "@/lib/http/generated/endpoints/animais/animais";
+import { UpdatePetSchema, updatePetSchema } from "@/schemas/update-pet";
 import { EditPetModalSkeleton } from "./edit-pet-modal-skeleton";
-
-const schema = updateAnimalBody;
 
 export function EditPetModal() {
 	const [id, setId] = useQueryState("id", parseAsString);
@@ -33,8 +34,8 @@ export function EditPetModal() {
 			name: data?.name || "",
 			weight: data?.weight || 0,
 			age: data?.age || 0,
-		} as z.input<typeof schema>,
-		validators: { onChange: schema },
+		} as UpdatePetSchema,
+		validators: { onChange: updatePetSchema },
 		onSubmit: async ({ value }) => {
 			await updateAnimal(id!, value);
 			toast.success("Pet atualizado com sucesso!");

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import type { AppointmentByIdResponseDtoOutputAnimal } from "@/lib/http";
+import { AppointmentByIdResponseDtoOutputAnimal } from "@/lib/http/generated/models";
 
 type Props = { animal: AppointmentByIdResponseDtoOutputAnimal };
 

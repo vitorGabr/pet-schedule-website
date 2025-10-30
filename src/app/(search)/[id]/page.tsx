@@ -14,12 +14,12 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { listAnimalsFromUser } from "@/lib/http/generated/endpoints/animais/animais";
 import {
 	checkRatingEligibility,
-	getCompanyById,
-	listAnimalsFromUser,
 	listCompanyRatings,
-} from "@/lib/http";
+} from "@/lib/http/generated/endpoints/avaliações/avaliações";
+import { getCompanyById } from "@/lib/http/generated/endpoints/empresas/empresas";
 import { BookingModal } from "../../../components/booking/modal";
 import { ContactInfo } from "./_components/contact-info";
 import { CreateReviewForm } from "./_components/create-review-form";

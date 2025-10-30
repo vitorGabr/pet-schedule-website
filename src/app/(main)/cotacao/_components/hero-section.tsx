@@ -19,7 +19,7 @@ export function HeroSection() {
 	};
 
 	return (
-		<section className="relative py-20 px-4 bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 overflow-hidden">
+		<section className="relative py-20 px-4 bg-linear-to-br from-primary/10 via-primary/5 to-primary/10 overflow-hidden">
 			{/* Background Pattern */}
 			<div className="absolute inset-0 opacity-5">
 				<div className="absolute top-20 left-20">

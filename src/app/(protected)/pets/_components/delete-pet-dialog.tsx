@@ -12,7 +12,7 @@ import {
 	AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { useDeleteAnimal } from "@/lib/http";
+import { useDeleteAnimal } from "@/lib/http/generated/endpoints/animais/animais";
 import { useModal } from "@/stores/modal-store";
 import { revalidateCache } from "@/utils/revalidate";
 

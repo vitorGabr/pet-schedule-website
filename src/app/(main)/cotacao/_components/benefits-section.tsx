@@ -132,7 +132,7 @@ export function BenefitsSection() {
 
 				{/* Bottom CTA Section */}
 				<div className="mt-16 text-center">
-					<div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl p-8 md:p-12">
+					<div className="bg-linear-to-r from-primary/5 to-primary/10 rounded-2xl p-8 md:p-12">
 						<h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
 							Pronto para Transformar seu Negócio?
 						</h3>

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useQueryState } from "nuqs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import type { ListAnimalFromUserResponseDtoOutputItemsItem } from "@/lib/http";
+import { ListAnimalFromUserResponseDtoOutputItemsItem } from "@/lib/http/generated/models";
 import { useModalStore } from "@/stores/modal-store";
 
 type PetCardProps = { pet: ListAnimalFromUserResponseDtoOutputItemsItem };

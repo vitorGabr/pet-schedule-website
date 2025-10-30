@@ -5,7 +5,7 @@ import { Await } from "@/components/await";
 import { PaginationControl } from "@/components/pagination-control";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getAllAppointments } from "@/lib/http";
+import { getAllAppointments } from "@/lib/http/generated/endpoints/agendamentos/agendamentos";
 import { pageSearchLoader } from "@/schemas/page-search-params";
 import { AppointmentCard } from "./_components/appointment-card";
 import { AppointmentDetailModal } from "./_components/appointment-detail-modal";
@@ -35,7 +35,7 @@ export default async function AppointmentsListPage(
 					fallback={<LoadingGrid />}
 				>
 					{(data) => {
-						if (data.items.length === 0) {
+						if (!data || data.items.length === 0) {
 							return (
 								<div className="text-center text-foreground space-y-4">
 									<h3 className="text-lg font-semibold text-foreground mb-2">

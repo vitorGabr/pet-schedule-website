@@ -19,12 +19,12 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import type { BreedListResponseOutputItemsItem } from "@/lib/http";
 import {
 	addAssetToAnimal,
 	createAnimal,
 	getListAnimalsFromUserQueryKey,
-} from "@/lib/http";
+} from "@/lib/http/generated/endpoints/animais/animais";
+import { BreedListResponseOutputItemsItem } from "@/lib/http/generated/models";
 import { CreatePetSchema, createPetSchema } from "@/schemas/create-pet";
 import { revalidateCache } from "@/utils/revalidate";
 
