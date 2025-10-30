@@ -19,7 +19,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog";
-import { useGetAppointmentById } from "@/lib/http";
+import { useGetAppointmentById } from "@/lib/http/generated/endpoints/agendamentos/agendamentos";
 import { formatCurrency } from "@/utils/currency";
 import { AnimalCard } from "./animal-card";
 import { AppointmentDetailModalSkeleton } from "./appointment-detail-modal-skeleton";

@@ -4,7 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { Suspense } from "react";
-import { Footer } from "@/components/footer";
 import { SignInModal } from "@/components/sign-in-modal";
 import { SignUpModal } from "@/components/sign-up-modal";
 import { Toaster } from "@/components/ui/sonner";
@@ -33,7 +32,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 					<Providers>
 						<div className="relative flex size-full min-h-screen flex-col bg-[#f8fbfa] group/design-root">
 							{children}
-							<Footer />
 							<Toaster />
 							<SpeedInsights />
 							<Analytics />

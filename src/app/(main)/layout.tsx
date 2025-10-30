@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { MainHeader } from "@/components/navigation/main-header";
 
 export default function MainLayout({ children }: LayoutProps<"/">) {
@@ -5,6 +6,7 @@ export default function MainLayout({ children }: LayoutProps<"/">) {
 		<div>
 			<MainHeader />
 			<main>{children}</main>
+			<Footer />
 		</div>
 	);
 }

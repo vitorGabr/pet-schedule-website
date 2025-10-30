@@ -5,7 +5,6 @@ import { AxiosError } from "axios";
 import { Star } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { z as zod } from "zod";
 import { TextAreaField } from "@/components/form/fields/text-area-field";
 import { FormErrorMessage } from "@/components/form/form-error-message";
 import { Button } from "@/components/ui/button";
@@ -23,15 +22,12 @@ import {
 	FieldLabel,
 } from "@/components/ui/field";
 import { Spinner } from "@/components/ui/spinner";
-import { createRating, createRatingBody } from "@/lib/http";
+import { createRating } from "@/lib/http/generated/endpoints/avaliações/avaliações";
 import { cn } from "@/lib/utils";
-
-const createRatingFormSchema = createRatingBody.extend({
-	comment: zod
-		.string()
-		.min(10, "Escreva pelo menos 10 caracteres.")
-		.max(600, "Seu comentário pode ter no máximo 600 caracteres."),
-});
+import {
+	CreateRatingFormData,
+	createRatingFormSchema,
+} from "@/schemas/create-rating";
 
 type CreateReviewFormProps = {
 	companyId: string;
@@ -56,7 +52,11 @@ export function CreateReviewForm({
 }: CreateReviewFormProps) {
 	const router = useRouter();
 	const form = useForm({
-		defaultValues: { companyId, rating: initialRating, comment: "" },
+		defaultValues: {
+			companyId,
+			rating: initialRating,
+			comment: "",
+		} as CreateRatingFormData,
 		validators: { onChange: createRatingFormSchema },
 		onSubmit: async ({ value }) => {
 			try {

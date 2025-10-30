@@ -1,6 +1,6 @@
 import { Clock, Globe, Mail, Phone } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import type { CompanyByIdResponseDtoOutput } from "@/lib/http";
+import { CompanyByIdResponseDtoOutput } from "@/lib/http/generated/models";
 
 type Props = { data: CompanyByIdResponseDtoOutput };
 

@@ -37,7 +37,7 @@ const stats = [
 
 export function StatsSection() {
 	return (
-		<section className="py-16 px-4 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5">
+		<section className="py-16 px-4 bg-linear-to-r from-primary/5 via-primary/10 to-primary/5">
 			<div className="max-w-7xl mx-auto">
 				{/* Header */}
 				<div className="text-center mb-12">

@@ -4,10 +4,9 @@
  * API de Cuidados com Animais
  * OpenAPI spec version: 1.0
  */
-import type { AppointmentsByCompanyResponseDtoOutputItemsItemClientAvatar } from "./appointments-by-company-response-dto-output-items-item-client-avatar";
 
 export type AppointmentsByCompanyResponseDtoOutputItemsItemClient = {
 	id: string;
 	name: string;
-	avatar?: AppointmentsByCompanyResponseDtoOutputItemsItemClientAvatar;
+	avatarUrl?: string;
 };

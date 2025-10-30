@@ -1,9 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
-import type {
+import {
 	AppointmentByIdResponseDtoOutputAnimal,
 	AppointmentByIdResponseDtoOutputClient,
 	AppointmentByIdResponseDtoOutputCoatType,
-} from "@/lib/http";
+} from "@/lib/http/generated/models";
 
 type Props = {
 	animal: AppointmentByIdResponseDtoOutputAnimal;

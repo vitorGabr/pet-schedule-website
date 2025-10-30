@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { PaginationControl } from "@/components/pagination-control";
-import { searchCompanies } from "@/lib/http";
+import { searchCompanies } from "@/lib/http/generated/endpoints/empresas/empresas";
 import { pageSearchLoader } from "@/schemas/page-search-params";
 import { CompanyCard } from "../../../../components/company-card";
 import { CompanyCardSkeletonGrid } from "./_components/company-card-skeleton";

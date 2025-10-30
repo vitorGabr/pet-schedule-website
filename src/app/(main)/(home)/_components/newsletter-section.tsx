@@ -29,7 +29,7 @@ export function NewsletterSection() {
 	};
 
 	return (
-		<section className="py-16 px-4 bg-gradient-to-br from-primary/5 to-primary/10">
+		<section className="py-16 px-4 bg-linear-to-br from-primary/5 to-primary/10">
 			<div className="max-w-7xl mx-auto">
 				<Card className="relative overflow-hidden border-none bg-white">
 					<div className="relative p-8 md:p-12 lg:p-16">

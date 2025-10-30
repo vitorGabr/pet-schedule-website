@@ -5,7 +5,7 @@ import { Calendar, Clock, PawPrint } from "lucide-react";
 import { parseAsString, useQueryState } from "nuqs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
-import type { AppointmentsByClientResponseDtoOutputItemsItem } from "@/lib/http";
+import { AppointmentsByClientResponseDtoOutputItemsItem } from "@/lib/http/generated/models";
 import { formatCurrency } from "@/utils/currency";
 
 type AppointmentCardProps = {

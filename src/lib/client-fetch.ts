@@ -1,6 +1,6 @@
 import Axios, { type AxiosError, type AxiosRequestConfig } from "axios";
 import { getCookie } from "@/utils/cookie";
-import { redirectTo } from "@/utils/redirect";
+import { signOutUser } from "@/utils/sign-out";
 
 export const AXIOS_INSTANCE = Axios.create({
 	baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -17,11 +17,9 @@ AXIOS_INSTANCE.interceptors.request.use(async (config) => {
 AXIOS_INSTANCE.interceptors.response.use(
 	(response) => response,
 	async (error) => {
-		const url = error.config?.url;
 		const status = error.response?.status;
-
-		if ((status === 401 || status === 403) && !url?.startsWith("/auth")) {
-			await redirectTo("/");
+		if ([401, 403].includes(status)) {
+			await signOutUser();
 		}
 		throw error;
 	},

@@ -1,6 +1,8 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
-export default clerkMiddleware();
+export default clerkMiddleware({
+	authorizedParties: [`${process.env.DOMAIN_ORIGIN}`]
+});
 
 export const config = {
 	matcher: [

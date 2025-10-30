@@ -64,7 +64,7 @@ export default function QuoteFormSection() {
 		return (
 			<section
 				id="quote-form"
-				className="py-20 px-4 bg-gradient-to-br from-green-50 to-green-100"
+				className="py-20 px-4 bg-linear-to-br from-green-50 to-green-100"
 			>
 				<div className="max-w-4xl mx-auto text-center">
 					<Card className="p-12 border bg-white">

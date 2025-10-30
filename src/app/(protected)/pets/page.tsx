@@ -3,7 +3,8 @@ import { redirect } from "next/navigation";
 import { Await } from "@/components/await";
 import { PaginationControl } from "@/components/pagination-control";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getAllBreeds, listAnimalsFromUser } from "@/lib/http";
+import { listAnimalsFromUser } from "@/lib/http/generated/endpoints/animais/animais";
+import { getAllBreeds } from "@/lib/http/generated/endpoints/raças/raças";
 import { pageSearchLoader } from "@/schemas/page-search-params";
 import { AddPetModal } from "./_components/add-pet-modal";
 import { DeletePetDialog } from "./_components/delete-pet-dialog";
@@ -35,7 +36,7 @@ export default async function PetsPage(props: PageProps<"/pets">) {
 					fallback={<LoadingGrid />}
 				>
 					{(data) => {
-						if (data.items.length === 0) {
+						if (!data || data.items.length === 0) {
 							return (
 								<div className="col-span-full text-center text-foreground space-y-4">
 									<h3 className="text-lg font-semibold text-foreground mb-2">

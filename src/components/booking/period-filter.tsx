@@ -1,7 +1,7 @@
 import { Clock } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useListAvailableDates } from "@/lib/http";
+import { useListAvailableDates } from "@/lib/http/generated/endpoints/reservas/reservas";
 
 type Periods = "morning" | "afternoon" | "evening";
 const TIME_PERIODS = [

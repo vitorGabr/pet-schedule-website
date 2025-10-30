@@ -1,5 +1,5 @@
 import { CompanyCard } from "@/components/company-card";
-import { searchCompanies } from "@/lib/http";
+import { searchCompanies } from "@/lib/http/generated/endpoints/empresas/empresas";
 
 export async function CompaniesSection() {
 	const companies = await searchCompanies();

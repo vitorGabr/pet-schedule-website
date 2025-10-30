@@ -19,7 +19,7 @@ export function HeroSection() {
 				className="object-cover"
 			/>
 
-			<div className="relative w-full h-full inset-0 bg-gradient-to-b from-primary/40 to-primary/60 flex justify-center items-center flex-col">
+			<div className="relative w-full h-full inset-0 bg-linear-to-b from-primary/40 to-primary/60 flex justify-center items-center flex-col">
 				<div className="flex flex-col gap-6 text-center max-w-4xl px-4">
 					<h1 className="text-white text-3xl md:text-5xl font-bold">
 						Encontre os melhores serviços para pets perto de você
