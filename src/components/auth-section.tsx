@@ -34,9 +34,7 @@ export const AuthSection = () => {
 	const { user } = useUser();
 
 	useEffect(() => {
-		if (openUserMenu) {
-			setOpenUserMenu(false);
-		}
+		setOpenUserMenu(false);
 	}, [pathname]);
 
 	if (!isLoaded) {
