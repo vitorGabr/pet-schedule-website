@@ -18,7 +18,7 @@ export function MainHeader() {
 				/>
 			</Link>
 			<LinksSection />
-			<AuthSection location="main" />
+			<AuthSection />
 		</header>
 	);
 }

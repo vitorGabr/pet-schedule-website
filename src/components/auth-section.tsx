@@ -9,6 +9,7 @@ import {
 	User as UserIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { parseAsStringLiteral as parse, useQueryState } from "nuqs";
 import { Button } from "@/components/ui/button";
 import { NotificationMenu } from "./notification-menu";
@@ -24,9 +25,8 @@ import {
 } from "./ui/dropdown-menu";
 import { Skeleton } from "./ui/skeleton";
 
-type Props = {location: 'main' | 'search'};
-
-export const AuthSection = ({ location }: Props) => {
+export const AuthSection = () => {
+	const pathname = usePathname();
 	const [_, setAuthMode] = useQueryState("auth", parse(["signin", "signup"]));
 	const { isSignedIn, signOut, isLoaded } = useAuth();
 	const { user } = useUser();
@@ -60,7 +60,7 @@ export const AuthSection = ({ location }: Props) => {
 	return (
 		<div className="flex items-center gap-4">
 			<NotificationMenu />
-			<DropdownMenu key={location}>
+			<DropdownMenu key={pathname}>
 				<DropdownMenuTrigger asChild>
 					<Button variant="ghost" className="h-auto p-0 hover:bg-transparent">
 						<Avatar>

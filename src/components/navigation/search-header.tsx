@@ -16,7 +16,7 @@ export function SearchHeader() {
 				<div className="flex-1 hidden md:flex">
 					<SearchBar />
 				</div>
-				<AuthSection location="search" />
+				<AuthSection />
 			</div>
 			<div className="w-full md:hidden py-2 border-b">
 				<SearchBar />
