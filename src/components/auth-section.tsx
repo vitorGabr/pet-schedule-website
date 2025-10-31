@@ -66,7 +66,7 @@ export const AuthSection = () => {
 	return (
 		<div className="flex items-center gap-4">
 			<NotificationMenu />
-			<DropdownMenu open={openUserMenu} onOpenChange={setOpenUserMenu}>
+			<DropdownMenu key={pathname} open={openUserMenu} onOpenChange={setOpenUserMenu}>
 				<DropdownMenuTrigger asChild>
 					<Button variant="ghost" className="h-auto p-0 hover:bg-transparent">
 						<Avatar>
