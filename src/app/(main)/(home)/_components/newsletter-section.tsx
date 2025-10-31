@@ -14,11 +14,9 @@ export function NewsletterSection() {
 		e.preventDefault();
 		if (!email) return;
 
-		// Aqui você adicionaria a lógica para enviar o email para sua API
 		setIsSubmitted(true);
 		setEmail("");
 
-		// Reset após 3 segundos
 		setTimeout(() => setIsSubmitted(false), 3000);
 	};
 

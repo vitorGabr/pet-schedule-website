@@ -6,7 +6,7 @@ import { addDays, format } from "date-fns";
 import { AlertTriangle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { parseAsString, useQueryState } from "nuqs";
-import { useEffect } from "react";
+import { Activity, useEffect } from "react";
 import { toast } from "sonner";
 import type z from "zod";
 import { SelectField } from "@/components/form/fields/select-field";
@@ -23,13 +23,13 @@ import { BookingSkeleton } from "./booking-skeleton";
 import { PeriodFilter } from "./period-filter";
 import { SelectionDate } from "./selection-date";
 
-export function BookingModal({
-	companyId,
-	animals,
-}: {
+type DefaultValues = z.input<typeof createBookingSchema>;
+type BookingModalProps = {
 	companyId: string;
 	animals: ListAnimalFromUserResponseDtoOutputItemsItem[];
-}) {
+};
+
+export function BookingModal({ companyId, animals }: BookingModalProps) {
 	const router = useRouter();
 	const [serviceId, setServiceId] = useQueryState("id", parseAsString);
 	const {
@@ -39,21 +39,22 @@ export function BookingModal({
 	} = useGetServiceById(serviceId!, { query: { enabled: !!serviceId } });
 
 	const form = useForm({
-		defaultValues: { date: new Date(), serviceId: service?.id } as z.input<
-			typeof createBookingSchema
-		>,
+		defaultValues: {
+			date: new Date(),
+			serviceId: service?.id,
+		} as DefaultValues,
 		validators: { onChange: createBookingSchema },
 		onSubmit: async ({ value }) => {
 			try {
 				const result = await createAppointment(
 					createBookingSchema.parse(value),
 				);
-				if (result.checkoutUrl) {
+				if (result.checkoutUrl?.length) {
 					window.location.href = result.checkoutUrl;
 					return;
 				}
+				await handleClose();
 				router.push("/appointments");
-				handleClose();
 			} catch (error) {
 				if (error instanceof AxiosError) {
 					toast.error(
@@ -82,7 +83,7 @@ export function BookingModal({
 					</DialogTitle>
 				</DialogHeader>
 				<div className="h-[70vh] overflow-y-auto">
-					{!isLoading ? (
+					{service && (
 						<div className="px-6 space-y-6">
 							{/* Informações do Serviço */}
 							<Card>
@@ -243,9 +244,10 @@ export function BookingModal({
 								</form.Subscribe>
 							</div>
 						</div>
-					) : (
-						<BookingSkeleton />
 					)}
+					<Activity mode={isLoading ? "visible" : "hidden"}>
+						<BookingSkeleton />
+					</Activity>
 				</div>
 			</DialogContent>
 		</Dialog>

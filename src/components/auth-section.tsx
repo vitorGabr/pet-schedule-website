@@ -27,7 +27,7 @@ import { Skeleton } from "./ui/skeleton";
 export const AuthSection = () => {
 	const [_, setAuthMode] = useQueryState(
 		"auth",
-		parseAsStringLiteral(["signin", "signup"]).withOptions({ shallow: false }),
+		parseAsStringLiteral(["signin", "signup"]),
 	);
 	const { isSignedIn, signOut, isLoaded } = useAuth();
 	const { user } = useUser();
