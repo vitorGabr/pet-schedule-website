@@ -9,9 +9,7 @@ import {
 	User as UserIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { parseAsStringLiteral as parse, useQueryState } from "nuqs";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { NotificationMenu } from "./notification-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -26,16 +24,12 @@ import {
 } from "./ui/dropdown-menu";
 import { Skeleton } from "./ui/skeleton";
 
-export const AuthSection = () => {
-	const pathname = usePathname();
-	const [openUserMenu, setOpenUserMenu] = useState(false);
+type Props = {location: 'main' | 'search'};
+
+export const AuthSection = ({ location }: Props) => {
 	const [_, setAuthMode] = useQueryState("auth", parse(["signin", "signup"]));
 	const { isSignedIn, signOut, isLoaded } = useAuth();
 	const { user } = useUser();
-
-	useEffect(() => {
-		setOpenUserMenu(false);
-	}, [pathname]);
 
 	if (!isLoaded) {
 		return <Skeleton className="h-10 w-32 rounded-full" />;
@@ -66,7 +60,7 @@ export const AuthSection = () => {
 	return (
 		<div className="flex items-center gap-4">
 			<NotificationMenu />
-			<DropdownMenu key={pathname} open={openUserMenu} onOpenChange={setOpenUserMenu}>
+			<DropdownMenu key={location}>
 				<DropdownMenuTrigger asChild>
 					<Button variant="ghost" className="h-auto p-0 hover:bg-transparent">
 						<Avatar>
