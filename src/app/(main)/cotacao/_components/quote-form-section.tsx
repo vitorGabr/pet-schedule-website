@@ -14,6 +14,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { FieldError } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -154,57 +155,61 @@ export default function QuoteFormSection() {
 
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 								<form.Field name="companyName">
-									{(field) => (
-										<div>
-											<Label
-												htmlFor="companyName"
-												className="text-sm font-medium text-gray-700 mb-2 block"
-											>
-												Nome da Empresa *
-											</Label>
-											<Input
-												id="companyName"
-												type="text"
-												value={field.state.value ?? ""}
-												onChange={(e) => field.handleChange(e.target.value)}
-												onBlur={field.handleBlur}
-												className="h-12"
-												placeholder="Ex: Pet Care Clínica Veterinária"
-											/>
-											{!field.state.meta.isValid && (
-												<p className="text-sm text-red-600 mt-1">
-													{field.state.meta.errors.join(", ")}
-												</p>
-											)}
-										</div>
-									)}
+									{(field) => {
+										const isInvalid =
+											field.state.meta.isTouched && !field.state.meta.isValid;
+										return (
+											<div>
+												<Label
+													htmlFor="companyName"
+													className="text-sm font-medium text-gray-700 mb-2 block"
+												>
+													Nome da Empresa *
+												</Label>
+												<Input
+													id="companyName"
+													type="text"
+													value={field.state.value ?? ""}
+													onChange={(e) => field.handleChange(e.target.value)}
+													onBlur={field.handleBlur}
+													className="h-12"
+													placeholder="Ex: Pet Care Clínica Veterinária"
+												/>
+												{isInvalid && (
+													<FieldError errors={field.state.meta.errors} />
+												)}
+											</div>
+										);
+									}}
 								</form.Field>
 
 								<form.Field name="ownerName">
-									{(field) => (
-										<div>
-											<Label
-												htmlFor="ownerName"
-												className="text-sm font-medium text-gray-700 mb-2 block"
-											>
-												Nome do Responsável *
-											</Label>
-											<Input
-												id="ownerName"
-												type="text"
-												value={field.state.value ?? ""}
-												onChange={(e) => field.handleChange(e.target.value)}
-												onBlur={field.handleBlur}
-												className="h-12"
-												placeholder="Seu nome completo"
-											/>
-											{!field.state.meta.isValid && (
-												<p className="text-sm text-red-600 mt-1">
-													{field.state.meta.errors.join(", ")}
-												</p>
-											)}
-										</div>
-									)}
+									{(field) => {
+										const isInvalid =
+											field.state.meta.isTouched && !field.state.meta.isValid;
+										return (
+											<div>
+												<Label
+													htmlFor="ownerName"
+													className="text-sm font-medium text-gray-700 mb-2 block"
+												>
+													Nome do Responsável *
+												</Label>
+												<Input
+													id="ownerName"
+													type="text"
+													value={field.state.value ?? ""}
+													onChange={(e) => field.handleChange(e.target.value)}
+													onBlur={field.handleBlur}
+													className="h-12"
+													placeholder="Seu nome completo"
+												/>
+												{isInvalid && (
+													<FieldError errors={field.state.meta.errors} />
+												)}
+											</div>
+										);
+									}}
 								</form.Field>
 							</div>
 						</div>
@@ -220,30 +225,32 @@ export default function QuoteFormSection() {
 
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 								<form.Field name="email">
-									{(field) => (
-										<div>
-											<Label
-												htmlFor="email"
-												className="text-sm font-medium text-gray-700 mb-2 block"
-											>
-												E-mail Comercial *
-											</Label>
-											<Input
-												id="email"
-												type="email"
-												value={field.state.value ?? ""}
-												onChange={(e) => field.handleChange(e.target.value)}
-												onBlur={field.handleBlur}
-												className="h-12"
-												placeholder="contato@suaempresa.com"
-											/>
-											{!field.state.meta.isValid && (
-												<p className="text-sm text-red-600 mt-1">
-													{field.state.meta.errors.join(", ")}
-												</p>
-											)}
-										</div>
-									)}
+									{(field) => {
+										const isInvalid =
+											field.state.meta.isTouched && !field.state.meta.isValid;
+										return (
+											<div>
+												<Label
+													htmlFor="email"
+													className="text-sm font-medium text-gray-700 mb-2 block"
+												>
+													E-mail Comercial *
+												</Label>
+												<Input
+													id="email"
+													type="email"
+													value={field.state.value ?? ""}
+													onChange={(e) => field.handleChange(e.target.value)}
+													onBlur={field.handleBlur}
+													className="h-12"
+													placeholder="contato@suaempresa.com"
+												/>
+												{!isInvalid && (
+													<FieldError errors={field.state.meta.errors} />
+												)}
+											</div>
+										);
+									}}
 								</form.Field>
 
 								<form.Field name="phone">
@@ -265,9 +272,7 @@ export default function QuoteFormSection() {
 												placeholder="(11) 99999-9999"
 											/>
 											{!field.state.meta.isValid && (
-												<p className="text-sm text-red-600 mt-1">
-													{field.state.meta.errors.join(", ")}
-												</p>
+												<FieldError errors={field.state.meta.errors} />
 											)}
 										</div>
 									)}
@@ -304,9 +309,7 @@ export default function QuoteFormSection() {
 												placeholder="Ex: São Paulo"
 											/>
 											{!field.state.meta.isValid && (
-												<p className="text-sm text-red-600 mt-1">
-													{field.state.meta.errors.join(", ")}
-												</p>
+												<FieldError errors={field.state.meta.errors} />
 											)}
 										</div>
 									)}
@@ -331,9 +334,7 @@ export default function QuoteFormSection() {
 												placeholder="Ex: SP"
 											/>
 											{!field.state.meta.isValid && (
-												<p className="text-sm text-red-600 mt-1">
-													{field.state.meta.errors.join(", ")}
-												</p>
+												<FieldError errors={field.state.meta.errors} />
 											)}
 										</div>
 									)}
@@ -375,9 +376,7 @@ export default function QuoteFormSection() {
 												))}
 											</select>
 											{!field.state.meta.isValid && (
-												<p className="text-sm text-red-600 mt-1">
-													{field.state.meta.errors.join(", ")}
-												</p>
+												<FieldError errors={field.state.meta.errors} />
 											)}
 										</div>
 									)}
@@ -457,9 +456,7 @@ export default function QuoteFormSection() {
 										})}
 
 										{!field.state.meta.isValid && (
-											<p className="text-sm text-red-600 mt-1">
-												{field.state.meta.errors.join(", ")}
-											</p>
+											<FieldError errors={field.state.meta.errors} />
 										)}
 									</div>
 								)}
@@ -546,9 +543,7 @@ export default function QuoteFormSection() {
 											.
 										</Label>
 										{!field.state.meta.isValid && (
-											<p className="text-sm text-red-600 mt-1">
-												{field.state.meta.errors.join(", ")}
-											</p>
+											<FieldError errors={field.state.meta.errors} />
 										)}
 									</>
 								)}

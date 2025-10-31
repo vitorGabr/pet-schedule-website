@@ -51,7 +51,10 @@ export function PetCard({ pet }: PetCardProps) {
 						Editar
 					</Button>
 					<Button
-						onClick={() => open({ key: "delete-pet", data: pet })}
+						onClick={(e) => {
+							e.stopPropagation();
+							open({ key: "delete-pet", data: pet })
+						}}
 						variant="outline"
 						size="sm"
 						className="text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200 hover:border-red-300"
