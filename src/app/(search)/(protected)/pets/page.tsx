@@ -1,5 +1,3 @@
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
 import { Await } from "@/components/await";
 import { PaginationControl } from "@/components/pagination-control";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -13,9 +11,6 @@ import { PetCard } from "./_components/pet-card";
 
 export default async function PetsPage(props: PageProps<"/pets">) {
 	const searchParams = await pageSearchLoader(props.searchParams);
-	const { isAuthenticated } = await auth();
-
-	if (!isAuthenticated) redirect("/");
 	const breeds = await getAllBreeds();
 	const promise = listAnimalsFromUser(
 		{ page: searchParams.page },

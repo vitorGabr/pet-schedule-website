@@ -1,8 +1,9 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export default clerkMiddleware({
-	authorizedParties: [`${process.env.DOMAIN_ORIGIN}`]
-});
+const isProtectedRoute = createRouteMatcher(['/pets(.*)', '/appointments(.*)']);
+export default clerkMiddleware(async (auth, req) => {
+	if (isProtectedRoute(req)) await auth.protect()
+})
 
 export const config = {
 	matcher: [
