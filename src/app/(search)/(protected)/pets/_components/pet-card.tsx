@@ -53,7 +53,7 @@ export function PetCard({ pet }: PetCardProps) {
 					<Button
 						onClick={(e) => {
 							e.stopPropagation();
-							open({ key: "delete-pet", data: pet })
+							open({ key: "delete-pet", data: pet });
 						}}
 						variant="outline"
 						size="sm"

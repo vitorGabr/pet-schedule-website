@@ -11,7 +11,7 @@ interface CompanyCardProps {
 
 export function CompanyCard({ data }: CompanyCardProps) {
 	return (
-		<Link href={`/${data.id}`}>
+		<Link href={`/${data.id}`} scroll>
 			<Card className="py-0 w-full bg-white border shadow-none rounded-lg overflow-hidden">
 				<div className="relative">
 					<div className="w-full h-48" />

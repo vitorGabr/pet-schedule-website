@@ -9,5 +9,5 @@ export async function signOutUser() {
 	if (sessionId) {
 		await client?.sessions.revokeSession(sessionId);
 	}
-	redirect("/");
+	await redirect("/");
 }

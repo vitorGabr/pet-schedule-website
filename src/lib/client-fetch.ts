@@ -19,6 +19,8 @@ AXIOS_INSTANCE.interceptors.response.use(
 	async (error) => {
 		const status = error.response?.status;
 		if ([401, 403].includes(status)) {
+			console.log(status, error);
+			console.log("Sessão expirada. Saindo...");
 			await signOutUser();
 		}
 		throw error;

@@ -2,12 +2,15 @@
 
 import { useSignIn, useSignUp } from "@clerk/nextjs";
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors";
+import { parseAsString, useQueryState } from "nuqs";
 import { toast } from "sonner";
 import { SIGN_FORM_ERRORS } from "@/constants/sign-form-errors";
 import { SignInFormData } from "@/schemas/sign-in";
 import { SignUpFormData } from "@/schemas/sign-up";
 
 export const useMakeSign = () => {
+	const [redirectUrl] = useQueryState("redirect_url", parseAsString);
+	const [_, setAuthMode] = useQueryState("auth");
 	const { setActive, signUp } = useSignUp();
 	const { signIn, setActive: setActiveSignIn } = useSignIn();
 
@@ -22,7 +25,11 @@ export const useMakeSign = () => {
 				password: form.password,
 			});
 			if (response?.status === "complete") {
-				await setActive?.({ session: response.createdSessionId });
+				await setActive?.({
+					session: response.createdSessionId,
+					redirectUrl: redirectUrl || undefined,
+				});
+				setAuthMode(null);
 			}
 		} catch (error) {
 			if (isClerkAPIResponseError(error)) {
@@ -42,7 +49,11 @@ export const useMakeSign = () => {
 				password: form.password,
 			});
 			if (response?.status === "complete") {
-				await setActiveSignIn?.({ session: response.createdSessionId });
+				await setActiveSignIn?.({
+					session: response.createdSessionId,
+					redirectUrl: redirectUrl || undefined,
+				});
+				setAuthMode(null);
 			}
 		} catch (error) {
 			if (isClerkAPIResponseError(error)) {
