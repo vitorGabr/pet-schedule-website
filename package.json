@@ -10,6 +10,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
+		"@clerk/localizations": "^3.26.4",
 		"@clerk/nextjs": "^6.34.1",
 		"@novu/nextjs": "^3.11.0",
 		"@tanstack/react-form": "^1.23.8",

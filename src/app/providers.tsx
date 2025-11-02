@@ -1,5 +1,6 @@
 "use client";
 
+import { ptBR } from "@clerk/localizations";
 import { ClerkProvider } from "@clerk/nextjs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NuqsAdapter } from "nuqs/adapters/next";
@@ -19,7 +20,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 	);
 
 	return (
-		<ClerkProvider>
+		<ClerkProvider localization={ptBR}>
 			<NuqsAdapter>
 				<QueryClientProvider client={queryClient}>
 					{children}
