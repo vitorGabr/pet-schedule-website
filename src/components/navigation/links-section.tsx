@@ -10,7 +10,7 @@ export function LinksSection() {
 	if (!pathname) return null;
 
 	return (
-		<nav className="hidden md:flex flex-1 items-center justify-center gap-4">
+		<nav className="hidden lg:flex flex-1 items-center justify-center gap-4">
 			{BASE_ROUTES.map((route) => (
 				<NavLink
 					key={route.href as string}

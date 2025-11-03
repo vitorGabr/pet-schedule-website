@@ -33,7 +33,7 @@ export const MobileMenu = () => {
 	}, [open]);
 
 	return (
-		<div className="relative md:hidden">
+		<div className="relative lg:hidden">
 			<button
 				ref={buttonRef}
 				type="button"
@@ -42,7 +42,7 @@ export const MobileMenu = () => {
 				onClick={handleToggle}
 				className="text-foreground inline-flex items-center justify-center rounded-full p-2 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
 			>
-				<MenuIcon />
+				<MenuIcon className="size-5" />
 			</button>
 
 			{open && (

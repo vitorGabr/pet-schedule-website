@@ -14,6 +14,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { ratingEligibilityMessage } from "@/constants/rating-eligibility";
 import { listAnimalsFromUser } from "@/lib/http/generated/endpoints/animais/animais";
 import {
 	checkRatingEligibility,
@@ -26,12 +27,9 @@ import { CreateReviewForm } from "./_components/create-review-form";
 import { LocationMap } from "./_components/location-map";
 import { ServiceCard } from "./_components/service-card";
 
-type Props = {
-	params: Promise<{ id: string }>;
-	searchParams: Promise<{ id?: string }>;
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: PageProps<"/[id]">): Promise<Metadata> {
 	const { id } = await params;
 	const company = await getCompanyById(id).catch(() => null);
 
@@ -83,32 +81,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	};
 }
 
-export default async function EmpresaPage({ params }: Props) {
+export default async function EmpresaPage({ params }: PageProps<"/[id]">) {
 	const { id } = await params;
-
-	const { isAuthenticated } = await auth();
 	const company = await getCompanyById(id).catch(() => null);
-
 	if (!company) return notFound();
-	const [reviews, animals, ratingEligibility] = await Promise.all([
-		listCompanyRatings(id).catch(() => null),
-		isAuthenticated
-			? listAnimalsFromUser().catch(() => null)
-			: Promise.resolve(null),
-		checkRatingEligibility(id).catch(() => null),
-	]);
 
-	const canShowReviewForm = Boolean(
-		isAuthenticated && ratingEligibility?.canRate,
-	);
-	const ratingEligibilityMessage = ratingEligibility?.reason
-		? {
-				ALREADY_RATED:
-					"Você já compartilhou uma avaliação para esta empresa. Obrigado!",
-				NO_COMPLETED_APPOINTMENT:
-					"Conclua um atendimento com esta empresa para liberar a avaliação.",
-			}[ratingEligibility.reason]
-		: null;
+	const [reviews, animals, ratingEligibility, { isAuthenticated }] =
+		await Promise.all([
+			listCompanyRatings(id).catch(() => null),
+			listAnimalsFromUser().catch(() => null),
+			checkRatingEligibility(id).catch(() => null),
+			auth(),
+		]);
+
+	const canShowReviewForm = Boolean(ratingEligibility?.canRate);
 
 	return (
 		<div className="min-h-screen bg-background">
@@ -193,16 +179,14 @@ export default async function EmpresaPage({ params }: Props) {
 								className="border border-dashed"
 							/>
 						)}
-						{isAuthenticated &&
-							!canShowReviewForm &&
-							ratingEligibilityMessage && (
-								<Alert className="border border-dashed">
-									<AlertTitle>Avaliação indisponível</AlertTitle>
-									<AlertDescription>
-										{ratingEligibilityMessage}
-									</AlertDescription>
-								</Alert>
-							)}
+						{!canShowReviewForm && ratingEligibility?.reason && (
+							<Alert className="border border-dashed">
+								<AlertTitle>Avaliação indisponível</AlertTitle>
+								<AlertDescription>
+									{ratingEligibilityMessage[ratingEligibility?.reason]}
+								</AlertDescription>
+							</Alert>
+						)}
 
 						{/* Reviews */}
 						<Card>
