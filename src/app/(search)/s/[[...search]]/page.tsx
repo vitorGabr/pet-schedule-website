@@ -43,10 +43,8 @@ async function Content(props: PageProps<"/s/[[...search]]">) {
 			) : (
 				<div>
 					<div className="mb-6 text-sm text-muted-foreground">
-						{data.meta.total > 0 && (
-							<p>
-								Mostrando {data.items.length} de {data.meta.total} empresas
-							</p>
+						{data.items.length > 0 && (
+							<p>Mostrando {data.items.length} empresas</p>
 						)}
 					</div>
 

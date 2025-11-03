@@ -27,7 +27,7 @@ const stats = [
 	},
 	{
 		icon: Zap,
-		number: "24h",
+		number: "Até 24h",
 		label: "Tempo de Resposta",
 		description: "Para novas oportunidades",
 		iconBg: "bg-orange-100",

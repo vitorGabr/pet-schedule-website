@@ -38,13 +38,13 @@ export function HeroSection() {
 					{/* Badge */}
 					<div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-6">
 						<Building2 className="w-4 h-4" />
-						Para Empresas e Profissionais
+						Para Pequenos e Médios Negócios e Profissionais
 					</div>
 
 					{/* Título Principal */}
 					<h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-						Faça Parte da Maior Plataforma de{" "}
-						<span className="text-primary">Serviços Pet</span> do Brasil
+						Faça Parte da Plataforma de
+						<span className="text-primary"> Serviços Pet</span>
 					</h1>
 
 					{/* Subtítulo */}
@@ -56,7 +56,7 @@ export function HeroSection() {
 
 					{/* Benefícios Rápidos */}
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-						{["Agendamentos 24/7", "Gestão Simplificada", "Mais Clientes"].map(
+						{["Agendamentos online", "Gestão Simplificada", "Mais Clientes"].map(
 							(benefit) => (
 								<div
 									key={benefit}

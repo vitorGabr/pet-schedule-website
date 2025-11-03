@@ -18,7 +18,7 @@ const benefits = [
 		icon: Clock,
 		title: "Agendamento Flexível",
 		description:
-			"Sistema de agendamento online 24/7 com horários que se adaptam à sua rotina.",
+			"Sistema de agendamento online com horários que se adaptam à sua rotina.",
 	},
 ];
 

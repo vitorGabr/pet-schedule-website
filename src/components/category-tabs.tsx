@@ -12,7 +12,7 @@ const categories = [
 	{ id: "spa", label: "Spa & Relaxamento", tag: "spa" },
 	{ id: "cuidados", label: "Cuidados Especiais", tag: "cuidados" },
 	{ id: "veterinario", label: "Veterinário", tag: "veterinario" },
-	{ id: "emergencia", label: "Emergência 24h", tag: "emergencia" },
+	{ id: "emergencia", label: "Emergência", tag: "emergencia" },
 ] as const;
 
 export function CategoryTabs() {

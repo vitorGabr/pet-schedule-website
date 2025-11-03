@@ -76,9 +76,9 @@ export default function QuoteFormSection() {
 							Cotação Enviada com Sucesso!
 						</h2>
 						<p className="text-lg text-gray-600 mb-6">
-							Recebemos sua solicitação e nossa equipe entrará em contato em até
-							24 horas para apresentar uma proposta personalizada para seu
-							negócio.
+							Recebemos sua solicitação e nossa equipe entrará em contato em até 24
+							horas. No dia da apresentação, teremos 10 minutos para expor a
+							proposta personalizada para o seu negócio.
 						</p>
 						<div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
 							<h3 className="font-semibold text-green-800 mb-2">

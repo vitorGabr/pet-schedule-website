@@ -15,7 +15,7 @@ export function BusinessCtaSection() {
 								{/* Badge */}
 								<div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-6">
 									<Building2 className="w-4 h-4" />
-									Exclusivo para Empresas
+									Para Pequenos e Médios Negócios
 								</div>
 
 								{/* Title */}
@@ -33,7 +33,7 @@ export function BusinessCtaSection() {
 								{/* Benefits List */}
 								<ul className="space-y-3 mb-8">
 									{[
-										"Agendamentos online 24/7",
+										"Agendamentos online",
 										"Aumento médio de 40% no faturamento",
 										"Gestão completa de clientes",
 										"Suporte dedicado e treinamento",
@@ -88,7 +88,7 @@ export function BusinessCtaSection() {
 									},
 									{
 										icon: Zap,
-										number: "24h",
+										number: "Rápido",
 										label: "Setup Rápido",
 										color: "text-orange-600",
 										bg: "bg-orange-100",

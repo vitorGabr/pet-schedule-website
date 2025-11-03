@@ -40,12 +40,12 @@ export async function generateMetadata({
 		};
 	}
 
-	const title = `${company.name} | PETI - Serviços para Pets`;
+	const title = `${company.name} | Petesy - Serviços para Pets`;
 	const description =
 		company.description ||
 		`Conheça ${company.name}, especializada em cuidados para pets. ${company.services.map((s) => s.name).join(", ")}. Avaliação ${company.averageRating || 0}/5 estrelas.`;
 	const imageUrl = company.images[0]?.url || "/placeholder.svg";
-	const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://peti.com.br";
+	const siteUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 	return {
 		title,
@@ -68,7 +68,7 @@ export async function generateMetadata({
 			url: `${siteUrl}/${id}`,
 			title,
 			description,
-			siteName: "PETI",
+			siteName: "Petesy",
 			images: [
 				{
 					url: imageUrl,

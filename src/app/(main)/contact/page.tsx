@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import type { InputHTMLAttributes } from "react";
 
 export const metadata = {
-	title: "Contato • PETI",
+	title: "Contato • Petesy",
 	description:
 		"Fale conosco para dúvidas, sugestões ou parcerias. Estamos aqui para ajudar.",
 };
@@ -25,7 +25,7 @@ export default async function ContatoPage(props: PageProps<"/contact">) {
 	const success = searchParams.success as string;
 
 	return (
-		<>
+		<div className="py-6">
 			<div className="mx-auto max-w-3xl text-center">
 				<h1 className="text-3xl font-black tracking-tight text-foreground sm:text-4xl">
 					Entre em contato
@@ -37,7 +37,7 @@ export default async function ContatoPage(props: PageProps<"/contact">) {
 				</p>
 			</div>
 
-			<section className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+			<section className="mx-auto max-w-6xl mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
 				<form
 					action={sendContactMessage}
 					className="rounded-xl border bg-card p-6"
@@ -116,10 +116,10 @@ export default async function ContatoPage(props: PageProps<"/contact">) {
 							<li className="flex items-center gap-3">
 								<span aria-hidden>✉️</span>
 								<a
-									href="mailto:suporte@peti.com"
+									href="mailto:suporte@petesy.shop"
 									className="hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring rounded"
 								>
-									suporte@peti.com
+									suporte@petesy.shop
 								</a>
 							</li>
 							<li className="flex items-center gap-3">
@@ -133,7 +133,7 @@ export default async function ContatoPage(props: PageProps<"/contact">) {
 						<iframe
 							title="Mapa de localização"
 							className="h-64 w-full rounded-lg"
-							aria-label="Mapa de localização do PETI"
+							aria-label="Mapa de localização do Petesy"
 							loading="lazy"
 							referrerPolicy="no-referrer-when-downgrade"
 							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.253380229149!2d-46.6565717!3d-23.5953519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8a6b3f0ad%3A0x8c8f1b0c0e1d3b0!2sParque%20Ibirapuera!5e0!3m2!1spt-BR!2sBR!4v1700000000000"
@@ -141,7 +141,7 @@ export default async function ContatoPage(props: PageProps<"/contact">) {
 					</div>
 				</aside>
 			</section>
-		</>
+		</div>
 	);
 }
 

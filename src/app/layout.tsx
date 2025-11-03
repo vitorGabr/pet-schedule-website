@@ -17,8 +17,8 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
 	title: {
-		template: "%s | PETI",
-		default: "PETI - Encontre os melhores serviços para pets",
+		template: "%s | Petesy",
+		default: "Petesy - Encontre os melhores serviços para pets",
 	},
 	description:
 		"Conecte-se com os melhores cuidadores de animais de estimação para tosa, hospedagem, passeios e muito mais.",

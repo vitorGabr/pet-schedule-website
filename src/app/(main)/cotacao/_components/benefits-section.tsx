@@ -16,7 +16,7 @@ const benefits = [
 		icon: Calendar,
 		title: "Agendamentos Mais Rápidos",
 		description:
-			"Sistema automatizado de agendamentos 24/7. Seus clientes podem agendar serviços a qualquer hora, aumentando suas vendas.",
+			"Sistema automatizado de agendamentos online. Seus clientes podem agendar serviços de forma prática, aumentando suas vendas.",
 		iconBg: "bg-blue-100",
 		iconColor: "text-blue-600",
 	},

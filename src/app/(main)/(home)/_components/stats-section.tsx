@@ -27,9 +27,9 @@ const stats = [
 	},
 	{
 		icon: Clock,
-		number: "24/7",
-		label: "Suporte Disponível",
-		description: "Agendamento online sempre",
+		number: "08:00–18:00",
+		label: "Horário de Suporte",
+		description: "Atendimento em horário comercial",
 		iconBg: "bg-purple-100",
 		iconColor: "text-purple-600",
 	},
