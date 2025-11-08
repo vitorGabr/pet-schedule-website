@@ -59,7 +59,7 @@ export function BookingModal({ companyId, animals }: BookingModalProps) {
 					return;
 				}
 				await handleClose();
-				router.push(`/appointments?id=019a266a-fa81-7000-9a65-936b284dcde7`);
+				router.push(`/appointments?id=${result.appointmentId}`);
 				form.reset();
 			} catch (error) {
 				if (error instanceof AxiosError) {
