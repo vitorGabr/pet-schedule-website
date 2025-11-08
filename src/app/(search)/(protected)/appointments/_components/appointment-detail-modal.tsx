@@ -3,7 +3,7 @@
 import { differenceInMinutes, format, intervalToDuration } from "date-fns";
 import { ptBR } from "date-fns/locale/pt-BR";
 import { CalendarDays, Clock, MapPin, Scissors, X } from "lucide-react";
-import { parseAsString, useQueryState } from "nuqs";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -21,7 +21,8 @@ import { InfoItem } from "./info-item";
 import { StatusBadge } from "./status-badge";
 
 export const AppointmentDetailModal = () => {
-	const [id, setId] = useQueryState("id", parseAsString);
+	const router = useRouter();
+	const id = useSearchParams().get("id");
 	const { data, isLoading } = useGetAppointmentById(id!, {
 		query: { enabled: !!id, queryKey: ["appointment", id] },
 	});
@@ -41,8 +42,12 @@ export const AppointmentDetailModal = () => {
 		}
 	};
 
+	const onClose = () => {
+		router.push("/appointments");
+	};
+
 	return (
-		<Dialog open={id !== null} onOpenChange={() => setId(null)}>
+		<Dialog open={id !== null} onOpenChange={onClose}>
 			<DialogContent className="flex flex-col gap-0 p-0 max-h-[min(640px,95vh)] sm:max-w-lg [&>button:last-child]:hidden">
 				<DialogHeader className="border-b px-6 flex-row py-4 text-base flex items-center justify-between">
 					<DialogTitle className="text-sm md:text-xl font-bold tracking-tight">
@@ -51,7 +56,7 @@ export const AppointmentDetailModal = () => {
 					{data && (
 						<div className="flex items-center gap-2">
 							<StatusBadge status={data?.status} />
-							<Button variant="ghost" size="icon" onClick={() => setId(null)}>
+							<Button variant="ghost" size="icon" onClick={onClose}>
 								<X className="h-5 w-5" />
 							</Button>
 						</div>

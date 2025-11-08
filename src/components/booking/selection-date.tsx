@@ -31,7 +31,7 @@ export function SelectionDate({ selectedDate, setSelectedDate }: Props) {
 				</h4>
 				<div className="flex gap-2 items-center">
 					<span className="text-sm font-medium first-letter:capitalize">
-						{format(selectedDate, "MMMM yyyy", { locale: pt })}
+						{format(selectedDate, "MMMM", { locale: pt })}
 					</span>
 					<Button variant="outline" size="sm" onClick={prevPage}>
 						<ChevronLeft className="h-4 w-4" />

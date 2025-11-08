@@ -35,7 +35,7 @@ export function ServiceCard({ service, authenticated, hasAnimal }: Props) {
 			className={`p-4 rounded-lg border cursor-pointer transition-all border-border hover:border-primary/50`}
 			onClick={handleBooking}
 		>
-			<div className="flex items-center justify-between">
+			<div className="flex flex-col md:flex-row items-center justify-between gap-4">
 				<div className="flex-1">
 					<div className="flex items-center gap-3 mb-2">
 						<h3 className="font-semibold text-lg">{service.name}</h3>
@@ -48,9 +48,9 @@ export function ServiceCard({ service, authenticated, hasAnimal }: Props) {
 						</div>
 					</div>
 				</div>
-				<div className="text-right">
-					<div className="text-md font-bold text-primary mb-2">
-						A partir de {formatCurrency(service.price / 100)}
+				<div className="text-right flex items-center justify-between w-full md:w-auto gap-4">
+					<div className="text-md font-bold text-primary">
+						{formatCurrency(service.price / 100)}+
 					</div>
 					<Button size="sm">Agendar</Button>
 				</div>

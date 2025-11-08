@@ -18,7 +18,12 @@ import { useGetServiceById } from "@/lib/http/generated/endpoints/serviços/serv
 import { ListAnimalFromUserResponseDtoOutputItemsItem } from "@/lib/http/generated/models";
 import { createBookingSchema } from "@/schemas/create-booking";
 import { formatCurrency } from "@/utils/currency";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import {
+	Dialog,
+	DialogContent,
+	DialogHeader,
+	DialogTitle,
+} from "../ui/dialog";
 import { BookingSkeleton } from "./booking-skeleton";
 import { PeriodFilter } from "./period-filter";
 import { SelectionDate } from "./selection-date";
@@ -54,7 +59,8 @@ export function BookingModal({ companyId, animals }: BookingModalProps) {
 					return;
 				}
 				await handleClose();
-				router.push("/appointments");
+				router.push(`/appointments?id=019a266a-fa81-7000-9a65-936b284dcde7`);
+				form.reset();
 			} catch (error) {
 				if (error instanceof AxiosError) {
 					toast.error(
@@ -76,18 +82,18 @@ export function BookingModal({ companyId, animals }: BookingModalProps) {
 
 	return (
 		<Dialog open={serviceId !== null} onOpenChange={handleClose}>
-			<DialogContent className="w-full max-w-3xl px-0">
-				<DialogHeader className="px-6">
+			<DialogContent className="w-full max-w-3xl px-0 gap-0">
+				<DialogHeader className="px-6 border-b pb-4">
 					<DialogTitle className="text-xl font-bold">
 						Agendar Serviço
 					</DialogTitle>
 				</DialogHeader>
-				<div className="h-[70vh] overflow-y-auto">
+				<div className="h-[70vh] overflow-y-auto py-4">
 					{service && (
 						<div className="px-6 space-y-6">
 							{/* Informações do Serviço */}
 							<Card>
-								<CardContent className="p-4">
+								<CardContent className="px-4">
 									<div className="flex justify-between items-start">
 										<div>
 											<h3 className="font-semibold text-lg">{service?.name}</h3>
@@ -206,48 +212,44 @@ export function BookingModal({ companyId, animals }: BookingModalProps) {
 									</div>
 								</div>
 							</div>
-
-							<div className="flex justify-between items-center pt-4 border-t">
-								<div>
-									<div className="font-semibold">
-										Total: {formatCurrency((service?.price ?? 0) / 100)}
-									</div>
-									<div className="text-sm text-muted-foreground">
-										<form.Subscribe
-											selector={(state) => [
-												state.values.date,
-												state.values.time,
-											]}
-										>
-											{([date, time]) => (
-												<>
-													{date &&
-														time &&
-														`${time} - ${format(addDays(date, 0), "dd/MM/yyyy")}`}
-												</>
-											)}
-										</form.Subscribe>
-									</div>
-								</div>
-								<form.Subscribe
-									selector={(state) => [state.canSubmit, state.isSubmitting]}
-								>
-									{([canSubmit, isSubmitting]) => (
-										<Button
-											disabled={!canSubmit || isSubmitting}
-											onClick={() => form.handleSubmit()}
-											className="px-8"
-										>
-											{isSubmitting ? "Agendando..." : "Continuar"}
-										</Button>
-									)}
-								</form.Subscribe>
-							</div>
 						</div>
 					)}
 					<Activity mode={isLoading ? "visible" : "hidden"}>
 						<BookingSkeleton />
 					</Activity>
+				</div>
+				<div className="flex px-4 justify-between pt-4 items-center gap-4 border-t">
+					<div>
+						<div className="font-semibold">
+							Total:  {service && formatCurrency((service?.price ?? 0) / 100)}
+						</div>
+						<div className="text-sm text-muted-foreground">
+							<form.Subscribe
+								selector={(state) => [state.values.date, state.values.time]}
+							>
+								{([date, time]) => (
+									<>
+										{date &&
+											time &&
+											`${time} - ${format(addDays(date, 0), "dd/MM/yyyy")}`}
+									</>
+								)}
+							</form.Subscribe>
+						</div>
+					</div>
+					<form.Subscribe
+						selector={(state) => [state.canSubmit, state.isSubmitting]}
+					>
+						{([canSubmit, isSubmitting]) => (
+							<Button
+								disabled={!canSubmit || isSubmitting}
+								onClick={() => form.handleSubmit()}
+								className="px-8"
+							>
+								{isSubmitting ? "Agendando..." : "Continuar"}
+							</Button>
+						)}
+					</form.Subscribe>
 				</div>
 			</DialogContent>
 		</Dialog>
