@@ -56,17 +56,19 @@ export function HeroSection() {
 
 					{/* Benefícios Rápidos */}
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-						{["Agendamentos online", "Gestão Simplificada", "Mais Clientes"].map(
-							(benefit) => (
-								<div
-									key={benefit}
-									className="flex items-center justify-center gap-2 text-gray-700"
-								>
-									<div className="w-2 h-2 bg-primary rounded-full" />
-									<span className="font-medium">{benefit}</span>
-								</div>
-							),
-						)}
+						{[
+							"Agendamentos online",
+							"Gestão Simplificada",
+							"Mais Clientes",
+						].map((benefit) => (
+							<div
+								key={benefit}
+								className="flex items-center justify-center gap-2 text-gray-700"
+							>
+								<div className="w-2 h-2 bg-primary rounded-full" />
+								<span className="font-medium">{benefit}</span>
+							</div>
+						))}
 					</div>
 
 					{/* CTA Buttons */}

@@ -22,10 +22,10 @@ export default function SobreNosPage() {
 			<section className="mt-14 grid grid-cols-1 items-center gap-8 md:grid-cols-2">
 				<div>
 					<p className="text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-						O Petesy nasceu da paixão por animais e do desejo de tornar mais fácil
-						a conexão entre tutores e serviços de qualidade. Começamos como uma
-						pequena equipe determinada a construir uma experiência simples,
-						transparente e acolhedora.
+						O Petesy nasceu da paixão por animais e do desejo de tornar mais
+						fácil a conexão entre tutores e serviços de qualidade. Começamos
+						como uma pequena equipe determinada a construir uma experiência
+						simples, transparente e acolhedora.
 					</p>
 					<p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
 						Hoje, nossa comunidade cresce com profissionais comprometidos e
@@ -63,18 +63,19 @@ export default function SobreNosPage() {
 					Por que este tema?
 				</h2>
 				<p className="mt-2 max-w-3xl text-sm text-muted-foreground">
-					Escolhemos focar no segmento pet pela sua rapidez de crescimento e pelo
-					impacto direto na qualidade de vida de animais e famílias. Nosso objetivo
-					é facilitar o acesso a serviços de confiança, especialmente para pequenos
-					e médios negócios que compõem a maior parte do mercado local.
+					Escolhemos focar no segmento pet pela sua rapidez de crescimento e
+					pelo impacto direto na qualidade de vida de animais e famílias. Nosso
+					objetivo é facilitar o acesso a serviços de confiança, especialmente
+					para pequenos e médios negócios que compõem a maior parte do mercado
+					local.
 				</p>
 
 				<div className="mt-6 space-y-4">
 					<h3 className="text-lg font-semibold">Motivação</h3>
 					<p className="text-sm text-muted-foreground">
 						Resolver a fragmentação do mercado e aumentar a visibilidade de
-						prestadores locais, permitindo que pequenos negócios cresçam de forma
-						sustentável.
+						prestadores locais, permitindo que pequenos negócios cresçam de
+						forma sustentável.
 					</p>
 
 					<h3 className="text-lg font-semibold">Dificuldades Previstas</h3>

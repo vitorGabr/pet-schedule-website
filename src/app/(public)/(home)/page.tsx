@@ -9,18 +9,18 @@ import { TestimonialsSection } from "./_components/testimonials-section";
 import { WhyChooseUsSection } from "./_components/why-choose-us-section";
 
 export default function Home() {
-  return (
-    <div className="flex flex-1 flex-col">
-      <HeroSection />
-      <ServicesSection />
-      <StatsSection />
-      <Suspense>
-        <CompaniesSection />
-      </Suspense>
-      <WhyChooseUsSection />
-      <BusinessCtaSection />
-      <TestimonialsSection />
-      <NewsletterSection />
-    </div>
-  );
+	return (
+		<div className="flex flex-1 flex-col">
+			<HeroSection />
+			<ServicesSection />
+			<StatsSection />
+			<Suspense>
+				<CompaniesSection />
+			</Suspense>
+			<WhyChooseUsSection />
+			<BusinessCtaSection />
+			<TestimonialsSection />
+			<NewsletterSection />
+		</div>
+	);
 }

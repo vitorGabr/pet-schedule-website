@@ -1,66 +1,66 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.5/schema.json",
-  "vcs": {
-    "enabled": false,
-    "clientKind": "git",
-    "useIgnoreFile": false
-  },
-  "files": {
-    "ignoreUnknown": false,
-    "includes": [
-      "**",
-      "!**/*.test.js",
-      "**/special.test.js",
-      "!test",
-      "!dist",
-      "!.next"
-    ]
-  },
-  "formatter": {
-    "lineWidth": 80,
-    "indentStyle": "tab",
-    "indentWidth": 2
-  },
-  "css": {
-    "parser": {
-      "tailwindDirectives": true
-    }
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "suspicious": {
-        "noImplicitAnyLet": "off",
-        "noExplicitAny": "off",
-        "noArrayIndexKey": "off",
-        "noUnknownAtRules": "off"
-      },
-      "correctness": {
-        "useExhaustiveDependencies": "off",
-        "useUniqueElementIds": "off",
-        "useHookAtTopLevel": "off"
-      },
-      "a11y": {
-        "noStaticElementInteractions": "off",
-        "useKeyWithClickEvents": "off",
-        "useSemanticElements": "off"
-      },
-      "complexity": {
-        "noThisInStatic": "off",
-        "noStaticOnlyClass": "off",
-        "noBannedTypes": "off"
-      },
-      "style": {
-        "noNonNullAssertion": "off",
-        "useImportType": "off"
-      },
-      "recommended": true
-    }
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "double",
-      "expand": "never"
-    }
-  }
+	"$schema": "https://biomejs.dev/schemas/2.3.5/schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": [
+			"**",
+			"!**/*.test.js",
+			"**/special.test.js",
+			"!test",
+			"!dist",
+			"!.next"
+		]
+	},
+	"formatter": {
+		"lineWidth": 80,
+		"indentStyle": "tab",
+		"indentWidth": 2
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"suspicious": {
+				"noImplicitAnyLet": "off",
+				"noExplicitAny": "off",
+				"noArrayIndexKey": "off",
+				"noUnknownAtRules": "off"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": "off",
+				"useUniqueElementIds": "off",
+				"useHookAtTopLevel": "off"
+			},
+			"a11y": {
+				"noStaticElementInteractions": "off",
+				"useKeyWithClickEvents": "off",
+				"useSemanticElements": "off"
+			},
+			"complexity": {
+				"noThisInStatic": "off",
+				"noStaticOnlyClass": "off",
+				"noBannedTypes": "off"
+			},
+			"style": {
+				"noNonNullAssertion": "off",
+				"useImportType": "off"
+			},
+			"recommended": true
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double",
+			"expand": "never"
+		}
+	}
 }
