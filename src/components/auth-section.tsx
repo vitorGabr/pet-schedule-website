@@ -9,7 +9,6 @@ import {
 import Link from "next/link";
 import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
-import { NotificationMenu } from "./notification-menu";
 import SignButtons from "./sign-buttons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
@@ -41,7 +40,6 @@ async function Content() {
 
 	return (
 		<div className="flex items-center gap-4">
-			<NotificationMenu />
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Button variant="ghost" className="h-auto p-0 hover:bg-transparent">

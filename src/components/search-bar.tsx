@@ -9,7 +9,7 @@ import { Suspense } from "react";
 import z from "zod";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 
-const searchSchema = z.object({ q: z.string().trim().min(1).optional() });
+const searchSchema = z.object({ q: z.string().trim().optional() });
 
 export function SearchBar() {
 	return (
