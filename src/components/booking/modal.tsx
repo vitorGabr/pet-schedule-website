@@ -49,7 +49,7 @@ export function BookingModal({ companyId, animals }: BookingModalProps) {
 				const result = await createAppointment(
 					createBookingSchema.parse(value),
 				);
-				if (result.checkoutUrl?.length) {
+				if (result.checkoutUrl) {
 					window.location.href = result.checkoutUrl;
 					return;
 				}
