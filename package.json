@@ -10,10 +10,10 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@clerk/localizations": "^3.28.0",
-		"@clerk/nextjs": "^6.35.1",
+		"@clerk/localizations": "^3.28.1",
+		"@clerk/nextjs": "^6.35.2",
 		"@tanstack/react-form": "^1.25.0",
-		"@tanstack/react-query": "^5.90.9",
+		"@tanstack/react-query": "^5.90.10",
 		"@vercel/analytics": "^1.5.0",
 		"@vercel/speed-insights": "^1.2.0",
 		"axios": "^1.13.2",
@@ -22,10 +22,10 @@
 		"clsx": "^2.1.1",
 		"date-fns": "^4.1.0",
 		"embla-carousel-react": "^8.6.0",
-		"lucide-react": "^0.553.0",
+		"lucide-react": "^0.554.0",
 		"next": "16.0.3",
-		"nuqs": "^2.7.3",
-		"posthog-js": "^1.293.0",
+		"nuqs": "^2.8.0",
+		"posthog-js": "^1.297.2",
 		"radix-ui": "^1.4.3",
 		"react": "19.2.0",
 		"react-dom": "19.2.0",
@@ -36,10 +36,10 @@
 		"zustand": "^5.0.8"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.3.5",
+		"@biomejs/biome": "2.3.6",
 		"@tailwindcss/postcss": "^4.1.17",
 		"@types/node": "^24.10.1",
-		"@types/react": "19.2.5",
+		"@types/react": "19.2.6",
 		"@types/react-dom": "19.2.3",
 		"orval": "^7.16.0",
 		"tailwindcss": "^4.1.17",
@@ -55,7 +55,7 @@
 		"sharp"
 	],
 	"overrides": {
-		"@types/react": "19.2.5",
+		"@types/react": "19.2.6",
 		"@types/react-dom": "19.2.3"
 	}
 }
