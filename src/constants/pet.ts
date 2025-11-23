@@ -8,7 +8,6 @@ export const COAT_TYPES = [
 export const DISEASES = [
 	{ value: "none", label: "Nenhuma" },
 	{ value: "diabetes", label: "Diabetes" },
-	{ value: "fleas", label: "Carrapato ou pulgas" },
 	{ value: "heart_disease", label: "Problema Cardíaco" },
 	{ value: "arthritis", label: "Artrite" },
 	{ value: "allergies", label: "Alergias" },
