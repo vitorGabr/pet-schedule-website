@@ -18,11 +18,6 @@ AXIOS_INSTANCE.interceptors.response.use(
 	(response) => response,
 	async (error) => {
 		const status = error.response?.status;
-		const url = error.response?.config?.url;
-		console.error(url);
-		console.error(status);
-		console.error(JSON.stringify(error.response?.data, null, 2));
-		console.error(JSON.stringify(error.response, null, 2));
 		if ([401, 403].includes(status)) {
 			await signOutUser();
 		}
