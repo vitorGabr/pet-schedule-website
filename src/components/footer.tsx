@@ -13,7 +13,7 @@ export async function Footer() {
 					<div className="space-y-4">
 						<Image src={Logo} alt="Logo" width={100} />
 						<p className="text-gray-700 text-sm leading-relaxed">
-							Cuidando do seu pet com amor e profissionalismo desde 2020.
+							Cuidando do seu pet com amor e profissionalismo desde 2025.
 						</p>
 					</div>
 
