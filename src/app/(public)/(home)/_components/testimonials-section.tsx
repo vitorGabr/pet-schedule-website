@@ -13,7 +13,7 @@ const testimonials = [
 		petName: "Luna",
 		petType: "Golden Retriever",
 		image:
-			"https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+			"https://images.unsplash.com/photo-1761839258513-099c3121d72d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
 	},
 	{
 		id: 2,
