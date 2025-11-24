@@ -6,7 +6,6 @@ import { Plus } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { FileUpload } from "@/components/form/fields/file-upload";
-import { SelectField } from "@/components/form/fields/select-field";
 import { TextField } from "@/components/form/fields/text-field";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,17 +24,13 @@ import {
 import { BreedListResponseOutputItemsItem } from "@/lib/http/generated/models";
 import { CreatePetSchema, createPetSchema } from "@/schemas/create-pet";
 import { revalidateCache } from "@/utils/revalidate";
+import { AnimalCombobox } from "./animal-combobox";
 
 interface AddPetModalProps {
 	breeds: BreedListResponseOutputItemsItem[];
 }
 
-const defaultValues = {
-	name: "",
-	weight: 0,
-	age: 0,
-	breedId: "",
-} as CreatePetSchema;
+const defaultValues = { name: "", weight: 1, age: 1 } as CreatePetSchema;
 export function AddPetModal({ breeds }: AddPetModalProps) {
 	const [open, setOpen] = useState(false);
 
@@ -44,7 +39,8 @@ export function AddPetModal({ breeds }: AddPetModalProps) {
 		validators: { onChange: createPetSchema },
 		onSubmit: async ({ value }) => {
 			try {
-				const reponse = await createAnimal(value);
+				const transformedValue = createPetSchema.parse(value);
+				const reponse = await createAnimal(transformedValue);
 				await addAssetToAnimal(reponse.id, { file: value.file });
 				await revalidateCache({ type: "tag", tags: ["pets"] });
 				toast.success("Pet adicionado com sucesso!");
@@ -127,8 +123,7 @@ export function AddPetModal({ breeds }: AddPetModalProps) {
 										label="Peso (kg)"
 										placeholder="Ex: 5.5"
 										type="number"
-										step="0.1"
-										min="0"
+										min="1"
 									/>
 								)}
 							</form.Field>
@@ -147,29 +142,27 @@ export function AddPetModal({ breeds }: AddPetModalProps) {
 										type="number"
 										placeholder="Ex: 2"
 										step="1"
-										min="0"
+										min="1"
 									/>
 								)}
 							</form.Field>
 						</div>
-
 						<div className="col-span-full">
-							<form.Field name="breedId">
-								{(field) => (
-									<SelectField
-										label="Raça"
-										placeholder="Ex: Labrador"
-										options={breeds.map((breed) => ({
-											label: breed.name,
-											value: breed.id,
-										}))}
-										meta={field.state.meta}
-										onValueChange={(value) => field.handleChange(value)}
-										value={field.state.value}
-										name={field.name}
-										onBlur={field.handleBlur}
-									/>
-								)}
+							<form.Field name="breed">
+								{(field) => {
+									const isInvalid =
+										field.state.meta.isTouched && !field.state.meta.isValid;
+
+									return (
+										<AnimalCombobox
+											animals={breeds}
+											value={field.state.value}
+											onChange={field.handleChange}
+											isInvalid={isInvalid}
+											errors={field.state.meta.errors}
+										/>
+									);
+								}}
 							</form.Field>
 						</div>
 
