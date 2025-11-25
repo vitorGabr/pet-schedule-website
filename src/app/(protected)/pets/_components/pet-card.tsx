@@ -39,8 +39,8 @@ export function PetCard({ pet }: PetCardProps) {
 						<h3 className="font-semibold text-lg mb-2 truncate">{pet.name}</h3>
 
 						<div className="space-y-1 text-sm text-gray-600">
-							{pet.age && <p>Idade: {pet.age}</p>}
-							{pet.weight && <p>Peso: {pet.weight}</p>}
+							{pet.age && <p>Idade: {pet.age} anos</p>}
+							{pet.weight && <p>Peso: {pet.weight}Kg</p>}
 							{pet.breed && <p>Raça: {pet.breed.name}</p>}
 						</div>
 					</div>
