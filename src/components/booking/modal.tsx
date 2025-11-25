@@ -2,11 +2,10 @@
 
 import { useForm } from "@tanstack/react-form";
 import { AxiosError } from "axios";
-import { addDays, format } from "date-fns";
 import { AlertTriangle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { parseAsString, useQueryState } from "nuqs";
-import { Activity, useEffect } from "react";
+import { Activity, useEffect, useState } from "react";
 import { toast } from "sonner";
 import type z from "zod";
 import { SelectField } from "@/components/form/fields/select-field";
@@ -19,6 +18,7 @@ import { ListAnimalFromUserResponseDtoOutputItemsItem } from "@/lib/http/generat
 import { createBookingSchema } from "@/schemas/create-booking";
 import { formatCurrency } from "@/utils/currency";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import { BookingPriceSummary } from "./booking-price-summary";
 import { BookingSkeleton } from "./booking-skeleton";
 import { PeriodFilter } from "./period-filter";
 import { SelectionDate } from "./selection-date";
@@ -213,39 +213,44 @@ export function BookingModal({ companyId, animals }: BookingModalProps) {
 						<BookingSkeleton />
 					</Activity>
 				</div>
-				<div className="flex px-4 justify-between pt-4 items-center gap-4 border-t">
-					<div>
-						<div className="font-semibold">
-							Total: {service && formatCurrency((service?.price ?? 0) / 100)}
-						</div>
-						<div className="text-sm text-muted-foreground">
-							<form.Subscribe
-								selector={(state) => [state.values.date, state.values.time]}
-							>
-								{([date, time]) => (
-									<>
-										{date &&
-											time &&
-											`${time} - ${format(addDays(date, 0), "dd/MM/yyyy")}`}
-									</>
-								)}
-							</form.Subscribe>
-						</div>
-					</div>
-					<form.Subscribe
-						selector={(state) => [state.canSubmit, state.isSubmitting]}
-					>
-						{([canSubmit, isSubmitting]) => (
-							<Button
-								disabled={!canSubmit || isSubmitting}
-								onClick={() => form.handleSubmit()}
-								className="px-8"
-							>
-								{isSubmitting ? "Agendando..." : "Continuar"}
-							</Button>
-						)}
-					</form.Subscribe>
-				</div>
+				<form.Subscribe
+					selector={(state) => [
+						state.values.animalId,
+						state.values.coatType,
+						state.values.disease,
+						state.values.date,
+						state.values.time,
+					]}
+				>
+					{([animalId, coatType, disease, date, time]) => (
+						<BookingPriceSummary
+							serviceId={serviceId!}
+							animalId={animalId as string}
+							coatType={coatType as string}
+							disease={disease as string}
+							initialPrice={service?.price ?? 0}
+							initialDuration={service?.duration ?? 0}
+							date={date as Date}
+							time={time as string}
+							bookingButton={
+								<form.Subscribe
+									selector={(state) => [state.canSubmit, state.isSubmitting]}
+								>
+									{([canSubmit, isSubmitting]) => (
+										<Button
+											disabled={!canSubmit || isSubmitting}
+											onClick={() => form.handleSubmit()}
+											className="px-8"
+										>
+											{isSubmitting ? "Agendando..." : "Continuar"}
+										</Button>
+									)}
+								</form.Subscribe>
+							}
+						/>
+					)}
+				</form.Subscribe>
+
 			</DialogContent>
 		</Dialog>
 	);

@@ -24,6 +24,8 @@ import type { BodyType, ErrorType } from "../../../../client-fetch";
 
 import { customFetch } from "../../../../client-fetch";
 import type {
+	CalculateServicePriceDurationRequestDto,
+	CalculateServicePriceDurationResponseDtoOutput,
 	CreateAppointmentRequestDto,
 	CreateAppointmentResponseDtoOutput,
 	ListAvailableDatesResponseDtoOutput,
@@ -312,6 +314,97 @@ export const useCreateAppointment = <
 	TContext
 > => {
 	const mutationOptions = getCreateAppointmentMutationOptions(options);
+
+	return useMutation(mutationOptions, queryClient);
+};
+/**
+ * @summary Calcula o preço e a duração do serviço com base no animal
+ */
+export const calculateServicePriceDuration = (
+	calculateServicePriceDurationRequestDto: BodyType<CalculateServicePriceDurationRequestDto>,
+	options?: SecondParameter<typeof customFetch>,
+) => {
+	return customFetch<CalculateServicePriceDurationResponseDtoOutput>(
+		{
+			url: `/booking/calculate`,
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			data: calculateServicePriceDurationRequestDto,
+		},
+		options,
+	);
+};
+
+export const getCalculateServicePriceDurationMutationOptions = <
+	TError = ErrorType<unknown>,
+	TContext = unknown,
+>(options?: {
+	mutation?: UseMutationOptions<
+		Awaited<ReturnType<typeof calculateServicePriceDuration>>,
+		TError,
+		{ data: BodyType<CalculateServicePriceDurationRequestDto> },
+		TContext
+	>;
+	request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+	Awaited<ReturnType<typeof calculateServicePriceDuration>>,
+	TError,
+	{ data: BodyType<CalculateServicePriceDurationRequestDto> },
+	TContext
+> => {
+	const mutationKey = ["calculateServicePriceDuration"];
+	const { mutation: mutationOptions, request: requestOptions } = options
+		? options.mutation &&
+			"mutationKey" in options.mutation &&
+			options.mutation.mutationKey
+			? options
+			: { ...options, mutation: { ...options.mutation, mutationKey } }
+		: { mutation: { mutationKey }, request: undefined };
+
+	const mutationFn: MutationFunction<
+		Awaited<ReturnType<typeof calculateServicePriceDuration>>,
+		{ data: BodyType<CalculateServicePriceDurationRequestDto> }
+	> = (props) => {
+		const { data } = props ?? {};
+
+		return calculateServicePriceDuration(data, requestOptions);
+	};
+
+	return { mutationFn, ...mutationOptions };
+};
+
+export type CalculateServicePriceDurationMutationResult = NonNullable<
+	Awaited<ReturnType<typeof calculateServicePriceDuration>>
+>;
+export type CalculateServicePriceDurationMutationBody =
+	BodyType<CalculateServicePriceDurationRequestDto>;
+export type CalculateServicePriceDurationMutationError = ErrorType<unknown>;
+
+/**
+ * @summary Calcula o preço e a duração do serviço com base no animal
+ */
+export const useCalculateServicePriceDuration = <
+	TError = ErrorType<unknown>,
+	TContext = unknown,
+>(
+	options?: {
+		mutation?: UseMutationOptions<
+			Awaited<ReturnType<typeof calculateServicePriceDuration>>,
+			TError,
+			{ data: BodyType<CalculateServicePriceDurationRequestDto> },
+			TContext
+		>;
+		request?: SecondParameter<typeof customFetch>;
+	},
+	queryClient?: QueryClient,
+): UseMutationResult<
+	Awaited<ReturnType<typeof calculateServicePriceDuration>>,
+	TError,
+	{ data: BodyType<CalculateServicePriceDurationRequestDto> },
+	TContext
+> => {
+	const mutationOptions =
+		getCalculateServicePriceDurationMutationOptions(options);
 
 	return useMutation(mutationOptions, queryClient);
 };

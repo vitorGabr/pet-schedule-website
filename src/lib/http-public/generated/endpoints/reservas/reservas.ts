@@ -9,6 +9,8 @@ import type { BodyType } from "../../../../client-fetch-public";
 
 import { customFetch } from "../../../../client-fetch-public";
 import type {
+	CalculateServicePriceDurationRequestDto,
+	CalculateServicePriceDurationResponseDtoOutput,
 	CreateAppointmentRequestDto,
 	CreateAppointmentResponseDtoOutput,
 	ListAvailableDatesResponseDtoOutput,
@@ -54,9 +56,31 @@ export const createAppointment = (
 		options,
 	);
 };
+/**
+ * @summary Calcula o preço e a duração do serviço com base no animal
+ */
+export const calculateServicePriceDuration = (
+	calculateServicePriceDurationRequestDto: BodyType<CalculateServicePriceDurationRequestDto>,
+	options?: SecondParameter<
+		typeof customFetch<CalculateServicePriceDurationResponseDtoOutput>
+	>,
+) => {
+	return customFetch<CalculateServicePriceDurationResponseDtoOutput>(
+		{
+			url: `/booking/calculate`,
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			data: calculateServicePriceDurationRequestDto,
+		},
+		options,
+	);
+};
 export type ListAvailableDatesResult = NonNullable<
 	Awaited<ReturnType<typeof listAvailableDates>>
 >;
 export type CreateAppointmentResult = NonNullable<
 	Awaited<ReturnType<typeof createAppointment>>
+>;
+export type CalculateServicePriceDurationResult = NonNullable<
+	Awaited<ReturnType<typeof calculateServicePriceDuration>>
 >;
