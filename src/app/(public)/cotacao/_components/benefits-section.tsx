@@ -61,14 +61,6 @@ const benefits = [
 		iconColor: "text-yellow-600",
 	},
 	{
-		icon: Smartphone,
-		title: "App Mobile Completo",
-		description:
-			"Gerencie seu negócio de qualquer lugar com nosso app móvel. Receba notificações em tempo real.",
-		iconBg: "bg-indigo-100",
-		iconColor: "text-indigo-600",
-	},
-	{
 		icon: BarChart3,
 		title: "Relatórios Detalhados",
 		description:
