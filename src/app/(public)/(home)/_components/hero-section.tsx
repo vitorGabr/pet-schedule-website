@@ -38,7 +38,7 @@ export function HeroSection() {
 					<InputGroup className="h-16 w-full min-w-0 flex-1 rounded-full">
 						<InputGroupInput
 							name="q"
-							placeholder="Pesquise por serviços, empresas ou locais"
+							placeholder="Pesquise por serviços ou empresas..."
 						/>
 						<InputGroupAddon>
 							<Search className="size-5" />
