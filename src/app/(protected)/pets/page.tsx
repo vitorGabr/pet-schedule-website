@@ -12,6 +12,7 @@ import { PetCard } from "./_components/pet-card";
 
 export default async function PetsPage(props: PageProps<"/pets">) {
 	const { page } = await pageSearchLoader(props.searchParams);
+
 	const breeds = await getAllBreeds();
 
 	return (
@@ -34,7 +35,13 @@ export default async function PetsPage(props: PageProps<"/pets">) {
 }
 
 function LoadingGrid() {
-	return new Array(5).map((k) => <Skeleton key={k} className="h-24 w-full" />);
+	return (
+		<>
+			{Array.from({ length: 4 }).map((_, index) => (
+				<Skeleton key={index} className="h-24 w-full" />
+			))}
+		</>
+	);
 }
 
 async function Content({ page }: { page: number }) {

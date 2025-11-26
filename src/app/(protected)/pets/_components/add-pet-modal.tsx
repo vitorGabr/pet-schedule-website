@@ -3,6 +3,7 @@
 import { useForm } from "@tanstack/react-form";
 import { AxiosError } from "axios";
 import { Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import { FileUpload } from "@/components/form/fields/file-upload";
@@ -33,6 +34,7 @@ interface AddPetModalProps {
 const defaultValues = { name: "", weight: 1, age: 1 } as CreatePetSchema;
 export function AddPetModal({ breeds }: AddPetModalProps) {
 	const [open, setOpen] = useState(false);
+	const router = useRouter();
 
 	const form = useForm({
 		defaultValues,
@@ -43,6 +45,7 @@ export function AddPetModal({ breeds }: AddPetModalProps) {
 				const reponse = await createAnimal(transformedValue);
 				await addAssetToAnimal(reponse.id, { file: value.file });
 				await revalidateCache({ type: "tag", tags: ["pets"] });
+				router.refresh();
 				toast.success("Pet adicionado com sucesso!");
 				form.reset();
 				setOpen(false);

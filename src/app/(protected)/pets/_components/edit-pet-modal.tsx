@@ -3,6 +3,7 @@
 import { useForm } from "@tanstack/react-form";
 import { Camera } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { parseAsString, useQueryState } from "nuqs";
 import { toast } from "sonner";
 import { TextField } from "@/components/form/fields/text-field";
@@ -28,8 +29,8 @@ export function EditPetModal() {
 	const { data, isLoading } = useGetAnimalById(id ?? "", {
 		query: { enabled: !!id },
 	});
+	const router = useRouter();
 
-	const handleBack = () => setId(null);
 	const form = useForm({
 		defaultValues: {
 			name: data?.name || "",
@@ -40,10 +41,16 @@ export function EditPetModal() {
 		onSubmit: async ({ value }) => {
 			await updateAnimal(id!, value);
 			await revalidateCache({ type: "tag", tags: ["pets"] });
+			router.refresh();
 			toast.success("Pet atualizado com sucesso!");
 			handleBack();
 		},
 	});
+
+	const handleBack = () => {
+		setId(null);
+		form.reset();
+	};
 
 	return (
 		<Dialog open={!!id} onOpenChange={handleBack}>
