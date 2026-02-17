@@ -19,7 +19,7 @@ export function NavLink({
 			<div
 				data-status={isActive}
 				className={cn(
-					"px-4 py-1 rounded-full cursor-pointer",
+					"px-4 py-1 rounded-full cursor-pointer not-[data-status=true]:group-hover:bg-muted",
 					"data-[status=true]:bg-primary data-[status=true]:text-primary-foreground",
 					!isActive && "group-hover:bg-muted"
 				)}
